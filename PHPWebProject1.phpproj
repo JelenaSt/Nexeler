@@ -1,0 +1,179 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>PHPWebProject1</Name>
+    <ProjectGuid>{27c903f7-885a-47b2-a1bd-0f1458c8bd00}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\BoostFormat.lastbuildstate" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\cl.command.1.tlog" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\CL.read.1.tlog" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\CL.write.1.tlog" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\link.command.1.tlog" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\link.read.1.tlog" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog\link.write.1.tlog" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\BoostFormat.log" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\main.obj" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\vc120.idb" />
+    <Compile Include="BoostFormat\BoostFormat\Debug\vc120.pdb" />
+    <Compile Include="BoostFormat\BoostFormat\BoostFormat.vcxproj" />
+    <Compile Include="BoostFormat\BoostFormat\BoostFormat.vcxproj.filters" />
+    <Compile Include="BoostFormat\BoostFormat\main.cpp" />
+    <Compile Include="BoostFormat\Debug\BoostFormat.exe" />
+    <Compile Include="BoostFormat\Debug\BoostFormat.ilk" />
+    <Compile Include="BoostFormat\Debug\BoostFormat.pdb" />
+    <Compile Include="BoostFormat\BoostFormat.sdf" />
+    <Compile Include="BoostFormat\BoostFormat.sln" />
+    <Compile Include="Eclat-GPU\Debug\cudart32_75.dll" />
+    <Compile Include="Eclat-GPU\Debug\cudart64_75.dll" />
+    <Compile Include="Eclat-GPU\Debug\Eclat-GPU.exe" />
+    <Compile Include="Eclat-GPU\Debug\Eclat-GPU.ilk" />
+    <Compile Include="Eclat-GPU\Debug\Eclat-GPU.pdb" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\cl.command.1.tlog" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\CL.read.1.tlog" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\CL.write.1.tlog" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\Eclat-GPU.lastbuildstate" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\link.command.1.tlog" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\link.read.1.tlog" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog\link.write.1.tlog" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\BitMatrix.obj" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.log" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\Eclat.obj" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\kernel.cu.cache" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\kernel.cu.deps" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\kernel.cu.obj" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\util.cu.cache" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\util.cu.deps" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\util.cu.obj" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\util.obj" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\vc120.idb" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Debug\vc120.pdb" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\BitMatrix.cpp" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\BitMatrix.h" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Eclat-GPU.vcxproj" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Eclat-GPU.vcxproj.user" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Eclat.cpp" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\Eclat.h" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\kernel.cu" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\util.cu" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\util.h" />
+    <Compile Include="Eclat-GPU\Eclat-GPU\vc120.pdb" />
+    <Compile Include="Eclat-GPU\Eclat-GPU.sdf" />
+    <Compile Include="Eclat-GPU\Eclat-GPU.sln" />
+    <Compile Include="fim_gpu-master\Debug\cudart32_75.dll" />
+    <Compile Include="fim_gpu-master\Debug\cudart64_75.dll" />
+    <Compile Include="fim_gpu-master\Debug\fim_gpu-master.exe" />
+    <Compile Include="fim_gpu-master\Debug\fim_gpu-master.ilk" />
+    <Compile Include="fim_gpu-master\Debug\fim_gpu-master.pdb" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\data\chess.dat" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\data\eclat_input1.dat" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\cl.command.1.tlog" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\CL.read.1.tlog" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\CL.write.1.tlog" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\fim_gpu-master.lastbuildstate" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\link.command.1.tlog" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\link.read.1.tlog" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog\link.write.1.tlog" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\candidate_collection.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\cpu_interface.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\cuPrintf.cu.cache" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\cuPrintf.cu.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\data_interface.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.Build.CppClean.log" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.log" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\frontier.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\frontier_node.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\frontier_preexpand.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\global.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\gpu_interface.cu.cache" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\gpu_interface.cu.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\job_manager.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\main.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\mem_controller.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\test.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\test_case.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\time_analysis.obj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\vc120.idb" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\Debug\vc120.pdb" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\fim_gpu-master.vcxproj" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\fim_gpu-master.vcxproj.user" />
+    <Compile Include="fim_gpu-master\fim_gpu-master\vc120.pdb" />
+    <Compile Include="fim_gpu-master\fim_gpu-master.sdf" />
+    <Compile Include="fim_gpu-master\fim_gpu-master.sln" />
+    <Compile Include="LineCnt\Debug\LineCnt.exe" />
+    <Compile Include="LineCnt\Debug\LineCnt.ilk" />
+    <Compile Include="LineCnt\Debug\LineCnt.pdb" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\cl.command.1.tlog" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\CL.read.1.tlog" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\CL.write.1.tlog" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\LineCnt.lastbuildstate" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\link.command.1.tlog" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\link.read.1.tlog" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.tlog\link.write.1.tlog" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.log" />
+    <Compile Include="LineCnt\LineCnt\Debug\LineCnt.obj" />
+    <Compile Include="LineCnt\LineCnt\Debug\vc120.idb" />
+    <Compile Include="LineCnt\LineCnt\Debug\vc120.pdb" />
+    <Compile Include="LineCnt\LineCnt\LineCnt.cpp" />
+    <Compile Include="LineCnt\LineCnt\LineCnt.vcxproj" />
+    <Compile Include="LineCnt\LineCnt\LineCnt.vcxproj.filters" />
+    <Compile Include="LineCnt\LineCnt.sdf" />
+    <Compile Include="LineCnt\LineCnt.sln" />
+    <Compile Include="VectorAdd\Debug\cudart32_75.dll" />
+    <Compile Include="VectorAdd\Debug\cudart64_75.dll" />
+    <Compile Include="VectorAdd\Debug\VectorAdd.exe" />
+    <Compile Include="VectorAdd\Debug\VectorAdd.ilk" />
+    <Compile Include="VectorAdd\Debug\VectorAdd.pdb" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\VectorAdd.tlog\link.command.1.tlog" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\VectorAdd.tlog\link.read.1.tlog" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\VectorAdd.tlog\link.write.1.tlog" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\VectorAdd.tlog\VectorAdd.lastbuildstate" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\kernel.cu.cache" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\kernel.cu.deps" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\kernel.cu.obj" />
+    <Compile Include="VectorAdd\VectorAdd\Debug\VectorAdd.log" />
+    <Compile Include="VectorAdd\VectorAdd\kernel.cu" />
+    <Compile Include="VectorAdd\VectorAdd\vc120.pdb" />
+    <Compile Include="VectorAdd\VectorAdd\VectorAdd.vcxproj" />
+    <Compile Include="VectorAdd\VectorAdd.sdf" />
+    <Compile Include="VectorAdd\VectorAdd.sln" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BoostFormat\BoostFormat\Debug\BoostFormat.tlog" />
+    <Folder Include="BoostFormat\BoostFormat\Debug" />
+    <Folder Include="BoostFormat\BoostFormat" />
+    <Folder Include="BoostFormat\Debug" />
+    <Folder Include="BoostFormat" />
+    <Folder Include="Eclat-GPU\Debug" />
+    <Folder Include="Eclat-GPU\Eclat-GPU\Debug\Eclat-GPU.tlog" />
+    <Folder Include="Eclat-GPU\Eclat-GPU\Debug" />
+    <Folder Include="Eclat-GPU\Eclat-GPU" />
+    <Folder Include="Eclat-GPU" />
+    <Folder Include="fim_gpu-master\Debug" />
+    <Folder Include="fim_gpu-master\fim_gpu-master\data" />
+    <Folder Include="fim_gpu-master\fim_gpu-master\Debug\fim_gpu-master.tlog" />
+    <Folder Include="fim_gpu-master\fim_gpu-master\Debug" />
+    <Folder Include="fim_gpu-master\fim_gpu-master" />
+    <Folder Include="fim_gpu-master" />
+    <Folder Include="LineCnt\Debug" />
+    <Folder Include="LineCnt\LineCnt\Debug\LineCnt.tlog" />
+    <Folder Include="LineCnt\LineCnt\Debug" />
+    <Folder Include="LineCnt\LineCnt" />
+    <Folder Include="LineCnt" />
+    <Folder Include="VectorAdd\Debug" />
+    <Folder Include="VectorAdd\VectorAdd\Debug\VectorAdd.tlog" />
+    <Folder Include="VectorAdd\VectorAdd\Debug" />
+    <Folder Include="VectorAdd\VectorAdd" />
+    <Folder Include="VectorAdd" />
+  </ItemGroup>
+</Project>

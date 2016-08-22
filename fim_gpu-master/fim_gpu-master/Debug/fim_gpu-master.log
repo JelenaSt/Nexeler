@@ -1,0 +1,129 @@
+﻿Build started 21/12/2015 19:40:27.
+     1>Project "C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\fim_gpu-master\fim_gpu-master.vcxproj" on node 2 (Rebuild target(s)).
+     1>CudaClean:
+         cmd.exe /C "C:\Users\Jelena\AppData\Local\Temp\tmp4ffe50c4272a4fc09bc9cfb6d106c961.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile   -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\cuPrintf.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\cuPrintf.cu" -clean
+         
+         C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\fim_gpu-master>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile   -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\cuPrintf.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\cuPrintf.cu" -clean 
+         cuPrintf.cu
+       CudaClean:
+         cmd.exe /C "C:\Users\Jelena\AppData\Local\Temp\tmpe4980b9470d6452caa7113be40224798.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile   -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\gpu_interface.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\gpu_interface.cu" -clean
+         
+         C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\fim_gpu-master>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile   -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\gpu_interface.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\gpu_interface.cu" -clean 
+         gpu_interface.cu
+       AddCudaCompileDeps:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" /I. /FIcuda_runtime.h /c C:\Users\Jelena\Desktop\fim_gpu-master\cuPrintf.cu 
+       AddCudaCompileDeps:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" /I. /FIcuda_runtime.h /c C:\Users\Jelena\Desktop\fim_gpu-master\gpu_interface.cu 
+       CudaBuild:
+         Compiling CUDA source file ..\..\..\..\..\Desktop\fim_gpu-master\cuPrintf.cu...
+         cmd.exe /C "C:\Users\Jelena\AppData\Local\Temp\tmpd7e486f018d4419eb5a25696a07ec0c0.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\cuPrintf.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\cuPrintf.cu"
+         
+         C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\fim_gpu-master>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\cuPrintf.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\cuPrintf.cu" 
+     1>C:/Users/Jelena/Desktop/fim_gpu-master/cuPrintf.cu(276): warning : function "copyArg(char *, const char *, char *)" was declared but never referenced
+         cuPrintf.cu
+       CudaBuild:
+         Compiling CUDA source file ..\..\..\..\..\Desktop\fim_gpu-master\gpu_interface.cu...
+         cmd.exe /C "C:\Users\Jelena\AppData\Local\Temp\tmpb0f9cfc84b9142e2b2e6e4c3abeacfc9.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\gpu_interface.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\gpu_interface.cu"
+         
+         C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\fim_gpu-master>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd " -o Debug\gpu_interface.cu.obj "C:\Users\Jelena\Desktop\fim_gpu-master\gpu_interface.cu" 
+         gpu_interface.cu
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\..\..\Desktop\fim_gpu-master\candidate_collection.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\cpu_interface.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\data_interface.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\frontier.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\frontier_node.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\frontier_preexpand.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\global.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\job_manager.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\main.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\mem_controller.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\test.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\test_case.cpp" "..\..\..\..\..\Desktop\fim_gpu-master\time_analysis.cpp"
+         time_analysis.cpp
+         test_case.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(43): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(58): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(28): warning C4101: 'end' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(164): warning C4101: 'i' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(205): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(206): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(208): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>c:\users\jelena\desktop\fim_gpu-master\test_case.cpp(209): warning C4553: '==' : operator has no effect; did you intend '='?
+         test.cpp
+         mem_controller.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(57): warning C4101: 'latest_vlist_num' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(35): warning C4101: 'vlist_num_int' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(185): warning C4101: 'vlist_num_int' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(225): warning C4101: 'cursor' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(228): warning C4101: 'new_stack' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(227): warning C4101: 'new_base_size' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(229): warning C4101: 'new_stack_pointer' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\mem_controller.cpp(394): warning C4244: '=' : conversion from 'DWORDLONG' to 'unsigned long', possible loss of data
+         main.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(40): warning C4293: '>>' : shift count negative or too big, undefined behavior
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(29): warning C4101: 'i' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(33): warning C4101: 'index' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(182): warning C4293: '<<' : shift count negative or too big, undefined behavior
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(135): warning C4101: 'ft' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(132): warning C4101: 'minsup' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(129): warning C4101: 'ret' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(128): warning C4101: 'param' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\main.cpp(228): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         job_manager.cpp
+         global.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\global.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\global.cpp(83): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\global.cpp(88): warning C4018: '>=' : signed/unsigned mismatch
+         frontier_preexpand.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(54): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(107): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(23): warning C4101: 'v' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(22): warning C4101: 'max_children_index' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(22): warning C4101: 'item_num' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(11): warning C4101: 'tmp_node' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_preexpand.cpp(231): warning C4101: 'j' : unreferenced local variable
+         frontier_node.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_node.cpp(71): warning C4101: 'err' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_node.cpp(169): warning C4101: 'err' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier_node.cpp(217): warning C4101: 'j' : unreferenced local variable
+         frontier.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier.cpp(89): warning C4101: 'begin' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier.cpp(90): warning C4101: 'begin_a' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier.cpp(89): warning C4101: 'end' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier.cpp(90): warning C4101: 'end_a' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier.cpp(185): warning C4101: 'j' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\frontier.cpp(302): warning C4101: 'j' : unreferenced local variable
+         data_interface.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\data_interface.cpp(48): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\data_interface.cpp(79): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\jelena\desktop\fim_gpu-master\data_interface.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+         cpu_interface.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\cpu_interface.cpp(14): warning C4018: '<' : signed/unsigned mismatch
+         candidate_collection.cpp
+     1>c:\users\jelena\desktop\fim_gpu-master\candidate_collection.cpp(19): warning C4101: 'i' : unreferenced local variable
+     1>c:\users\jelena\desktop\fim_gpu-master\candidate_collection.cpp(33): warning C4101: 'i' : unreferenced local variable
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\fim_gpu-master.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\fim_gpu-master.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\fim_gpu-master.lib" /MACHINE:X86 Debug\cuPrintf.cu.obj
+         Debug\gpu_interface.cu.obj
+         Debug\candidate_collection.obj
+         Debug\cpu_interface.obj
+         Debug\data_interface.obj
+         Debug\frontier.obj
+         Debug\frontier_node.obj
+         Debug\frontier_preexpand.obj
+         Debug\global.obj
+         Debug\job_manager.obj
+         Debug\main.obj
+         Debug\mem_controller.obj
+         Debug\test.obj
+         Debug\test_case.obj
+         Debug\time_analysis.obj
+         fim_gpu-master.vcxproj -> C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\fim_gpu-master.exe
+       PostBuildEvent:
+         echo copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\cudart*.dll" "C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\"
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\cudart*.dll" "C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\"
+         :VCEnd
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\cudart*.dll" "C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\Debug\"
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\cudart32_75.dll
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\cudart64_75.dll
+                 2 file(s) copied.
+     1>Done Building Project "C:\Users\Jelena\documents\visual studio 2013\Projects\fim_gpu-master\fim_gpu-master\fim_gpu-master.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:28.62
