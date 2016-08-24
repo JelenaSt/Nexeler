@@ -17,6 +17,20 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="index.php" />
+    <Compile Include="app\controllers\home.php" />
+    <Compile Include="app\core\Controller.php" />
+    <Compile Include="app\core\App.php" />
+    <Compile Include="app\init.php" />
+    <Compile Include="public\index.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\core\" />
+    <Folder Include="app\controllers\" />
+    <Folder Include="app\models\" />
+    <Folder Include="app\views\" />
+    <Folder Include="app\views\home\" />
+    <Folder Include="public\" />
+    <Folder Include="public\css\" />
   </ItemGroup>
 </Project>
