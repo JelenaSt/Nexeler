@@ -21,6 +21,8 @@
     <Compile Include="app\core\Controller.php" />
     <Compile Include="app\core\App.php" />
     <Compile Include="app\init.php" />
+    <Compile Include="app\models\User.php" />
+    <Compile Include="app\views\home\index.php" />
     <Compile Include="public\index.php" />
   </ItemGroup>
   <ItemGroup>
@@ -32,5 +34,8 @@
     <Folder Include="app\views\home\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="public\css\style.css" />
   </ItemGroup>
 </Project>
