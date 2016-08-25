@@ -21,8 +21,8 @@
     <Compile Include="app\core\Controller.php" />
     <Compile Include="app\core\App.php" />
     <Compile Include="app\db\Database.php" />
-    <Compile Include="config\database.config.php" />
-    <Compile Include="config\init.php" />
+    <Compile Include="app\db\database.config.php" />
+    <Compile Include="app\init.php" />
     <Compile Include="app\models\User.php" />
     <Compile Include="app\views\home\index.php" />
     <Compile Include="public\index.php" />
