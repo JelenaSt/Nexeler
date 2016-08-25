@@ -10,6 +10,15 @@
  */
 class User
 {
-    public $name;
+    var $id;
+	var $email;
+	var $password;
+	var $type;
+
+
+    public function __construct()
+    {
+        
+    }
 }
 
