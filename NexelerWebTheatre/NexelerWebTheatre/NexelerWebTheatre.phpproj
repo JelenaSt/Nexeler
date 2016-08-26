@@ -24,7 +24,8 @@
     <Compile Include="app\core\database.config.php" />
     <Compile Include="app\init.php" />
     <Compile Include="app\models\User.php" />
-    <Compile Include="app\views\pages\homePage.php" />
+    <Compile Include="app\views\homePage.php" />
+    <Compile Include="app\views\templates\footer.php" />
     <Compile Include="app\views\templates\header.php" />
     <Compile Include="public\index.php" />
   </ItemGroup>

@@ -12,6 +12,9 @@ class Home extends Controller
 {
     public function index()
     {
-        //header("Location: http://localhost/nexeler/public/index.php");
+        header("Location: http://localhost/nexeler/app/views/home/homePage.php");
+        exit();
     }
+
+
 }
