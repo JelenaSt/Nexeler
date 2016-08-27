@@ -10,6 +10,9 @@
  */
 class Controller
 {
+    public function index()
+    {
+       echo 'Controller/index.php'; 
+    }
 }
 
-?>

@@ -20,9 +20,12 @@
     <Compile Include="app\controllers\home.php" />
     <Compile Include="app\core\Controller.php" />
     <Compile Include="app\core\App.php" />
+    <Compile Include="app\core\Database.php" />
+    <Compile Include="app\core\database.config.php" />
     <Compile Include="app\init.php" />
     <Compile Include="app\models\User.php" />
-    <Compile Include="app\views\home\index.php" />
+    <Compile Include="app\views\pages\homePage.php" />
+    <Compile Include="app\views\templates\header.php" />
     <Compile Include="public\index.php" />
   </ItemGroup>
   <ItemGroup>
@@ -30,8 +33,11 @@
     <Folder Include="app\core\" />
     <Folder Include="app\controllers\" />
     <Folder Include="app\models\" />
+    <Folder Include="app\db\" />
     <Folder Include="app\views\" />
-    <Folder Include="app\views\home\" />
+    <Folder Include="app\views\templates\" />
+    <Folder Include="app\views\pages\" />
+    <Folder Include="config\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
   </ItemGroup>
