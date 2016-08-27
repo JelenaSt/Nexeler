@@ -10,44 +10,70 @@
  */
 class App
 {
-    protected $controller = 'home';
-    protected $method = 'index';
+    protected $controller;
+    protected $method;
     protected $params = [];
 
     public function __construct()
     {
-        $url = $this->parseUrl();
+        $this->parseUrl();
 
-        if(file_exists('../app/controllers/' . $url[0] . '.php'))
+        // creates controller and action names (from URL input)
+        $this->createControllerAndActionNames();
+
+        if(file_exists(Config::get('PATH_CONTROLLER') . $this->controller . '.php'))
         {
-            $this->controller = $url[0];
-            unset($url[0]);
-        }
-        
-        require_once '../app/controllers/' . $this->controller . '.php';
-        $this->controller = new $this->controller;
-         
-        if(isset($url[1]))
-        {
-            if(method_exists($this->controller, $url[1]))
+            require_once Config::get('PATH_CONTROLLER') . $this->controller . '.php';
+            $this->controller = new $this->controller;
+
+            if (method_exists($this->controller, $this->method)) 
             {
-                $this->method = $url[1];
-                unset($url[1]);
+                if (!empty($this->parameters)) 
+                {
+                    // call the method and pass arguments to it
+                    call_user_func_array(array($this->controller, $this->method), $this->parameters);
+                } else 
+                {
+                    // if no parameters are given, just call the method without parameters, like $this->index->index();
+                    $this->controller->{$this->method}();
+                }
             }
         }
-        
-        $this->params = $url ? array_values($url) : [];
-        
-        call_user_func_array([$this->controller, $this->method], $this->params);
-         
+       
     }
 
     protected function parseUrl()
     {
         if(isset($_GET['url']))
         {
-            return $url = explode('/',filter_var(rtrim($_GET['url'],'/'),FILTER_SANITIZE_URL));
+            // split URL
+            $url = trim($_GET['url'], '/');
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = explode('/', $url);
+
+            $this->controller = isset($url[0]) ? $url[0] : null;
+            $this->method = isset($url[1]) ? $url[1] : null;
+            // remove controller name and action name from the split URL
+            unset($url[0], $url[1]);
+            // rebase array keys and store the URL parameters
+            $this->params = array_values($url);
         }
+      
+    }
+
+    private function createControllerAndActionNames()
+    {
+        // check for controller: no controller given ? then make controller = default controller (from config)
+        if (!$this->controller) {
+            $this->controller = Config::get('DEFAULT_CONTROLLER');
+        }
+        // check for action: no action given ? then make action = default action (from config)
+        if (!$this->method OR (strlen($this->method) == 0)) {
+            $this->method = Config::get('DEFAULT_ACTION');
+        }
+        // rename controller name to real controller class/file name ("index" to "IndexController")
+        $this->controller = ucwords($this->controller) . 'Controller';
+       
     }
 }
 

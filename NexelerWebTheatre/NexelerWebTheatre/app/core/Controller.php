@@ -10,9 +10,14 @@
  */
 class Controller
 {
-    public function index()
+
+    public $View;
+
+    public function __construct()
     {
-       echo 'Controller/index.php'; 
+      
+        // create a view object to be able to use it inside a controller, like $this->View->render();
+        $this->View = new View();
     }
 }
 

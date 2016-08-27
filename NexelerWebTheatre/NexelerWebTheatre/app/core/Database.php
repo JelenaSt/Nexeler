@@ -16,6 +16,9 @@ class Database
     private $user = DB_USER;
     private $password = DB_PASS;
     private $database = DB_NAME;
+    var $num_active_users;   //Number of active users viewing site
+    var $num_active_guests;  //Number of active guests viewing site
+    var $num_members;        //Number of signed-up users
 
     /*
 	Get an instance of the Database
@@ -31,6 +34,8 @@ class Database
     private function __construct()
     {
         $this->connect_mysql();
+
+         $this->num_members = -1;
     }
 
     private function connect_mysql(){
@@ -50,8 +55,11 @@ class Database
 
     }
 
+ 
+
     public function getConnection() {
 		return $this->_connection;
 	}
 
 }
+
