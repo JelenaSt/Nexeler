@@ -35,20 +35,79 @@ if (mysqli_num_rows($result) > 0)
     $email = $row['E-mail'];
     $address = $row['Address'];
 
-    $outText = '<div id ="item" >';
+    $outText = '<table><td width= 50%/><td width= 50%/>';
 
-    if (!empty($president)) $outText.= 'Direktor : '."$president"."<br>";
-    if (!empty($vicePresident)) $outText.=  'Zamenik direktora : '."$vicePresident"."<br>";
-    if (!empty($prmanager)) $outText.=  'PR menadzer : '."$prmanager"."<br>";
-    if (!empty($phone1)) $outText.=  'Telefon : '."$phone1"."<br>";
-    if (!empty($phone2)) $outText.=  "$phone2"."<br>";
-    if (!empty($phone3)) $outText.=  "$phone3"."<br>";
+    if (!empty($president))
+    { 
+        $outText.= '<tr>';
+        $outText.= '<td>Direktor : </td>';
+        $outText.= "<td>$president</td>";
+        $outText.= '</tr>';
+        
+    }
+    if (!empty($vicePresident))
+	{ 
+        $outText.= '<tr>';
+        $outText.= "<td>Zamenik direktora :    </td>";
+        $outText.= "<td>$vicePresident</td>";
+        $outText.= '</tr>';
+    }
+    if (!empty($prmanager)) 
+	{ 
+        $outText.= '<tr>';
+        $outText.= '<td>PR menadzer : </td>';
+        $outText.= "<td>$prmanager</td>";
+        $outText.= '</tr>';
+    }
+	if (!empty($phone1)||!empty($phone2)||!empty($phone3)) 
+	{
+        $outText.= '<tr>';
+        $outText.= '<td>Telefon : </td><td>';
+		
+		$telIndex = 0;
+		if (!empty($phone1))
+		{
+			$outText.= "$phone1";
+			$telIndex+=1;
+		}
+		if (!empty($phone2))
+		{
+			if ($telIndex != 0) $outText.= '<br>';
+			$outText.= "$phone2";
+			$telIndex+=1;
+		}
+		if (!empty($phone3))
+		{
+			if ($telIndex != 0) $outText.= '<br>';
+			$outText.= "$phone3";
+		}
+		
+        $outText.= '</td><tr>';
+    }
 
-    if (!empty($fax)) $outText.=  'Fax : '."$fax"."<br>";
-    if (!empty($email)) $outText.=  'E-mail : '."$email"."<br>";
-    if (!empty($address)) $outText.=  'Adresa : '."$address"."<br>";
+    if (!empty($fax)) 
+	{ 
+        $outText.= '<tr>';
+        $outText.= '<td>Fax : </td>';
+        $outText.= "<td>$fax</td>";
+        $outText.= '</tr>';
+    } 
+    if (!empty($email)) 
+	{ 
+        $outText.= '<tr>';
+        $outText.= '<td>E-mail : </td>';
+        $outText.= "<td>$email</td>";
+        $outText.= '</tr>';
+    }
+    if (!empty($address)) 
+	{ 
+        $outText.= '<tr>';
+        $outText.= '<td>Adresa : </td>';
+        $outText.= "<td>$address</td>";
+        $outText.= '</tr>';
+    }
 
-    $outText.='</div>';
+    $outText.='</table>';
 
     echo $outText;
 }
