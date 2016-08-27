@@ -17,14 +17,24 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app\controllers\home.php" />
+    <Compile Include="app\controllers\HomeController.php" />
+    <Compile Include="app\controllers\LoginController.php" />
+    <Compile Include="app\core\Config.php" />
     <Compile Include="app\core\Controller.php" />
     <Compile Include="app\core\App.php" />
     <Compile Include="app\core\Database.php" />
-    <Compile Include="app\core\database.config.php" />
+    <Compile Include="app\config\database.config.php" />
+    <Compile Include="app\core\Redirect.php" />
+    <Compile Include="app\config\constants.php" />
+    <Compile Include="app\core\Session.php" />
+    <Compile Include="app\core\View.php" />
     <Compile Include="app\init.php" />
     <Compile Include="app\models\User.php" />
-    <Compile Include="app\views\homePage.php" />
+    <Compile Include="app\views\pages\artists.php" />
+    <Compile Include="app\views\pages\contact.php" />
+    <Compile Include="app\views\pages\events.php" />
+    <Compile Include="app\views\pages\index.php" />
+    <Compile Include="app\views\pages\preformances.php" />
     <Compile Include="app\views\templates\footer.php" />
     <Compile Include="app\views\templates\header.php" />
     <Compile Include="public\index.php" />
@@ -34,15 +44,16 @@
     <Folder Include="app\core\" />
     <Folder Include="app\controllers\" />
     <Folder Include="app\models\" />
-    <Folder Include="app\db\" />
     <Folder Include="app\views\" />
     <Folder Include="app\views\templates\" />
     <Folder Include="app\views\pages\" />
-    <Folder Include="config\" />
+    <Folder Include="app\config\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
+    <Folder Include="public\images\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\config\server.config.php" />
     <Content Include="public\css\style.css" />
   </ItemGroup>
 </Project>
