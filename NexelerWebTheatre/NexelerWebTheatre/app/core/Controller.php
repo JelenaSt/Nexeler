@@ -15,7 +15,12 @@ class Controller
 
     public function __construct()
     {
-      
+       
+        require_once  '/../config/constants.php';
+
+        // always initialize a session
+        Session::init();
+
         // create a view object to be able to use it inside a controller, like $this->View->render();
         $this->View = new View();
     }

@@ -14,7 +14,7 @@ class Redirect
      */
     public static function home()
     {
-        header("location: " . Config::get('URL'));
+        header("location: " . Config::get('HOME'));
     }
     /**
      * To the defined page, uses a relative path (like "user/profile")
@@ -26,6 +26,6 @@ class Redirect
      */
     public static function to($path)
     {
-        header("location: " . Config::get('URL') . $path);
+        header("location: " . Config::get('ROOT') . $path);
     }
 }

@@ -6,10 +6,10 @@ p { padding: 0 10px 5px 10px; }
 h1 { margin:0; padding:10px 0 0 10px; text-transform:uppercase; font-size:1.5em; color:#be141d; font-weight:normal;}
 
 #header { background:url(../images/header_bckg.jpg) no-repeat top right #B9121C;}
-#logo { padding:30px 20px 0 40px; height:131px; background:url(../images/head_bckg.jpg) no-repeat #B9121C; }
-#slogan { float:left; color:#FFFFFF; font-size:26px; text-transform:uppercase; padding-top:40px}
+#logo { padding:10px 20px 0 40px; height:131px; background:url(../images/head_bckg.jpg) no-repeat #B9121C; }
+#slogan { float:left; color:#FFFFFF; font-size:26px; text-transform:uppercase; padding-top:60px}
 #logo a{ color:#fff; text-decoration:none; font-weight:bold; font-size:20px; text-transform:uppercase; letter-spacing:5px; }
-#logo_text { float:left; width:240px; text-align:left; font-size:11px; color:#fff; line-height:12px; padding:5px 0 0 15px;}
+#logo_text { float:left; width:150px; text-align:left; font-size:11px; color:#fff; line-height:12px; padding:25px 0 0 15px;}
 #menu { background: url(../images/menu_bckg1.gif) repeat-x #fff; height:40px; padding-top:10px;}
 #menu_list {width:600px; margin:0 auto;}
 #menu a { display:block; color:#000000; float:left; font-size:14px; text-transform:uppercase; font-weight:bold; text-decoration:none; margin:0 20px; padding-top:8px;}
@@ -34,7 +34,63 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 #right_footer { float:right;  padding:20px 30px 0 0; color:#fff;  font-size:12px; text-align:right;}
 #right_footer a { color:#fff;}
 
-#guest {float:right; font-size:14px; padding:10px 0px 0px 0px; color:#fff}
-#guest a{float:center; text-align:center; text-transform:none; padding:30px 0px 0px 0px;}
+#guest {float:right;color:transparent}
+#guest a{float:initial; text-align:center; text-transform:none;}
 #guest a:hover{text-transform:uppercase; padding-top:10px;}
-#guest label{text-align:center; float:center; font-size:18px;}
+
+
+#login-page {
+    margin: auto;
+    width: 340px;
+    padding: 10px;
+}
+
+#login-form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#login-form input {
+  font-family: "Myriad Pro", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  margin: 0 0 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+#login_button  {
+  font-family: "Myriad Pro", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #B9121C;
+  width: 100%;
+  border: 0;
+  margin: 10px 0 0 0;
+  padding: 15px;
+  color: #9c9c9c;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+#login_button:hover,#login_button:active,#login_button:focus {
+  background: #43A047;
+}
+#login-page message {
+  font-family: "Myriad Pro", sans-serif;
+  margin: 15px 0 0;
+  color: #B9121C;
+  font-size: 10px;
+}
+#login-page a {
+  color: #000;
+  text-decoration: none;
+}

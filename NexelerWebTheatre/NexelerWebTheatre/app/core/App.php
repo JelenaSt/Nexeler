@@ -16,6 +16,7 @@ class App
 
     public function __construct()
     {
+        
         $this->parseUrl();
 
         // creates controller and action names (from URL input)
@@ -31,6 +32,7 @@ class App
                 if (!empty($this->parameters)) 
                 {
                     // call the method and pass arguments to it
+                   
                     call_user_func_array(array($this->controller, $this->method), $this->parameters);
                 } else 
                 {
@@ -56,7 +58,7 @@ class App
             // remove controller name and action name from the split URL
             unset($url[0], $url[1]);
             // rebase array keys and store the URL parameters
-            $this->params = array_values($url);
+            $this->params = $url ? array_values($url) : [];
         }
       
     }

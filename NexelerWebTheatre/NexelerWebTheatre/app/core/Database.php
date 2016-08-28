@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Database short summary.
  *
@@ -8,13 +7,15 @@
  * @version 1.0
  * @author Jelena
  */
+
+require_once(dirname(__FILE__)."\..\config\database.config.php");
 class Database
 {
     private $_connection;
 	private static $_instance; //The single instance
     private $host = DB_HOST;
     private $user = DB_USER;
-    private $password = DB_PASS;
+    private $password = DB_PASSWORD;
     private $database = DB_NAME;
     var $num_active_users;   //Number of active users viewing site
     var $num_active_guests;  //Number of active guests viewing site
@@ -33,6 +34,7 @@ class Database
 
     private function __construct()
     {
+        
         $this->connect_mysql();
 
          $this->num_members = -1;
@@ -40,18 +42,11 @@ class Database
 
     private function connect_mysql(){
         
-        //$db_handle = mysql_connect($this->_host, $this->_username, 
-        //    $this->_password);
-        //$this->_connection = mysql_select_db($this->database,$db_handle);
-
-        $this->_connection = new mysqli($this->host, $this->user, 
-           $this->password,$this->database);
+        $this->_connection = new mysqli(Config::get('DB_HOST'),Config::get('DB_USER'),Config::get('DB_PASSWORD'),Config::get('DB_NAME'));
         // Error handling
 		if(mysqli_connect_error()) {
-			trigger_error("Failed to conenc to to MySQL: " . mysqli_connect_error(), E_USER_ERROR);
-		}
-
-        echo 'Database connected!';
+			trigger_error("Failed to conenct to to MySQL: " . mysqli_connect_error(), E_USER_ERROR);
+        }
 
     }
 

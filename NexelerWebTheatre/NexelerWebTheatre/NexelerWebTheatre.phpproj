@@ -26,10 +26,12 @@
     <Compile Include="app\config\database.config.php" />
     <Compile Include="app\core\Redirect.php" />
     <Compile Include="app\config\constants.php" />
+    <Compile Include="app\core\Request.php" />
     <Compile Include="app\core\Session.php" />
     <Compile Include="app\core\View.php" />
     <Compile Include="app\init.php" />
     <Compile Include="app\models\User.php" />
+    <Compile Include="app\models\UserManager.php" />
     <Compile Include="app\views\pages\artists.php" />
     <Compile Include="app\views\pages\contact.php" />
     <Compile Include="app\views\pages\events.php" />
@@ -37,6 +39,7 @@
     <Compile Include="app\views\pages\preformances.php" />
     <Compile Include="app\views\templates\footer.php" />
     <Compile Include="app\views\templates\header.php" />
+    <Compile Include="app\views\usermanagement\login.php" />
     <Compile Include="public\index.php" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +48,7 @@
     <Folder Include="app\controllers\" />
     <Folder Include="app\models\" />
     <Folder Include="app\views\" />
+    <Folder Include="app\views\usermanagement\" />
     <Folder Include="app\views\templates\" />
     <Folder Include="app\views\pages\" />
     <Folder Include="app\config\" />
