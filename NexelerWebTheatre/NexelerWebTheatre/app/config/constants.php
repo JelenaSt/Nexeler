@@ -17,7 +17,7 @@ define("TBL_BANNED_USERS",  "banned_users");
 define("ADMIN_NAME", "admin");
 define("GUEST_NAME", "Guest");
 define("ADMIN_LEVEL", 9);
-define("MODERATOR_LEVEL",  1);
+define("MODERATOR_LEVEL",  2);
 define("USER_LEVEL",  1);
 define("GUEST_LEVEL", 0);
 /**

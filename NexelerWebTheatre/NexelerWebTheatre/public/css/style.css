@@ -34,9 +34,11 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 #right_footer { float:right;  padding:20px 30px 0 0; color:#fff;  font-size:12px; text-align:right;}
 #right_footer a { color:#fff;}
 
-#guest {float:right;color:transparent}
-#guest a{float:initial; text-align:center; text-transform:none;}
-#guest a:hover{text-transform:uppercase; padding-top:10px;}
+
+#guest {float:right;}
+#guest label{text-align:center; font-size:18px; color:white;}
+#guest a{font-size:14px;float:initial; text-align:center; text-transform:none;}
+#guest a:hover{text-transform:uppercase; padding-top:10px; background: #43A047;}
 
 
 #login-page {
@@ -50,7 +52,7 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 0 auto 10px;
   padding: 15px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -67,6 +69,16 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
   box-sizing: border-box;
   font-size: 12px;
 }
+
+#login-form label {
+  font-family: "Myriad Pro", sans-serif;
+  outline: 0;
+  width: 30%;
+  padding: 10px;
+  margin: 0 0 10px;
+  font-size: 12px;
+}
+
 #login_button  {
   font-family: "Myriad Pro", sans-serif;
   text-transform: uppercase;
@@ -84,16 +96,78 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 #login_button:hover,#login_button:active,#login_button:focus {
   background: #43A047;
 }
-#login-page message {
+#login-page .message {
   font-family: "Myriad Pro", sans-serif;
+  padding: 10px;
   margin: 15px 0 0;
   color: #B9121C;
-  font-size: 10px;
+  font-size: 14px;
+  font-style:oblique;
+  background: #fff;
+  /*border-style: ridge;
+  border-width: 2px;
+  background: #bdbdbd none repeat scroll 0 0;
+  border-color: #B9121C;*/
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
 }
 #login-page a {
   color: #000;
-  text-decoration: none;
+  text-decoration: underline;
 }
-#guest label{text-align:center; float:center; font-size:18px;}
+
+
+.page {
+    margin: auto;
+    width: 460px;
+    padding: 10px;
+}
+
+.page-form{
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 460px;
+  margin: 0 auto 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.page-form input {
+  font-family: "Myriad Pro", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  margin: 0 0 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+.page-form input:focus::-moz-placeholder{
+    color:transparent;
+}
+.page-form input:focus::-webkit-input-placeholder{
+    color:transparent;
+}
+
+
+.page-form label {
+  font-family: "Myriad Pro", sans-serif;
+  width: 100%;
+  outline: 0;
+  padding: 10px;
+  margin: 0 0 10px;
+  font-size: 12px;
+}
+
+.page-form table {
+    text-align:left;
+}
+
+
+
+
 
 #contact { margin:0; padding:0; font-size:0.9em; line-height:20px; font-family: "Myriad Pro", "Trebuchet MS", Arial; border:1px solid #000; background:#d0d0d0;  }

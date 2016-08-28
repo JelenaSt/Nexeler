@@ -34,20 +34,26 @@
             Dobrodosli na web prezentaciju Nexeler pozorista.
 	    </div>
         <div id="guest">
-            <?php if(Session::userIsLoggedIn()):
-                       if(Session::get('user_level') == ADMIN_LEVEL):?>
-            <a href="#">AdminPanel</a>
-            <?php elseif(Session::get('user_level') == MODERATOR_LEVEL):?>
-            <a href="#">Moderator Panel</a>
-            <?php elseif(Session::get('user_level') == USER_LEVEL):?>
-            <a href="#">User Panel</a>USER <?php echo Session::get('username'); ?>
-            <?php endif;?>
-            <a href="<?php echo Config::get('ROOT'); ?>login/logout">LOGOUT</a>
+            <?php if(Session::userIsLoggedIn()):?>
+                      
+            <div>
+                <label>WELCOME <strong><?php echo  '  ' . Session::get('name') ?></strong></label>
+                <div><a href="<?php echo Config::get('ROOT'); ?>login/logout">Odjavi se</a></div>
+            </div>
+             <div>
+                  <?php if(Session::get('user_level') == ADMIN_LEVEL):?>
+                      <a href="#">AdminPanel</a>
+                <?php elseif(Session::get('user_level') == MODERATOR_LEVEL):?>
+                <a href="#">Moderator Panel</a>
+                <?php elseif(Session::get('user_level') == USER_LEVEL):?>
+               
+                <a href="#">Korisnicki Profil</a>
+                <?php endif;?>
+             </div>
             <?php else :?>
-            <a href="<?php echo Config::get('ROOT'); ?>login/loginpage">LOGIN</a>
-            <a href="<?php echo Config::get('ROOT'); ?>login/logout">Register</a>
+            <a href="<?php echo Config::get('ROOT'); ?>login/loginpage">Prijavi se</a>
+            <a style="color:black;" href="<?php echo Config::get('ROOT'); ?>login/registerpage">Registruj se</a>
             <?php endif;?>
-
         </div>
    
     </div>

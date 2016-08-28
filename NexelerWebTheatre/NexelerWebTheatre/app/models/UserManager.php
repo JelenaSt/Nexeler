@@ -18,44 +18,30 @@ class UserManager
             return false;
         }
 
-        //// checks if user exists
-        //$result = self::validateAndGetUser($user_name, $user_password);
-        //// check if that user exists. We don't give back a cause in the feedback to avoid giving an attacker details.
-        //if (!$result) {
-        //    return false;
-        //}
-
-        $result = User::getUserDataByUsername($user_name);
-        
-        if (!password_verify($user_password, $result->password_hash)) {
-            Session::set('warrning_message','Wrong password.please try again');
-           
-
-            $message = "Userpass : " . $user_password . PHP_EOL . "Hash: " . $result->password_hash;
-            echo "<script type='text/javascript'>alert('$message');</script>";
-
+        $result = self::validateAndGetUser($user_name, $user_password);
+        if(!$result)
             return false;
-        }
+
         // successfully logged in
         self::setSuccessfulLoginIntoSession(
-            $result->userID, $result->username, $result->email, $result->user_type
-        );
+            $result->userID, $result->name, $result->user_type, $result->user_level);
         return true;
     }
 
     private static function validateAndGetUser($user_name, $user_password)
     {
    
-        $result = User::getUserDataByUsername($user_name,$user_password);
+        $result = User::getUserDataByUsername($user_name);
 
-        // check if that user exists. We don't give back a cause in the feedback to avoid giving an attacker details.
-        // brute force attack mitigation: reset failed login counter because of found user
         if (!$result) {
-          
+            Session::set('warrning_message','User with this user name does not exist!');
             return false;
         }
         
-        print_r($result);
+        if (!password_verify($user_password, $result->password_hash)) {
+            Session::set('warrning_message','Wrong password. Please try again!');
+            return false;
+        }
 
         return $result;
     }
@@ -69,7 +55,7 @@ class UserManager
      * @param $user_email
      * @param $user_account_type
      */
-    public static function setSuccessfulLoginIntoSession($user_id, $user_name, $user_email, $user_account_type)
+    public static function setSuccessfulLoginIntoSession($user_id, $name, $user_type, $user_level)
     {
         Session::init();
         // remove old and regenerate session ID.
@@ -79,9 +65,9 @@ class UserManager
         session_regenerate_id(true);
         $_SESSION = array();
         Session::set('user_id', $user_id);
-        Session::set('username', $user_name);
-        //Session::set('user_email', $user_email);
-        Session::set('user_type', $user_account_type);
+        Session::set('name', $name);
+        Session::set('user_type', $user_type);
+        Session::set('user_level', $user_level);
         //Session::set('user_provider_type', 'DEFAULT');
         // get and set avatars
         

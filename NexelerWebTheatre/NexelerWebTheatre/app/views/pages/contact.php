@@ -16,7 +16,7 @@ $query = "SELECT * FROM Contact ";
 
 mysqli_query($dbConnection, "set names 'utf8'");
 
-$result = mysqli_query($dbConnection, $query) or die("Greska u upitu: " . mysql_error());
+$result = mysqli_query($dbConnection, $query);
 
 if (mysqli_num_rows($result) > 0) 
 {

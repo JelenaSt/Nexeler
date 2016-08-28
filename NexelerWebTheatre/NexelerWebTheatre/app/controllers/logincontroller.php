@@ -9,15 +9,25 @@ class LoginController extends Controller
         exit();
     }
 
+    public function registerpage()
+    {
+        //UserManager::login(Request::post('user_name',true),Request::post('password',true));
+        $this->View->render('usermanagement/register');
+        exit();
+    }
+
     public function login()
     {
         $result = UserManager::login(Request::post('user_name',true),Request::post('password',true));
         
         if($result){
+            //$this->View->render('usermanagement/login');
+            //exit();
             Redirect::home();
             exit();
         }else{
             Redirect::to('login/loginpage');
+            exit();
         }
         
     }
