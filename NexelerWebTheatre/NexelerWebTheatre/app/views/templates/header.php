@@ -41,18 +41,17 @@
                 <div><a href="<?php echo Config::get('ROOT'); ?>login/logout">Odjavi se</a></div>
             </div>
              <div>
-                  <?php if(Session::get('user_level') == ADMIN_LEVEL):?>
-                      <a href="#">AdminPanel</a>
+                <?php if(Session::get('user_level') == ADMIN_LEVEL):?>
+                <a href="#">AdminPanel</a>
                 <?php elseif(Session::get('user_level') == MODERATOR_LEVEL):?>
                 <a href="#">Moderator Panel</a>
                 <?php elseif(Session::get('user_level') == USER_LEVEL):?>
-               
                 <a href="#">Korisnicki Profil</a>
                 <?php endif;?>
              </div>
             <?php else :?>
             <a href="<?php echo Config::get('ROOT'); ?>login/loginpage">Prijavi se</a>
-            <a style="color:black;" href="<?php echo Config::get('ROOT'); ?>login/registerpage">Registruj se</a>
+            <a style="color:black;" href="<?php echo Config::get('ROOT'); ?>register/registerpage">Registruj se</a>
             <?php endif;?>
         </div>
    

@@ -131,6 +131,34 @@ class Session
    {
        return (self::get('logged_in') ? true : false);
    }
+
+   public static function getErrorFeedback(){
+       $error_feedback = Session::get('error_feedback');
+       Session::set('error_feedback', null);
+       return $error_feedback;
+   }
+
+   public static function setErrorFeedback($errorFeedback){
+        Session::set('error_feedback',$errorFeedback);
+   }
+
+   public static function errorFeedbackExists(){
+       return (self::get('error_feedback') ? true : false);
+   }
+
+   public static function getInfoFeedback(){
+       $infoFeedback = Session::get('info_feedback');
+       Session::set('error_feedback', null);
+       return $infoFeedback;
+   }
+
+   public static function setInfoFeedback($infoFeedback){
+       Session::set('info_feedback',$infoFeedback);
+   }
+
+   public static function infoFeedbackExists(){
+       return (self::get('info_feedback') ? true : false);
+   }
 }
 
 

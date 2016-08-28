@@ -1,4 +1,10 @@
 
+        <?php if(Session::infoFeedbackExists()):?>
+            <div class="message" style="text-align:center;">
+            <?php echo  Session::getInfoFeedback();?>
+            </div>
+        <?php endif;?>  
+
     <div id="login-page">
         <form id="login-form" action="<?php echo Config::get('ROOT'); ?>login/login" method="post"">
             <input type="text" name="user_name" placeholder="username" />
@@ -9,19 +15,12 @@
             </div>
         </form>
         
-
+        <?php if(Session::errorFeedbackExists()):?>
+            <div class="message">
+            <?php echo  Session::getErrorFeedback();?>
+            </div>
+        <?php endif;?>  
          
-        <?php 
-        $warrnign = Session::get('warrning_message');
-        if(isset($warrnign)):
-        ?>
-        <div class="message">
-            <?php 
-            echo  $warrnign;
-            Session::set('warrning_message', null);
-            endif;
-            ?>  
-         </div>
     </div>
 
    

@@ -96,7 +96,7 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 #login_button:hover,#login_button:active,#login_button:focus {
   background: #43A047;
 }
-#login-page .message {
+.message {
   font-family: "Myriad Pro", sans-serif;
   padding: 10px;
   margin: 15px 0 0;
@@ -109,7 +109,6 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
   background: #bdbdbd none repeat scroll 0 0;
   border-color: #B9121C;*/
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-
 }
 #login-page a {
   color: #000;

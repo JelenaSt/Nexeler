@@ -1,8 +1,9 @@
 
     <div class="page">
        
-        <form class="page-form" action="<?php echo Config::get('ROOT'); ?>login/login" method="post">
+        <form class="page-form" action="<?php echo Config::get('ROOT'); ?>register/register" method="post">
             <h1>Registracija korisnika</h1>
+            <br/>
             <table style="width: 100%">
                 <col width="30%">
                 <col width="70%">
@@ -28,23 +29,17 @@
                 </tr>
                  <tr>
                     <td><label>Ponovite sifru</label>
-                    <td><input type="password" name="password" placeholder="password" />
+                    <td><input type="password" name="password_repeat" placeholder="password" />
                 </tr>
 
             </table>
-            <button id="login_button">Posalji zahtev</button>
-            
-            
-            
-            
-            
-          
-            
-            
-          
-            
-            
-            
+            <button id="login_button">Posalji zahtev</button> 
         </form>
-        </div>
+
+         <?php if(Session::errorFeedbackExists()):?>
+            <div class="message">
+            <?php echo  Session::getErrorFeedback();?>
+            </div>
+        <?php endif;?>  
+    </div>
 
