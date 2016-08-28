@@ -1,7 +1,9 @@
+<div class="page-body">
 
-<h1>Kontakt informacije:</h1>
 
-<?php
+    <h1>Kontakt informacije:</h1>
+
+    <?php
 header("Content-Type: text/html;charset=utf-8");
 
 require_once(dirname(__FILE__)."\..\..\core\Database.php");
@@ -40,7 +42,7 @@ if (mysqli_num_rows($result) > 0)
     if (!empty($president))
     { 
         $outText.= '<tr>';
-        $outText.= '<td>Direktor : </td>';
+        $outText.= '<th>Direktor : </th>';
         $outText.= "<td>$president</td>";
         $outText.= '</tr>';
         
@@ -48,21 +50,21 @@ if (mysqli_num_rows($result) > 0)
     if (!empty($vicePresident))
 	{ 
         $outText.= '<tr>';
-        $outText.= "<td>Zamenik direktora :    </td>";
+        $outText.= "<th>Zamenik direktora :    </th>";
         $outText.= "<td>$vicePresident</td>";
         $outText.= '</tr>';
     }
     if (!empty($prmanager)) 
 	{ 
         $outText.= '<tr>';
-        $outText.= '<td>PR menadzer : </td>';
+        $outText.= '<th>PR menadzer : </th>';
         $outText.= "<td>$prmanager</td>";
         $outText.= '</tr>';
     }
 	if (!empty($phone1)||!empty($phone2)||!empty($phone3)) 
 	{
         $outText.= '<tr>';
-        $outText.= '<td>Telefon : </td><td>';
+        $outText.= '<th>Telefon : </th><td>';
 		
 		$telIndex = 0;
 		if (!empty($phone1))
@@ -88,21 +90,21 @@ if (mysqli_num_rows($result) > 0)
     if (!empty($fax)) 
 	{ 
         $outText.= '<tr>';
-        $outText.= '<td>Fax : </td>';
+        $outText.= '<th>Fax : </th>';
         $outText.= "<td>$fax</td>";
         $outText.= '</tr>';
     } 
     if (!empty($email)) 
 	{ 
         $outText.= '<tr>';
-        $outText.= '<td>E-mail : </td>';
+        $outText.= '<th>E-mail : </th>';
         $outText.= "<td>$email</td>";
         $outText.= '</tr>';
     }
     if (!empty($address)) 
 	{ 
         $outText.= '<tr>';
-        $outText.= '<td>Adresa : </td>';
+        $outText.= '<th>Adresa : </th>';
         $outText.= "<td>$address</td>";
         $outText.= '</tr>';
     }
@@ -112,4 +114,4 @@ if (mysqli_num_rows($result) > 0)
     echo $outText;
 }
 ?>
-
+</div>
