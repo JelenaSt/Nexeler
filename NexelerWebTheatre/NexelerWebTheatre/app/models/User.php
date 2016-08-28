@@ -56,10 +56,47 @@ class User
         return false;
     }
 
-    public static function getUserById($user_id)
+    /**
+     * Writes the new user's data to the database
+     *
+     * @param name
+     * @param $last_name
+     * @param $user_name
+     * @param $user_password_hash
+     * @param $email
+     * @return bool
+     */
+    public static function updateUserDataInDatabase($user_id,$name,$last_name,$user_name, $email,$password_hash)
     {
         $database = Database::getInstance()->getConnection();
-        $sql = "SELECT * FROM users where userID =:user_id";
+        // write new users data into database
+
+        $sql = "UPDATE users SET name='$name',last_name='$last_name',username='$user_name',email='$email',password='$password_hash' WHERE userID='$user_id'";
+        //$sql = "INSERT INTO users (name,last_name,username, password, email)
+        //            VALUES ('$name','$last_name','$user_name', '$password_hash', '$email')";
+        //$query_result = mysqli_query($database, $sql);
+        $query_result = $database->query($sql);
+        if ($query_result === TRUE) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function getUserById($user_id)
+    {
+        $dbConnection = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM users where userID ='$user_id'";
+
+        $result = mysqli_query($dbConnection,$sql);
+        if(mysqli_num_rows($result) == 1)
+        {
+            $row = mysqli_fetch_assoc($result);
+            
+            $user = new User($row);
+            return $user;
+        }
+
+        return NULL;
     }
 
 

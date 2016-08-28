@@ -19,6 +19,7 @@
   <ItemGroup>
     <Compile Include="app\controllers\HomeController.php" />
     <Compile Include="app\controllers\LoginController.php" />
+    <Compile Include="app\controllers\ProfileController.php" />
     <Compile Include="app\controllers\RegisterController.php" />
     <Compile Include="app\core\Config.php" />
     <Compile Include="app\core\Controller.php" />
@@ -42,6 +43,7 @@
     <Compile Include="app\views\templates\header.php" />
     <Compile Include="app\views\usermanagement\login.php" />
     <Compile Include="app\views\usermanagement\profile.php" />
+    <Compile Include="app\views\usermanagement\profile_edit.php" />
     <Compile Include="app\views\usermanagement\register.php" />
     <Compile Include="public\index.php" />
   </ItemGroup>

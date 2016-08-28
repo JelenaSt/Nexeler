@@ -1,6 +1,6 @@
 
-    <div class="page">
-       
+<div>
+<div class="page">
         <form class="page-form" action="<?php echo Config::get('ROOT'); ?>register/register" method="post">
             <h1>Registracija korisnika</h1>
             <br/>
@@ -24,12 +24,12 @@
                     <td><input type="text" name="email" placeholder="example@example.com" /></td>
                 </tr>
                 <tr>
-                    <td><label>Sifra</label>
+                    <td><label>Sifra</label></td>
                     <td><input type="password" name="password" placeholder="password" /></td>
                 </tr>
                  <tr>
-                    <td><label>Ponovite sifru</label>
-                    <td><input type="password" name="password_repeat" placeholder="password" />
+                    <td><label>Ponovite sifru</label></td>
+                    <td><input type="password" name="password_repeat" placeholder="password" /></td>
                 </tr>
 
             </table>
@@ -42,4 +42,7 @@
             </div>
         <?php endif;?>  
     </div>
+
+</div>
+    
 

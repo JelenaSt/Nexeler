@@ -12,7 +12,6 @@ class RegisterController extends Controller
 {
     public function registerpage()
     {
-        //UserManager::login(Request::post('user_name',true),Request::post('password',true));
         $this->View->render('usermanagement/register');
         exit();
     }

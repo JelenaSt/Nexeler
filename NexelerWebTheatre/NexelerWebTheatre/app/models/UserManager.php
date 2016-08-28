@@ -68,10 +68,6 @@ class UserManager
         Session::set('name', $name);
         Session::set('user_type', $user_type);
         Session::set('user_level', $user_level);
-        //Session::set('user_provider_type', 'DEFAULT');
-        // get and set avatars
-        
-        // finally, set user as logged-in
         Session::set('logged_in', true);
         // update session id in database
         // Session::updateSessionId($user_id, session_id());
@@ -86,14 +82,6 @@ class UserManager
 
     public static function registerNewUser($name, $last_name, $user_name, $email, $password, $password_repeat)
     {
-        //// clean the input
-        //$name = strip_tags(Request::post('user_name'));
-        //$last_name = strip_tags(Request::post('last_name'));
-        //$user_name = strip_tags(Request::post('user_name'));
-        //$email = strip_tags(Request::post('email'));
-        //$password = Request::post('password');
-        //$password_repeat = Request::post('password_repeat');
-        
         // stop registration flow if registrationInputValidation() returns false
         $validation_result = self::registrationInputValidation($name, $last_name, $user_name, $email, $password, $password_repeat);
         if (!$validation_result) {
@@ -117,35 +105,61 @@ class UserManager
         // if Username or Email were false, return false
         if (!$return) return false;
 
-        $return = User::writeNewUserToDatabase($name, $last_name, $user_name, $email, $password_hash, $password_repeat);
+        $return = User::writeNewUserToDatabase($name, $last_name, $user_name, $email, $password_hash);
         if (!$return){
             Session::setErrorFeedback("Slanje zahteva za registraciju je neuspesno. Molimo pokusajte kasnije.");
             return false;
         }
         
         Session::setInfoFeedback("Vas profil je uspesno kreiran. Unesite vase korisnicko ime i sifru da se ulogujete na stranu!");
-        return true;
-        ////// write user data to database
-        ////if (!self::writeNewUserToDatabase($user_name, $user_password_hash, $user_email, time(), $user_activation_hash)) {
-        ////    Session::add('feedback_negative', Text::get('FEEDBACK_ACCOUNT_CREATION_FAILED'));
-        ////    return false; // no reason not to return false here
-        ////}
-        ////// get user_id of the user that has been created, to keep things clean we DON'T use lastInsertId() here
-        ////$user_id = UserModel::getUserIdByUsername($user_name);
-        ////if (!$user_id) {
-        ////    Session::add('feedback_negative', Text::get('FEEDBACK_UNKNOWN_ERROR'));
-        ////    return false;
-        ////}
-       
+        return true; 
     }
 
+    public static function updateUserData($user_id,$name, $last_name, $user_name, $email, $password, $password_repeat)
+    {
+        // stop registration flow if registrationInputValidation() returns false
+        $validation_result = self::registrationInputValidation($name, $last_name, $user_name, $email, $password, $password_repeat);
+        if (!$validation_result) {
+            return false;
+        }
+        
 
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        // make return a bool variable, so both errors can come up at once if needed
+        
+        $return = true;
+        $user = User::getUserById($user_id);
 
+        if($user->username !== $user_name){
+            // check if new username already exists
+            if (User::userDataByUsernameExist($user_name)) {
+                Session::setErrorFeedback('Korisnicko ime je vec iskorisceno. Molimo odaberiti novo i pokusajte ponovo.');
+                $return = false;
+            }
+        }
+      
+        if($user->email !== $email){
+            // check if new email already exists
+            if (User::userDataByEmailExist($email)) { 
+                Session::setErrorFeedback("Email adresa je vec u upotrebi. Molimo pokusajte ponovo.");
+                $return = false;
+            }
+        }
+        // if Username or Email were false, return false
+        if (!$return) return false;
+
+        $return = User::updateUserDataInDatabase($user_id,$name, $last_name, $user_name, $email, $password_hash);
+        if (!$return){
+            Session::setErrorFeedback("Trenutno nismo u mogucnosti da izvrsimo izmene. Molimo pokusajte kasnije.");
+            return false;
+        }
+        
+        Session::setInfoFeedback("Vas profil je uspesno izmenjen.");
+        return true; 
+    }
 
     /**
      * Validates the registration input
-     *
-     * @param $captcha
      * @param $user_name
      * @param $user_password_new
      * @param $user_password_repeat
@@ -162,7 +176,6 @@ class UserManager
         if (self::validateUserName($user_name) AND self::validateUserEmail($email) AND self::validateUserPassword($password, $password_repeat) AND $return) {
             return true;
         }
-        // otherwise, return false
         return false;
     }
     /**
@@ -177,7 +190,7 @@ class UserManager
             Session::setErrorFeedback("Polje: korisnicko ime je prazno. Molimo popunite sva zahtevana polja.");
             return false;
         }
-        // if username is too short (2), too long (64) or does not fit the pattern (aZ09)
+        // if username is too short (2), too long (64) or does not fit the pattern
         if (!preg_match('/^[a-zA-Z0-9]{2,64}$/', $user_name)) {
             Session::setErrorFeedback("Korisnicko ime je krace od 2 slova ili sadrzi nedozvoljene karaktere.");
             return false;
@@ -188,7 +201,6 @@ class UserManager
      * Validates the email
      *
      * @param $user_email
-     * @param $user_email_repeat
      * @return bool
      */
     public static function validateUserEmail($user_email)

@@ -46,7 +46,7 @@
                 <?php elseif(Session::get('user_level') == MODERATOR_LEVEL):?>
                 <a href="#">Moderator Panel</a>
                 <?php elseif(Session::get('user_level') == USER_LEVEL):?>
-                <a href="#">Korisnicki Profil</a>
+                <a href="<?php echo Config::get('ROOT'); ?>profile/profilepage">Korisnicki Profil</a>
                 <?php endif;?>
              </div>
             <?php else :?>
