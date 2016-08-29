@@ -1,5 +1,5 @@
 <?php
 
-echo 'Hello from Events page';
+echo 'Hello from Events - Repertoar itd  page';
 
 ?>

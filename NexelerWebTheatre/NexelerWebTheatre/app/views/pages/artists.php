@@ -1,5 +1,5 @@
 <?php
 
-echo 'Hello from Artists page';
+echo 'Hello from Artistspage';
 
 ?>
