@@ -32,6 +32,8 @@
     <Compile Include="app\core\Session.php" />
     <Compile Include="app\core\View.php" />
     <Compile Include="app\init.php" />
+    <Compile Include="app\models\Actor.php" />
+    <Compile Include="app\models\Play.php" />
     <Compile Include="app\models\User.php" />
     <Compile Include="app\models\UserManager.php" />
     <Compile Include="app\views\pages\artists.php" />
