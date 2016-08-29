@@ -7,6 +7,7 @@ class PlayController extends Controller
    */
   public function playspage()
   {
+    //fetch all plays and render view
   }
   
   public function createnewplay()
