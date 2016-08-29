@@ -39,35 +39,36 @@ class User
     public static function fetchAllUsers()
     {
     	$database = Database::getInstance()->getConnection();
-    	$sql = "SELECT * FROM users ORDER BY lastname,name";
+    	$sql = "SELECT * FROM users ORDER BY last_name,name";
         
-        $result = mysqli_query($database,$sql);
-        // Fetch all
-	mysqli_fetch_all($result,MYSQLI_ASSOC);
+        $result = $database->query($sql);
 
-	// Free result set
-	mysqli_free_result($result);
-        
-        return $result;
+        if(!$result){
+            return false;
+        }
+
+        $array=$result->fetch_all(MYSQLI_ASSOC);
+
+        return $array;
     }
     
     /*
     *	Fetch all users from database filter by user_typed
     *	NOT TESTED
     */
-    public static function fetchAllUsersByUserType($user_type)
+    public static function fetchAllUsersByUserLevel($user_level)
     {
     	$database = Database::getInstance()->getConnection();
-    	$sql = "SELECT * FROM users WHERE user_type='$user_type' ORDER BY lastname,name";
+    	$sql = "SELECT * FROM users WHERE user_level='$user_level' ORDER BY last_name,name";
         
-        $result=mysqli_query($database,$sql);
-        // Fetch all
-	mysqli_fetch_all($result,MYSQLI_ASSOC);
+        $result = $database->query($sql);
+        if(!$result){
+            return false;
+        }
 
-	// Free result set
-	mysqli_free_result($result);
-        
-        return $result;
+        $array=$result->fetch_all(MYSQLI_ASSOC);
+
+        return $array;
     }
     
     /*

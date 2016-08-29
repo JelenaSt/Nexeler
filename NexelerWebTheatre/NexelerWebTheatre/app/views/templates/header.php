@@ -42,7 +42,7 @@
             </div>
              <div>
                 <?php if(Session::get('user_level') == ADMIN_LEVEL):?>
-                <a href="#">AdminPanel</a>
+                <a href="<?php echo Config::get('ROOT'); ?>admin/adminpage">AdminPanel</a>
                 <?php elseif(Session::get('user_level') == MODERATOR_LEVEL):?>
                 <a href="#">Moderator Panel</a>
                 <?php elseif(Session::get('user_level') == USER_LEVEL):?>

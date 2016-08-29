@@ -6,9 +6,11 @@ class AdminController extends Controller
    */
   public function adminpage()
   {
-    //fetch all users
-    //fetch all moderators
-    //put it on view
+      Session::
+      $users= User::fetchAllUsersByUserLevel(USER_LEVEL);
+      $moderators= User::fetchAllUsersByUserLevel(MODERATOR_LEVEL);
+
+      $this->View->render('usermanagement/admin_profile',array('users' => $users, 'moderators' => $moderators));
   }
   
   /*
