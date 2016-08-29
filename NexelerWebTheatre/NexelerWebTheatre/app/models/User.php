@@ -10,14 +10,14 @@
  */
 class User
 {
-    var $userID;
-    var $username;
-    var $name;
-    var $last_name;
+	var $userID;
+	var $username;
+	var $name;
+	var $last_name;
 	var $email;
 	var $password_hash;
 	var $user_type;
-    var $user_level;
+	var $user_level;
 
     function __construct($args)
     {
@@ -31,13 +31,69 @@ class User
         $this->user_level = $args["user_level"];
     }
 
+    /*
+    *	Fetch all users from database of type USER or MODERATOR;
+    *	Implement after,active user status and delete automaticaly when user was not active for some period
+    *	NOT TESTED
+    */
+    public static function fetchAllUsers()
+    {
+    	$database = Database::getInstance()->getConnection();
+    	$sql = "SELECT * FROM users ORDER BY lastname,name;"
+        
+        $result=mysqli_query($database,$sql);
+        // Fetch all
+	mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+	// Free result set
+	mysqli_free_result($result);
+        
+        return $result;
+    }
+    
+    /*
+    *	Fetch all users from database filter by user_typed
+    *	NOT TESTED
+    */
+    public static function fetchAllUsersByUserType($user_type)
+    {
+    	$database = Database::getInstance()->getConnection();
+    	$sql = "SELECT * FROM users WHERE user_type='$user_type' ORDER BY lastname,name;"
+        
+        $result=mysqli_query($database,$sql);
+        // Fetch all
+	mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+	// Free result set
+	mysqli_free_result($result);
+        
+        return $result;
+    }
+    
+    /*
+    *	Change user_type, move up or move down user_level
+    *	NOT TESTED
+    */
+    public static function changeUserType($userID,$user_type,$user_level)
+    {
+    	$database = Database::getInstance()->getConnection();
+    	
+    	$sql = "UPDATE users SET user_type='$user_type',user_level='$user_level' WHERE userID='$user_id'";
+        
+        $query_result = $database->query($sql);
+        if ($query_result === TRUE) {
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Writes the new user's data to the database
      *
      * @param name
      * @param $last_name
      * @param $user_name
-     * @param $user_password_hash
+     * @param $password_hash
      * @param $email
      * @return bool
      */
@@ -66,7 +122,7 @@ class User
      * @param $email
      * @return bool
      */
-    public static function updateUserDataInDatabase($user_id,$name,$last_name,$user_name, $email,$password_hash)
+    public static function updateUserDataInDatabase($user_id,$name,$last_name,$user_name,$email,$password_hash)
     {
         $database = Database::getInstance()->getConnection();
         // write new users data into database
@@ -134,20 +190,33 @@ class User
         if(mysqli_num_rows($result) == 1)
         {
             $row = mysqli_fetch_assoc($result);
-            
             $user = new User($row);
             return $user;
         }
-        //// This is in the PHP file and sends a Javascript alert to the client
-        //$message = "not returned user";
-        //echo "<script type='text/javascript'>alert('$message');</script>";
-
         return NULL;
     }
 
     public static function userDataByEmailExist($email)
     {
         return (self::getUserDataByEmail($email) ? true : false);
+    }
+    
+    /*
+     * Delete user 	NOT TESTED
+     * @param user_id
+     * @return bool
+     */
+    public static function deleteUser($userID)
+    {
+    	$database = Database::getInstance()->getConnection();
+    	
+    	$sql = "DELETE FROM users WHERE userID='$user_id'";
+    	
+        $query_result = $database->query($sql);
+        if ($query_result === TRUE) {
+            return true;
+        }
+        return false;
     }
 
    
