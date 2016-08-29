@@ -17,8 +17,11 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\controllers\ActorController.php" />
+    <Compile Include="app\controllers\AdminController.php" />
     <Compile Include="app\controllers\HomeController.php" />
     <Compile Include="app\controllers\LoginController.php" />
+    <Compile Include="app\controllers\PlayController.php" />
     <Compile Include="app\controllers\ProfileController.php" />
     <Compile Include="app\controllers\RegisterController.php" />
     <Compile Include="app\core\Config.php" />
@@ -37,12 +40,14 @@
     <Compile Include="app\models\User.php" />
     <Compile Include="app\models\UserManager.php" />
     <Compile Include="app\views\pages\artists.php" />
+    <Compile Include="app\views\pages\artists_new.php" />
     <Compile Include="app\views\pages\contact.php" />
     <Compile Include="app\views\pages\events.php" />
     <Compile Include="app\views\pages\index.php" />
     <Compile Include="app\views\pages\preformances.php" />
     <Compile Include="app\views\templates\footer.php" />
     <Compile Include="app\views\templates\header.php" />
+    <Compile Include="app\views\usermanagement\admin_profile.php" />
     <Compile Include="app\views\usermanagement\login.php" />
     <Compile Include="app\views\usermanagement\profile.php" />
     <Compile Include="app\views\usermanagement\profile_edit.php" />
@@ -66,5 +71,13 @@
   <ItemGroup>
     <Content Include="app\config\server.config.php" />
     <Content Include="public\css\style.css" />
+    <Content Include="public\images\footer_bckg.gif" />
+    <Content Include="public\images\head_bckg.jpg" />
+    <Content Include="public\images\li.gif" />
+    <Content Include="public\images\menu_bckg.gif" />
+    <Content Include="public\images\picture.jpg" />
+    <Content Include="public\images\sidebar_bckg.gif" />
+    <Content Include="public\images\splitter.gif" />
+    <Content Include="public\images\umbrella.gif" />
   </ItemGroup>
 </Project>

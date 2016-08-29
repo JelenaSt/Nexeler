@@ -6,9 +6,9 @@ class Actor
   var $name;
   var $last_name;
   var $date_birth;
-  var &biography;
+  var $biography;
   
-  public funstion __construct()
+  public function __construct()
   {
   }
   
