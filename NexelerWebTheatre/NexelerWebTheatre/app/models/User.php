@@ -39,9 +39,9 @@ class User
     public static function fetchAllUsers()
     {
     	$database = Database::getInstance()->getConnection();
-    	$sql = "SELECT * FROM users ORDER BY lastname,name;"
+    	$sql = "SELECT * FROM users ORDER BY lastname,name;";
         
-        $result=mysqli_query($database,$sql);
+        $result = mysqli_query($database,$sql);
         // Fetch all
 	mysqli_fetch_all($result,MYSQLI_ASSOC);
 
