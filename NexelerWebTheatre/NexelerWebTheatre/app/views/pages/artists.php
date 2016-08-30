@@ -27,9 +27,9 @@ if ($artists->num_rows > 0)
 		<?php  
         $bioShort = substr("$biography",0,400);
         echo "$bioShort"."...".'<br>'.'<br>' ;	
-    ?>
+        ?>
 	
-		<button class="button">Detaljnije</button>
+		<button class="button" onClick="parent.location='../../artist/<?php echo "$name" ?>'">Detaljnije</button>
 		
 		<?php
         if (Session::get('user_level') == 2)

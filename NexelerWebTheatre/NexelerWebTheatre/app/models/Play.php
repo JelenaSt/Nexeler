@@ -97,7 +97,7 @@ class Play
     public static function getPlayPictureById($play_id)
     {
         $dbConnection = Database::getInstance()->getConnection();
-        $sql = "SELECT * FROM playpictures where ID ='$play_id'";
+        $sql = "SELECT * FROM playpictures where PlayID ='$play_id'";
 
         $result = mysqli_query($dbConnection,$sql);
         if(mysqli_num_rows($result) == 1)
