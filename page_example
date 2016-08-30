@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<head>
+<style>
+h1 {color:red;}
+p {color:blue;}
+.box{-webkit-box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);
+-moz-box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);
+box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);}
+</style>
+</head>
+<body>
+
+<header class="w3-container">
+  <h1>Header</h1>
+</header>
+
+<div class="w3-container">
+   <div  class="box" style="width:48%; float:left; margin:5px; padding:5px;" >
+   <h2>Admin profil</h2>
+            <table>
+                <tr>
+                    <th><label>Ime:</label></th>
+                    <td><label>Admin name</label></td>
+                </tr>
+                <tr>
+                    <th><label>Prezime:</label></th>
+                    <td><label>last_name;; ?></label></td>
+                </tr>
+                <tr>
+                    <th><label>Korisnicko ime:</label></th>
+                    <td><label>username; ?></label></td>
+                </tr>
+                <tr>
+                    <th><label>E-mail:</label></th>
+                    <td><label>email; ?></label></td>
+                </tr>
+                <tr>
+                    <th><label>Sifra:</label></th>
+                    <td><label>**********</label></td>
+                </tr>
+                <tr>
+                    <th><label>Korisnicki profil:</label></th>
+                    <td><label>user_type; ?></label></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><button class="button">Promeni podatke</button></td>
+                </tr>
+            </table>
+  
+    </div>
+    <div class="box" style="width:48%; height:246px; float:right;margin:10px 5px; padding:5px;">
+    <h2>Statistika</h2>
+        <table>
+       
+            <tr>
+                <td>Moderatori</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Registrovani korisnici:</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Ulogovani korisnici:</td>
+                <td>2</td>
+            </tr>
+        </table>
+   </div>
+</div>
+
+
+<div class="w3-container box" style="witdh:90%;  margin:auto 0;">
+   <div  style="width:50%; float:left;" >
+   <h2>Admin profil</h2>
+            <table>
+                <tr>
+                    <th><label>Ime:</label></th>
+                    <td><label>Admin name</label></td>
+                </tr>
+                <tr>
+                    <th><label>Prezime:</label></th>
+                    <td><label>last_name;; ?></label></td>
+                </tr>
+                <tr>
+                    <th><label>Korisnicko ime:</label></th>
+                    <td><label>username; ?></label></td>
+                </tr>
+                <tr>
+                    <th><label>E-mail:</label></th>
+                    <td><label>email; ?></label></td>
+                </tr>
+                <tr>
+                    <th><label>Sifra:</label></th>
+                    <td><label>**********</label></td>
+                </tr>
+                <tr>
+                    <th><label>Korisnicki profil:</label></th>
+                    <td><label>user_type; ?></label></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><button class="button">Promeni podatke</button></td>
+                </tr>
+            </table>
+  
+    </div>
+    <div style="width:50%; float:right;">
+    <h2>Statistika</h2>
+        <table>
+       
+            <tr>
+                <td>Moderatori</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Registrovani korisnici:</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Ulogovani korisnici:</td>
+                <td>2</td>
+            </tr>
+        </table>
+   </div>
+</div>
+
+
+</body>
+</html>
+
