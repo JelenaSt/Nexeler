@@ -8,7 +8,8 @@
 <style>
 h1 {color:red;}
 p {color:blue;}
-.box{-webkit-box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);
+.box{
+-webkit-box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);
 -moz-box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);
 box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);}
 </style>
@@ -20,7 +21,7 @@ box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);}
 </header>
 
 <div class="w3-container">
-   <div  class="box" style="width:48%; float:left; margin:5px; padding:5px;" >
+   <div  class="w3-container w3-pale-red w3-topbar w3-border-red" style="width:48%; float:left; margin:5px; padding:5px;" >
    <h2>Admin profil</h2>
             <table>
                 <tr>
@@ -54,7 +55,7 @@ box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);}
             </table>
   
     </div>
-    <div class="box" style="width:48%; height:246px; float:right;margin:10px 5px; padding:5px;">
+    <div class="w3-pale-green w3-leftbar w3-border-green" style="width:48%; height:246px; float:right;margin:10px 5px; padding:5px;">
     <h2>Statistika</h2>
         <table>
        
@@ -75,9 +76,10 @@ box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);}
 </div>
 
 
-<div class="w3-container box" style="witdh:90%;  margin:auto 0;">
-   <div  style="width:50%; float:left;" >
-   <h2>Admin profil</h2>
+<div class="w3-container box" style="margin:20px; padding-bottom:20px;">
+  
+ <div  style="text-align:left; width:50%; float:left;" >
+   <h2>Registrovani korisnici</h2>
             <table>
                 <tr>
                     <th><label>Ime:</label></th>
@@ -110,8 +112,8 @@ box-shadow: 10px 10px 5px 0px rgba(191,191,191,1);}
             </table>
   
     </div>
-    <div style="width:50%; float:right;">
-    <h2>Statistika</h2>
+    <div  style=" width:50%; float:right;">
+    <h2>Moderatori</h2>
         <table>
        
             <tr>
