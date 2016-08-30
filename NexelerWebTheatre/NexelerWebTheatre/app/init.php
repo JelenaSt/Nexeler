@@ -12,6 +12,8 @@ require_once 'core/App.php';
 
 require_once 'models/User.php';
 require_once 'models/UserManager.php';
+require_once 'models/Artist.php';
+require_once 'models\Play.php';
 
 ?>
 

@@ -29,11 +29,11 @@ class App
 
             if (method_exists($this->controller, $this->method)) 
             {
-                if (!empty($this->parameters)) 
+                if (!empty($this->params)) 
                 {
                     // call the method and pass arguments to it
                    
-                    call_user_func_array(array($this->controller, $this->method), $this->parameters);
+                    call_user_func_array(array($this->controller, $this->method), $this->params);
                 } else 
                 {
                     // if no parameters are given, just call the method without parameters, like $this->index->index();

@@ -22,19 +22,25 @@ class AdminController extends Controller
    */
   public function deleteuser($userID)
   {
-      $result = User::deleteUserByID($userID);
+      $result = User::deleteUser($userID);
+      Redirect::to('admin/adminpage');
       
   }
   
-  public function promoteUser($userID)
+  public function promote($userID)
   {
-     $result = User::setUserLevelByID($userID.$user_level);
-     return result;
+
+      if(User::updateUserLevel($userID,MODERATOR_LEVEL)){
+          Session::put('info_feedback','user successfully promoted to moderator');
+      }
+      else
+          Session::put('error_feedback','user is not promoted to moderator');
+      Redirect::to('admin/adminpage');
   }
   
-  public function downgradeModerator($userID)
+  public function downgrade($userID)
   {
-      $result = User::setUserLevelByID($userID.$user_level);
-      return result;
+      User::updateUserLevel($userID,USER_LEVEL);
+      Redirect::to('admin/adminpage');
   }
 }

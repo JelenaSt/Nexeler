@@ -1,10 +1,10 @@
-<div class="page-body">
+<div class="page-body" style="height:auto">
 
 <h1>Predstave</h1>
 
 <?php
 
-require_once(dirname(__FILE__)."\..\..\models\Play.php");
+
 header("Content-Type: text/html;charset=utf-8");
 $plays = Play::fetchAllPlays();
 

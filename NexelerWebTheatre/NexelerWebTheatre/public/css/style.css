@@ -167,10 +167,11 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 
 .page-body {
   position: relative;
-  z-index: 1;
+  z-index: 100;
   background: #FFFFFF;
   max-width: 900px;
-  margin: 10px auto 10px auto;
+  height:100vh;
+  margin: 10px auto;
   padding: 15px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -195,6 +196,19 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
   cursor: pointer;
 }
 
+.button-small  {
+  font-family: "Myriad Pro", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #B9121C;
+  width: 70px;
+  border: 0;
+  margin: 2px 0 0 0;
+  padding: 5px;
+  color: #9c9c9c;
+  font-size: 8px;
+  cursor: pointer;
+}
 .cancel-button  {
   font-family: "Myriad Pro", sans-serif;
   text-transform: uppercase;

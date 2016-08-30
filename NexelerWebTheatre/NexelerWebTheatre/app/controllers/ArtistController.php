@@ -7,6 +7,7 @@ class ArtistController extends Controller
    */
   public function artistpage()
   {
+      Redirect::home();
   }
   
   public function createnewaartist()

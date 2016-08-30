@@ -211,8 +211,20 @@ class User
     {
     	$database = Database::getInstance()->getConnection();
     	
-    	$sql = "DELETE FROM users WHERE userID='$user_id'";
+    	$sql = "DELETE FROM users WHERE userID='$userID'";
     	
+        $query_result = $database->query($sql);
+        if ($query_result === TRUE) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function updateUserLevel($userID,$userLevel)
+    {
+        $database = Database::getInstance()->getConnection();
+        $sql = "UPDATE users SET user_level='$userLevel' WHERE userID='$userID'";
+
         $query_result = $database->query($sql);
         if ($query_result === TRUE) {
             return true;

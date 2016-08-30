@@ -14,7 +14,7 @@ class UserManager
     public static function login($user_name, $user_password, $set_remember_me_cookie = null)
     {
         if (empty($user_name) OR empty($user_password)) {
-            Session::set('warrning_message','You must fill all input fields');
+            Session::set('error_feedback','You must fill all input fields');
             return false;
         }
 
@@ -34,12 +34,12 @@ class UserManager
         $result = User::getUserDataByUsername($user_name);
 
         if (!$result) {
-            Session::set('warrning_message','User with this user name does not exist!');
+            Session::set('error_feedback','User with this user name does not exist!');
             return false;
         }
         
         if (!password_verify($user_password, $result->password_hash)) {
-            Session::set('warrning_message','Wrong password. Please try again!');
+            Session::set('error_feedback','Wrong password. Please try again!');
             return false;
         }
 

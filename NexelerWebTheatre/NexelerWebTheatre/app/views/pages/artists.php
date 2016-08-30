@@ -3,7 +3,7 @@
 <h1>Umetnička postava</h1>
 
 <?php
-require_once(dirname(__FILE__)."\..\..\models\Artist.php");
+
 header("Content-Type: text/html;charset=utf-8");
 $artists = Artist::fetchAllArtist();
 if ($artists->num_rows > 0)
@@ -29,7 +29,7 @@ if ($artists->num_rows > 0)
         echo "$bioShort"."...".'<br>'.'<br>' ;	
         ?>
 	
-		<button class="button" onClick="parent.location='../../artist/<?php echo "$name" ?>'">Detaljnije</button>
+		<button class="button" onClick="<?php echo Config::get('ROOT'); ?>profile/editprofile">Detaljnije</button>
 		
 		<?php
         if (Session::get('user_level') == 2)

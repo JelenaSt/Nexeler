@@ -5,7 +5,7 @@
             </div>
         <?php endif;?>  
 
-<div class="page-body">
+<div class="page-body" style="height:100%">
     <h1>Korisnicki profil</h1><br />
 
     <form  action="<?php echo Config::get('ROOT'); ?>profile/editprofile" method="get">

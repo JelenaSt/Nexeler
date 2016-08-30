@@ -1,4 +1,4 @@
-<div class="page-body">
+<div class="page-body" style="height:100%">
     <h1>Korisnicki profil</h1>
     <br />
 
