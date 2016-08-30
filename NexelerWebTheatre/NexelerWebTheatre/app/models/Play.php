@@ -85,7 +85,7 @@ class Play
     {
         $database = Database::getInstance()->getConnection();
     	
-    	$sql = "DELETE FROM play WHERE ID='$play_id'";
+    	$sql = "DELETE FROM play WHERE PlayID='$play_id'";
     	
         $query_result = $database->query($sql);
         if ($query_result === TRUE) {
@@ -97,7 +97,7 @@ class Play
     public static function getPlayPictureById($play_id)
     {
         $dbConnection = Database::getInstance()->getConnection();
-        $sql = "SELECT * FROM playpictures where ID ='$play_id'";
+        $sql = "SELECT * FROM playpictures where PlayID ='$play_id'";
 
         $result = mysqli_query($dbConnection,$sql);
         if(mysqli_num_rows($result) == 1)
