@@ -41,6 +41,7 @@
     <Compile Include="app\models\UserManager.php" />
     <Compile Include="app\views\pages\artists.php" />
     <Compile Include="app\views\pages\artists_new.php" />
+    <Compile Include="app\views\pages\artist_details.php" />
     <Compile Include="app\views\pages\contact.php" />
     <Compile Include="app\views\pages\events.php" />
     <Compile Include="app\views\pages\index.php" />

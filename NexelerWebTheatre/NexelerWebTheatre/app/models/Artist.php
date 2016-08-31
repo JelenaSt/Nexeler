@@ -2,18 +2,18 @@
 
 class Artist
 {
-  var $artistId;
-  var $artistName;
-  var $artistBiography;
-  
-  //kako se stvarno zovu kolone tamo, bem li ga
+    var $artistId;
+    var $artistName;
+    var $artistBiography;
+    
+    //kako se stvarno zovu kolone tamo, bem li ga
     public function __construct($args)
     {
         $this->artistId = $args["ID"];
         $this->artistName = $args["Name"];
         $this->artistBiography = $args["Biography"];
     }
-  
+    
     public static function writeNewArtistInDatabase($artistName,$artistBio)
     {
         $database = Database::getInstance()->getConnection();
@@ -29,23 +29,23 @@ class Artist
         print_r($query_result);
         if ($query_result === TRUE) 
         {
-          return true;
+            return true;
         }
         return false;
     }
-  
+    
     public static function updateArtist($artistId,$artistName,$artistBio)
     {
         $database = Database::getInstance()->getConnection();
         
         $sql = "UPDATE artists SET Name='$artistName', Biography='$artistBio'
                 WHERE ID='$artistId'";
-                
+        
         $query_result = $database->query($sql);
         
         if ($query_result === TRUE) 
         {
-             return true;
+            return true;
         }
         
         return false;
@@ -60,17 +60,18 @@ class Artist
         
         if ($result->num_rows > 0)
         {
-           return $result;
+            return $result;
         }
-         return NULL;
+        return NULL;
     }
-  
+    
     public static function getArtistByID($artistId)
     {
         $dbConnection = Database::getInstance()->getConnection();
         $sql = "SELECT * FROM artists 
                 WHERE ID ='$artistId'";
-                
+        
+		mysqli_query($dbConnection, "set names 'utf8'");		 
         $result = mysqli_query($dbConnection,$sql);
         
         if(mysqli_num_rows($result) == 1)
@@ -87,7 +88,8 @@ class Artist
         $dbConnection = Database::getInstance()->getConnection();
         $sql = "SELECT * FROM artists 
                 WHERE Name ='$artistName'";
-                
+        
+		mysqli_query($dbConnection, "set names 'utf8'");
         $result = mysqli_query($dbConnection,$sql);
         
         if(mysqli_num_rows($result) == 1)
@@ -104,7 +106,7 @@ class Artist
         $database = Database::getInstance()->getConnection();
         $sql = "DELETE FROM artists 
                 WHERE ID='$artistId'";
-        	
+        
         $query_result = $database->query($sql);
         
         if ($query_result === TRUE) 
@@ -124,7 +126,7 @@ class Artist
         print_r($query_result);
         if ($query_result === TRUE) 
         {
-          return true;
+            return true;
         }
         return false;
     }
@@ -135,7 +137,7 @@ class Artist
         $sql = "SELECT * FROM artistpictures 
                  WHERE ArtistID ='$artistId'";
         $result = mysqli_query($dbConnection,$sql);
-       
+        
         if(mysqli_num_rows($result) == 1)
         {
             $row = mysqli_fetch_assoc($result);
@@ -149,7 +151,7 @@ class Artist
         $database = Database::getInstance()->getConnection();
         $sql = "DELETE FROM artistpictures 
                 WHERE ArtistID='$artistId'";
-        	
+        
         $query_result = $database->query($sql);
         
         if ($query_result === TRUE) 
@@ -165,15 +167,15 @@ class Artist
         
         $sql = "UPDATE artists SET ArtistPicture='$picture'
                 WHERE ArtistID='$artistId'";
-                
+        
         $query_result = $database->query($sql);
         
         if ($query_result === TRUE) 
         {
-             return true;
+            return true;
         }
         
         return false;
     }
-  
+    
 }

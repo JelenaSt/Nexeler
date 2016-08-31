@@ -3,18 +3,18 @@
 <h1>Umetnička postava</h1>
 
 <?php
-
+require_once(dirname(__FILE__)."\..\..\models\Artist.php");
 header("Content-Type: text/html;charset=utf-8");
 $artists = Artist::fetchAllArtist();
+
 if ($artists->num_rows > 0)
 {
     foreach($artists as $artist)
     {
-        $id = $artist['ID'];
+        $artistId = $artist['ID'];
         $name = $artist['Name'];
-		    $biography = $artist['Biography'];
-        
-        $picture = Artist::getArtistPictureById($id);
+		$biography = $artist['Biography'];
+        $picture = Artist::getArtistPictureById($artistId);
 ?>
         <table style="width: 80%">
             <col width="30%">
@@ -27,9 +27,15 @@ if ($artists->num_rows > 0)
 		<?php  
         $bioShort = substr("$biography",0,400);
         echo "$bioShort"."...".'<br>'.'<br>' ;	
-        ?>
-	
-		<button class="button" onClick="<?php echo Config::get('ROOT'); ?>profile/editprofile">Detaljnije</button>
+		
+		$redirect = Config::get('ROOT');
+		$redirect .= 'artist/artistpage';
+
+    ?>
+		<form id="artists-form" action="<?php echo Config::get('ROOT'); ?>artist/artistpage" method="get"">
+			<input type="hidden" name="artistId" value=<?php echo $artistId ?> />
+            <button class="button">Detaljnije</button>  
+        </form>
 		
 		<?php
         if (Session::get('user_level') == 2)
