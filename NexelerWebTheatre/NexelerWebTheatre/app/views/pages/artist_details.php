@@ -21,7 +21,7 @@
 	<table style="width: 80%">
 				
 		<tr><th><label><?php echo '<br>'.'<br>'.'<img src="data:image/jpeg;base64,'.base64_encode( $picture ).'" height="300"/>'.'<br>'.'<br>'.'<br>'; ?></label></th></tr>
-		<tr><th><label><?php echo $artist->artistBiography.'<br>'.'<br>'; ?>
+		<tr><th><label><?php echo nl2br($artist->artistBiography).'<br>'.'<br>'; ?>
 	
 		<?php 
 			if (Session::get('user_level') == 2)
