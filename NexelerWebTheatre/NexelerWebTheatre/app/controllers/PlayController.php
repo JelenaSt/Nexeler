@@ -7,7 +7,8 @@ class PlayController extends Controller
    */
   public function playspage()
   {
-    //fetch all plays and render view
+      $this->View->render('pages/play_details');
+      exit();
   }
   
   public function createnewplay()

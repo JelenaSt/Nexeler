@@ -2,18 +2,18 @@
 
 class Play
 {
-  var $playId;
-  var $playTitle;
-  var $description;
-  
-  public function __constuct($args)
+    var $playId;
+    var $playTitle;
+    var $description;
+    
+    public function __construct($args)
     {
-        $this->playId = $args["playId"];
-        $this->playTitle = $args["playTitle"];
-        $this->description = $args["description"];
+        $this->playId = $args['ID'];
+        $this->playTitle = $args['Title'];
+        $this->description = $args['Description'];
     }
-  
-  public static function writeNewPlayInDatabase($playTitle,$description)
+    
+    public static function writeNewPlayInDatabase($playTitle,$description)
     {
         $database = Database::getInstance()->getConnection();
 
@@ -32,24 +32,25 @@ class Play
         }
         return false;
     }
-  
+    
     public static function getPlayByID($play_id)
     {
         $dbConnection = Database::getInstance()->getConnection();
-        $sql = "SELECT * FROM plays where ID ='$play_id'";
-
+        $sql = "SELECT * FROM plays 
+				WHERE ID ='$play_id'";
+        
+		mysqli_query($dbConnection, "set names 'utf8'");	
         $result = mysqli_query($dbConnection,$sql);
+        
         if(mysqli_num_rows($result) == 1)
         {
             $row = mysqli_fetch_assoc($result);
-            
             $play= new Play($row);
             return $play;
         }
-
         return NULL;
     }
-  
+    
     public static function getPlayByName($play_name)  
     {
         $dbConnection = Database::getInstance()->getConnection();
@@ -65,7 +66,7 @@ class Play
         }
 
         return NULL;
-    
+        
     }
     
     public static function fetchAllPlays()  
@@ -85,7 +86,7 @@ class Play
     {
         $database = Database::getInstance()->getConnection();
     	
-    	$sql = "DELETE FROM play WHERE PlayID='$play_id'";
+    	$sql = "DELETE FROM play WHERE ID='$play_id'";
     	
         $query_result = $database->query($sql);
         if ($query_result === TRUE) {
