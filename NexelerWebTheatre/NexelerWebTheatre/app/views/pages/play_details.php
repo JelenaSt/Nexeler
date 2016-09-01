@@ -2,18 +2,17 @@
 
 <?php
 
-	require_once(dirname(__FILE__)."\..\..\models\Play.php");
 	header("Content-Type: text/html;charset=utf-8");
 	
-	$artistId = Request::get('playId',true);
-	$play= Play::getPlayByID($artistId);
+	$playId = Request::get('playId',true);
+	$play= Play::getPlayByID($playId);
     // $playId;
     // $playTitle;
     // $description;
 	
 	if (!empty((array) $play))
 	{
-		$picture = Play::getPlayPictureById($artistId);
+		$picture = Play::getPlayPictureById($playId);
 	
 ?>
 	<h1><?php echo $play->playTitle;?></h1>
@@ -27,7 +26,10 @@
 			if (Session::get('user_level') == 2)
 			{
 		?>
-		<button class="button">Izmeni</button>
+		<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit_play" method="post"">
+			<input type="hidden" name="playId" value=<?php echo $playId ?> />
+			<button class="button" style="float: right;">Izmeni</button>  
+		</form>
 		<?php 
 			} 
 		?>

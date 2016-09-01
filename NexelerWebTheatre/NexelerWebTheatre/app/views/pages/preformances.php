@@ -1,41 +1,80 @@
-<div class="page-body" >
+<div class="page-body" style="height:auto">
+
+<h1>Predstave</h1>
 
 <?php
-
-	require_once(dirname(__FILE__)."\..\..\models\Play.php");
-	header("Content-Type: text/html;charset=utf-8");
-	
-	$artistId = Request::get('playId',true);
-	$play= Play::getPlayByID($artistId);
-    // $playId;
-    // $playTitle;
-    // $description;
-	
-	if (!empty((array) $play))
-	{
-		$picture = Play::getPlayPictureById($artistId);
-	
+if (Session::get('user_level') == 2)
+{
 ?>
-	<h1><?php echo $play->playTitle;?></h1>
+	<td>
+		<button class="button" style="float: right;">Dodaj novo</button>
+	</td>
+	<?php 
+} 
 
-	<table style="width: 80%">
+header("Content-Type: text/html;charset=utf-8");
+$plays = Play::fetchAllPlays();
+
+if ($plays->num_rows > 0)
+{
+    foreach($plays as $play)
+    {
+        $playId = $play['ID'];
+        $title = $play['Title'];
+        $description = $play['Description'];
+        $picture = Play::getPlayPictureById($playId);
+    ?>
+
+			<table style="width: 80%">
+				<col width="30%">
+				<col width="70%">
 				
-		<tr><th><label><?php echo '<br>'.'<br>'.'<img src="data:image/jpeg;base64,'.base64_encode( $picture ).'" height="300"/>'.'<br>'.'<br>'.'<br>'; ?></label></th></tr>
-		<tr><th><label><?php echo nl2br($play->description).'<br>'.'<br>'; ?>
-	
-		<?php 
-			if (Session::get('user_level') == 2)
-			{
-		?>
-		<button class="button">Izmeni</button>
-		<?php 
-			} 
-		?>
-			
-			</label></th>
-			</tr>
+				<tr>
+					<th>
+						<label>
+							<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $picture ).'" width="200"/>'.'<br>'; ?>
+						</label>
+					</th>
+					
+					<th>
+						<label>
+							<h2><?php echo "$title "; ?></h2>
+							<?php  
+        $descShort = substr("$description",0,400);
+        echo "$descShort"."...".'<br>'.'<br>' ;	
+                            ?>
+						</label>
+					</th>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td>
+						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
+							<input type="hidden" name="playId" value=<?php echo $playId ?> />
+							<button class="button"style="float: left;">Detaljnije</button>  
+						</form>
+					
+					<?php
+        if (Session::get('user_level') == 2)
+        {
+                    ?>
+						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit_play" method="post"">
+							<input type="hidden" name="playId" value=<?php echo $playId ?> />
+							<button class="button" style="float: right;">Izmeni</button>  
+						</form>
+						
+					
+					<?php 
+        } 
+                    ?>
+					</td>
+				</tr>
 			</table>
-	<?php
-		} //if (!empty((array) $play))
-	 ?>
+
+	<?php 
+    }
+}
+
+    ?>
 </div>

@@ -66,8 +66,22 @@ class Play
         }
 
         return NULL;
-        
     }
+	
+	public static function updatePlay($playId,$playTitle,$playDescription)
+	{
+		$dbConnection = Database::getInstance()->getConnection();
+        $sql = "UPDATE plays SET Title='$playTitle',Description='$playDescription' 
+				WHERE ID='$playId'";
+        
+        mysqli_query($dbConnection, "set names 'utf8'");
+        $query_result = $dbConnection->query($sql);
+        if ($query_result === TRUE) {
+            return true;
+        }
+        return false;
+		
+	}
     
     public static function fetchAllPlays()  
     {

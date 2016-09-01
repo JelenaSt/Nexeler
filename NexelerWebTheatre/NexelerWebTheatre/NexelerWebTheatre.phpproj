@@ -46,6 +46,7 @@
     <Compile Include="app\views\pages\events.php" />
     <Compile Include="app\views\pages\index.php" />
     <Compile Include="app\views\pages\play_details.php" />
+    <Compile Include="app\views\pages\play_edit.php" />
     <Compile Include="app\views\pages\preformances.php" />
     <Compile Include="app\views\templates\footer.php" />
     <Compile Include="app\views\templates\header.php" />
