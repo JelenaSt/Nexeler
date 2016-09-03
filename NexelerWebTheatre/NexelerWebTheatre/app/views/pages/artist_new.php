@@ -21,7 +21,7 @@
 			</tr>
 			
                 <th><button class="cancel-button" formaction="<?php echo Config::get('ROOT').'home/artists';?>" >Odustani</button></th>
-                <td><button class="button">Sa?uvaj</button></td>
+                <td><button class="button">Sačuvaj</button></td>
             </tr>
 
         </table>
