@@ -93,10 +93,6 @@ class Artist
 		mysqli_query($database, "set names 'utf8'");		 
         $result = mysqli_query($database,$sql);
         
-		echo "$artistId".'<br>';
-		$num = mysqli_num_rows($result);
-		echo "$num";
-		
         if(mysqli_num_rows($result) == 1)
         {
             $row = mysqli_fetch_assoc($result);

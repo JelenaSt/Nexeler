@@ -15,5 +15,6 @@ require_once 'models/UserManager.php';
 
 require_once 'models/Play.php';
 require_once 'models/Artist.php';
+require_once 'models/Contact.php';
 
 ?>

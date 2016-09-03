@@ -19,7 +19,7 @@
                 <img src="../../public/images/splitter.gif" class="splitter" alt="" />
                 <a href="<?php echo Config::get('ROOT'); ?>home/artists">Umetnici</a>
                 <img src="../../public/images/splitter.gif" class="splitter" alt="" />
-                <a href="<?php echo Config::get('ROOT'); ?>home/contact">Kontakt</a>
+                <a href="<?php echo Config::get('ROOT'); ?>contact/info">Kontakt</a>
             </div>
         </div>
      

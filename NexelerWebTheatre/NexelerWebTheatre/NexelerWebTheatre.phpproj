@@ -19,6 +19,7 @@
   <ItemGroup>
     <Compile Include="app\controllers\ArtistController.php" />
     <Compile Include="app\controllers\AdminController.php" />
+    <Compile Include="app\controllers\ContactController.php" />
     <Compile Include="app\controllers\HomeController.php" />
     <Compile Include="app\controllers\LoginController.php" />
     <Compile Include="app\controllers\PlayController.php" />
@@ -36,6 +37,7 @@
     <Compile Include="app\core\View.php" />
     <Compile Include="app\init.php" />
     <Compile Include="app\models\Artist.php" />
+    <Compile Include="app\models\Contact.php" />
     <Compile Include="app\models\Play.php" />
     <Compile Include="app\models\User.php" />
     <Compile Include="app\models\UserManager.php" />
