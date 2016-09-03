@@ -1,4 +1,4 @@
-<di<div class="page-body" style="height:100%">
+<div class="page-body" style="height:100%">
     <h1>Informacije o predstavi</h1>
     <br/>
 
