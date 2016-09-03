@@ -1,8 +1,8 @@
-<di<div class="page-body" style="height:100%">
+<div class="page-body" style="height:100%">
     <h1>Informacije o predstavi</h1>
     <br/>
 
-    <form  action="<?php echo Config::get('ROOT'); ?>play/play_update" method="post" enctype="multipart/form-data">
+    <form  action="<?php echo Config::get('ROOT'); ?>play/update" method="post" enctype="multipart/form-data">
         <input type="hidden" name="playId" value="<?php echo $data['play']->playId; ?>"/>
         <table style="width: 80%">
             <col width="30%">

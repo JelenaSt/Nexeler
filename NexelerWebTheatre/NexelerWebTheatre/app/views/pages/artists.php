@@ -7,7 +7,9 @@ if (Session::get('user_level') == 2)
 {
 ?>
 	<td>
-		<button class="button" style="float: right;">Dodaj novo</button>
+		<form id="play-form" action="<?php echo Config::get('ROOT'); ?>artist/create_new" method="link">
+			<button class="button" style="float: right;">Dodaj novo</button>  
+		</form>
 	</td>
 	<?php 
 } 
@@ -45,22 +47,30 @@ if ($artists->num_rows > 0)
 				<td></td>
 				<td>
 					<form id="artists-form" action="<?php echo Config::get('ROOT'); ?>artist/artistpage" method="get"">
-						<input type="hidden" name="artistId" value=<?php echo $artistId ?> />
-						<button class="button">Detaljnije</button>  
+						<input type="hidden" name="artistId" value=<?php echo $artistId ;?> />
+						<button class="button" style="float: left;">Detaljnije</button>  
 					</form>
-				</td>
+				
 				<?php
         if (Session::get('user_level') == 2)
         {
                 ?>
-				<td>
-					<button class="button">Izmeni</button>
-				</td>
+				
+					<form id="play-form" action="<?php echo Config::get('ROOT'); ?>artist/edit" method="post"">
+							<input type="hidden" name="artistId" value=<?php echo $artistId ;?> />
+							<button class="button" style="float:left;">Izmeni</button>  
+						</form>
+						
+						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>artist/remove" method="post"">
+							<input type="hidden" name="artistId" value=<?php echo $artistId ;?> />
+							<button class="button" style="float: left;">Obriši</button>  
+						</form>
+				
 				<?php 
         } 
                 ?>
 			
-			
+				</td>
 			</tr>
         </table>
 

@@ -7,7 +7,7 @@ if (Session::get('user_level') == 2)
 {
 ?>
 	<td>
-		<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/create_new_play" method="link">
+		<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/create_new" method="link">
 			<button class="button" style="float: right;">Dodaj novo</button>  
 		</form>
 	</td>
@@ -61,12 +61,12 @@ if ($plays->num_rows > 0)
         if (Session::get('user_level') == 2)
         {
                     ?>
-						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit_play" method="post"">
+						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
 							<input type="hidden" name="playId" value=<?php echo $playId ?> />
 							<button class="button" style="float:left;">Izmeni</button>  
 						</form>
 						
-						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/delete_play" method="post"">
+						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/remove" method="post"">
 							<input type="hidden" name="playId" value=<?php echo $playId ?> />
 							<button class="button" style="float: left;">Obriši</button>  
 						</form>

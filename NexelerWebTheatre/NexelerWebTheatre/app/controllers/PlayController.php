@@ -11,13 +11,13 @@ class PlayController extends Controller
 		exit();
 	}
     
-	public function create_new_play()
+	public function create_new()
 	{
 		$this->View->render('pages/play_new');
 		exit();
 	}
 	
-	public function edit_play()
+	public function edit()
 	{
 		$playId = Request::post('playId');
 		$play= Play::getPlayByID($playId);
@@ -25,7 +25,7 @@ class PlayController extends Controller
         exit();
 	}
 	
-	public function create_new()
+	public function create_new_play()
 	{
 		$playTitle = strip_tags(Request::post('title'));
         $playDescription = strip_tags(Request::post('description'));
@@ -61,7 +61,7 @@ class PlayController extends Controller
 		}
 	}
 	
-	public function play_update()
+	public function update()
 	{
 		$playId = strip_tags(Request::post('playId'));
         $playTitle = strip_tags(Request::post('title'));
@@ -91,6 +91,11 @@ class PlayController extends Controller
 					exit();
 				}
 			}
+			else
+			{
+				Redirect::to('home/preformances');
+				exit();
+			}
         }
 		else
 		{
@@ -99,7 +104,7 @@ class PlayController extends Controller
         }
 	}
 	
-	public function delete_play($args)
+	public function remove($args)
 	{
 		$playId = Request::post('playId');
 		

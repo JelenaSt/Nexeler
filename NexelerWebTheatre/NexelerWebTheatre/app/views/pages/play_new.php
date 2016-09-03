@@ -2,7 +2,7 @@
     <h1>Informacije o predstavi</h1>
     <br/>
 
-    <form  action="<?php echo Config::get('ROOT');?> play/create_new" method="post" enctype="multipart/form-data">
+    <form  action="<?php echo Config::get('ROOT');?> play/create_new_play" method="post" enctype="multipart/form-data">
         <table style="width: 80%">
             <col width="30%">
             <col width="70%">

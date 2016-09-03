@@ -26,7 +26,7 @@
 			if (Session::get('user_level') == 2)
 			{
 		?>
-		<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit_play" method="post"">
+		<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
 			<input type="hidden" name="playId" value=<?php echo $playId ?> />
 			<button class="button" style="float: right;">Izmeni</button>  
 		</form>
