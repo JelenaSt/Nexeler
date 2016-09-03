@@ -6,7 +6,7 @@
 	header("Content-Type: text/html;charset=utf-8");
 	if (Session::get('user_level') == 2)
 	{
-	?>
+    ?>
 	<td>
 		<form id="contact-form" action="<?php echo Config::get('ROOT'); ?>contact/edit" method="link">
 			<button class="button" style="float: right;">Izmeni</button>  
@@ -96,7 +96,7 @@
 		{ ?>
 			<tr>	
 				<th><label>Adresa:</label></th>
-				<td><?php echo $data['contact']->address; ?></td>
+				<td><?php echo nl2br($data['contact']->address); ?></td>
 			</tr>
 
 		<?php

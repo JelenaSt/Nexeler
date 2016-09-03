@@ -29,14 +29,60 @@ class Contact
         $this->phone2 = $args['Phone2'];
         $this->phone3 = $args['Phone3'];
         $this->fax = $args['Fax'];
-        $this->email = $args['E-mail'];
+        $this->email = $args['Email'];
         $this->address = $args['Address'];
     }
 
-    public static function updateContactInformation ()
+	public static function deleteContactInfo()
+	{
+		$database = Database::getInstance()->getConnection();
+		$sql = "DELETE FROM Contact";
+		$query_result = $database->query($sql);
+	}
+	public static function writeContactInfo
+		($president, $vicePresident, $prmanager, $phone1, $phone2, $phone3, $fax, $email, $address)
+	{
+		$database = Database::getInstance()->getConnection();
+		echo "$president".'<br>';
+		echo "$vicePresident".'<br>';
+		echo "$prmanager".'<br>';
+		echo "$phone1".'<br>';
+		
+		$sql = "INSERT INTO contact (`President`, `VicePresident`, `PRManager`, `Phone1`, `Phone2`, `Phone3`, `Fax`, `Email`, `Address`)
+                VALUES ('$president', '$vicePresident', '$prmanager', '$phone1', '$phone2', '$phone3', '$fax', '$email', '$address')";
+		echo "$sql".'<br>';		
+		mysqli_query($database, "set names 'utf8'");
+		$query_result = mysqli_query($database, $sql);
+		
+        print_r($query_result);
+        if ($query_result === TRUE) {
+            return true;
+        }
+        return false;
+	}
+	
+    public static function updateContactInformation 
+		($president, $vicePresident, $prmanager, $phone1, $phone2, $phone3, $fax, $email, $address)
     {
-        
-
+		$database = Database::getInstance()->getConnection();
+		$sql = "DELETE FROM Contact";
+		$query_result = $database->query($sql);
+		
+		if ($query_result === TRUE) 
+		{
+			$sql = "INSERT INTO Contact (`President`, `VicePresident`, `PRManager`, `Phone1`, `Phone2`, `Phone3`, `Fax`, `Email`, `Address`)
+                VALUES ('$president', '$vicePresident', '$prmanager', '$phone1', '$phone2', '$phone3', '$fax', '$email', '$address')";
+            
+			mysqli_query($database, "set names 'utf8'");
+			$query_result = $database->query($sql);
+            
+			print_r($query_result);
+			if ($query_result === TRUE) 
+			{
+				return true;
+			}
+		}
+		return false;
     }
 
     public static function readContactInfo()

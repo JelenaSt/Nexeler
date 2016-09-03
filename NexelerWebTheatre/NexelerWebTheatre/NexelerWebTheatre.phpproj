@@ -47,6 +47,7 @@
     <Compile Include="app\views\pages\artist_edit.php" />
     <Compile Include="app\views\pages\artist_new.php" />
     <Compile Include="app\views\pages\contact.php" />
+    <Compile Include="app\views\pages\contact_edit.php" />
     <Compile Include="app\views\pages\events.php" />
     <Compile Include="app\views\pages\index.php" />
     <Compile Include="app\views\pages\play_details.php" />
