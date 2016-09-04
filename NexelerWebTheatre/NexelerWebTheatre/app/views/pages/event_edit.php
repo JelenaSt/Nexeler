@@ -2,13 +2,15 @@
 <?php
 $event = $data['event'];
 $halls = $data['halls'];
+$plays = $data['plays'];
 ?>
 <div class="page-body" style="height:100%">
     <h1>Informacije o projekciji</h1>
     <br/>
+  
 
-    <form  action="<?php echo Config::get('ROOT'); ?>play/update" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="eventID" value="<?php echo $event->eventID; ?>"/>
+    <form  action="<?php echo Config::get('ROOT'); ?>event/update" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="eventID" value="<?php echo $event->eventId; ?>"/>
         <table style="width: 80%">
             <col width="30%">
             <col width="70%">
@@ -24,10 +26,22 @@ $halls = $data['halls'];
 			<tr>
 				<th><label>Sala:</label></th>
 				<td>
-                    <select name="static_data">
+                    <select name="hall_data">
                         <?php
                         foreach($halls as $hall){?>
                             <option value="<?php echo $hall['hall_id']?>"><?php echo $hall['hall_name']?></option>
+                        <?php } ?>
+                    </select>
+
+				</td>
+			</tr>
+                <tr>
+				<th><label>Predstava:</label></th>
+				<td>
+                    <select name="play_data">
+                        <?php
+                        foreach($plays as $play){?>
+                            <option value="<?php echo $play['ID']?>"><?php echo $play['Title']?></option>
                         <?php } ?>
                     </select>
 

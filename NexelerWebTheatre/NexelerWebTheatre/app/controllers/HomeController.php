@@ -25,26 +25,7 @@ class HomeController extends Controller
         
         $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events)) ;
         exit();
-        
-        //$this->View->render('pages/events',array('events' => $result)) ;
-        //exit();
 
-
-       
-        //$message = "wrong answer";
-        //if($events)
-        //    $message = "smth";
-        //else
-        //    $message = 'false;';
-
-        ////// This is in the PHP file and sends a Javascript alert to the client
-        ////$message = "wrong answer";
-        //echo "<script type='text/javascript'>alert('$message');</script>";
-
-
-        //$events = Event::fetchAllEvents();
-       // $this->View->render('pages/events',array('events' => $events));
-        //exit();
     }
 
     public function preformances()

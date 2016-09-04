@@ -148,7 +148,7 @@ class Session
 
    public static function getInfoFeedback(){
        $infoFeedback = Session::get('info_feedback');
-       Session::set('error_feedback', null);
+       Session::set('info_feedback', null);
        return $infoFeedback;
    }
 

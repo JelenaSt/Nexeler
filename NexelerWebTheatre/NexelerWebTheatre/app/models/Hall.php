@@ -33,7 +33,7 @@ class Hall
         $array=$result->fetch_all(MYSQLI_ASSOC);
         return $array;
     }
-    public static function gettHallById($id)
+    public static function getHallById($id)
     {
         $database = Database::getInstance()->getConnection();
         $sql = "SELECT * FROM halls 
@@ -56,7 +56,7 @@ class Hall
     
     public static function getHallNameByID($hall_id)
     {
-        $hall = self::gettHallById($hall_id);
+        $hall = self::getHallById($hall_id);
         return $hall->hall_name;
     }
 

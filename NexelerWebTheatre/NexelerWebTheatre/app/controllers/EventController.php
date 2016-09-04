@@ -24,14 +24,35 @@ class EventController extends Controller
     
     public function edit()
     {
-        $eventId = Request::post('eventID');
+        $eventId = Request::get('eventID');
       
 		$event= Projection::getEventByID($eventId);
         $halls = Hall::fetchAllHalls();
+        $plays = Play::fetchAllPlays();
         
-		$this->View->render('pages/event_edit',array('event' => $event, 'halls' => $halls));
+		$this->View->render('pages/event_edit',array('event' => $event, 'halls' => $halls, 'plays' => $plays));
 
     }
+
+    public function update()
+	{
+		$eventID = strip_tags(Request::post('eventID'));
+        $event_name = strip_tags(Request::post('event_name'));
+        $event_time = strip_tags(Request::post('event_time'));
+        $hallId = strip_tags(Request::post('hall_data'));
+        $playId = strip_tags(Request::post('play_data'));
+
+		$result = Projection::updateEvent($eventID,$event_name,$event_time,$playId,$hallId);
+		
+        if($result){
+            Redirect::to('event/eventspage');
+            exit();
+        }else{
+            Redirect::to('event/eventspage');
+            exit();
+        }
+	}
+	
     
 }
 

@@ -44,6 +44,26 @@ class Projection
         return false;
     }
 
+    public static function updateEvent($eventID,$event_name,$event_date, $play_id,$hall_id)
+    {
+
+        $database = Database::getInstance()->getConnection();
+        $sql = "UPDATE events SET event_name='$event_name',hall_id='$hall_id',play_id='$play_id'
+				WHERE eventID='$eventID'";
+
+
+        $query_result = mysqli_query($database, $sql);
+
+        if ($query_result === TRUE) {
+            Session::setInfoFeedback("Successfully updated event details!");
+            echo "Successfully updated event details!";
+            return true;
+        }
+
+        Session::setInfoFeedback("ERROR updateding event details!");
+        echo "ERROR updateding event details!";
+        return false;
+    }
 
     /*
      *	Fetch all events
@@ -89,8 +109,10 @@ class Projection
         }
 
         $array = $result->fetch_all(MYSQLI_ASSOC);
-
-        $event = new Projection($array[0]);
-        return $event;
+        if($array){
+            $event = new Projection($array[0]);
+            return $event;
+        }
+        return NULL;
     }
 }
