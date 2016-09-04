@@ -1,34 +1,84 @@
 
-<div class="w3-container" style="margin:20px; padding-bottom:20px;">
-  
- <div  style="text-align:left; width:50%; float:left;" >
-   <h2>Repertoar</h2>
-              <table style="width:90%">
-
+<div class="page-body container" style="padding:5px; margin:auto;">
+    <h1>Repertoar</h1>
+    <div style="width:100%; height:80px;">
+        <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
+    <form action="<?php echo Config::get('ROOT'); ?>event/edit" method="post"">
+        <button class="button" style="float: right;">Dodaj novi</button>
+    </form>
+    <?php endif; ?>
+        </div>
+     <ul>
             <?php 
-            $users = $data['events'];
+            $events = $data['events'];
+            $event_cnt = $data['events_cnt'];
 
-
-            //for ($row = 0; $row < 3; $row++)
-            //{
-            //    echo $users[$row]["event"]." play ".$users[$row]["play"]." and pic id ".$users[$row]["play_picture"];
-            //    echo "<br />";
-            //}
-
-
-
-            print_r($users);
-            foreach ($users as $key => $value) {
-            //   $eventDate = new DateTime($value['event_time']);
-            //   $eventDate = $eventDate->format("F j, Y, g:i");
-            
+            for($i = 0; $i < $event_cnt; $i++){
+               
+                $event = $events[$i];
+                $event_time = new DateTime($event['event_time']);
+                $event_time = $event_time->format('F j, Y, g:i');
+                $playId = $event['play_id'];
+                $play = Play::getPlayByID($playId);
+                $hall_name = Hall::getHallNameByID($event['hall_id']);
+                $picture = Play::getPlayPictureById($playId);
+              
             ?>
-            <!--<tr>
-                <td><?php echo $value['eventID']; ?></td>
-                <td><?php echo $value['event_name']; ?></td>
-                <td><?php echo $eventDate ?></td>
-                <td><button class="button">Detaljnije</button></td>
-            </tr>-->
-            <?php } ?>
-        </table>
-    </div>
+                 <li>
+                     <table>
+                         <tr>
+                            <td>
+                                <label><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $picture ).'" width="200"/>'.'<br>'; ?></label>
+                            </td>
+                             <td>
+                                 <table>
+                                     <tr>
+                                         <td>
+                                             <h2>
+                                            <?php 
+                                            echo $event['event_name'];
+                                            ?>
+                                                 </h2>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td><?php echo $event_time;?></td>
+                                     </tr>
+                                     <tr>
+                                       <td><?php echo 'Sala : &nbsp' . $hall_name ?> </td>
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                             <form  action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
+                                                 <input type="hidden" name="playId" value=<?php echo $playId ?> />
+                                                 <button class="button" style="float: left;">O predstavi</button>
+                                             </form>
+                                             <?php if(Session::get('user_level') == USER_LEVEL):?>
+                                             <form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
+                                                 <input type="hidden" name="playId" value=<?php echo $playId ?> />
+                                                 <button class="button" style="float: left;">REZERVISI</button>
+                                             </form>
+                                             <?php endif;?>
+                                             <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
+                                             <form action="<?php echo Config::get('ROOT'); ?>event/edit" method="post"">
+                                                 <input type="hidden" name="eventID" value="<?php echo $event['eventID'] ?>" />
+                                                 <button class="button" style="float: left;">Izmeni</button>
+                                             </form>
+    <?php endif; ?>
+                                             </td>
+                                     </tr>
+                                 </table>
+                               
+                             </td>
+                         </tr>
+                        
+                     </table>
+      
+                     
+                 </li>
+             
+             <?php }; ?>
+          </ul>
+ </div>
+
+       

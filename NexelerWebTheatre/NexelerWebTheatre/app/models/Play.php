@@ -31,7 +31,7 @@ class Play
         
         $query_result = mysqli_query($database, $sql);
 		
-        print_r($query_result);
+       
         if ($query_result === TRUE) {
             return $playId;
         }

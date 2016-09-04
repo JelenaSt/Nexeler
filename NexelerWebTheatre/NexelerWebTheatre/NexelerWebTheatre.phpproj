@@ -38,8 +38,9 @@
     <Compile Include="app\core\View.php" />
     <Compile Include="app\init.php" />
     <Compile Include="app\models\Artist.php" />
+    <Compile Include="app\models\Contact.php" />
+    <Compile Include="app\models\Hall.php" />
     <Compile Include="app\models\Projection.php" />
-    <Compile Include="app\models\ProjectionManager.php" />
     <Compile Include="app\models\Play.php" />
     <Compile Include="app\models\User.php" />
     <Compile Include="app\models\UserManager.php" />
@@ -51,6 +52,7 @@
     <Compile Include="app\views\pages\contact.php" />
     <Compile Include="app\views\pages\contact_edit.php" />
     <Compile Include="app\views\pages\events.php" />
+    <Compile Include="app\views\pages\event_edit.php" />
     <Compile Include="app\views\pages\index.php" />
     <Compile Include="app\views\pages\play_details.php" />
     <Compile Include="app\views\pages\play_edit.php" />

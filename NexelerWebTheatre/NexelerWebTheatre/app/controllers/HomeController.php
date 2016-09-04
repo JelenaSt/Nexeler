@@ -19,10 +19,11 @@ class HomeController extends Controller
 
     public function events()
     {
-
-        $result = ProjectionManager::fetchTopEvents(3);
+        $count_of_events = 5;
+        $result = Projection::fetchTopEvents($count_of_events);
         
-        $this->View->render('pages/events',array('events' => $result)) ;
+        
+        $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events)) ;
         exit();
         
         //$this->View->render('pages/events',array('events' => $result)) ;

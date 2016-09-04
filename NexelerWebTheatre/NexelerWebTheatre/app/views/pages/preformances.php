@@ -52,7 +52,7 @@ if ($plays->num_rows > 0)
 				<tr>
 					<td></td>
 					<td>
-						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
+						<form  action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
 							<input type="hidden" name="playId" value=<?php echo $playId ?> />
 							<button class="button"style="float: left;">Detaljnije</button>  
 						</form>

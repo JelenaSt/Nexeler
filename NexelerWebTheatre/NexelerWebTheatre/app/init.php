@@ -14,7 +14,9 @@ require_once 'models/User.php';
 require_once 'models/UserManager.php';
 
 require_once 'models/Play.php';
+require_once 'models/Contact.php';
 require_once 'models/Artist.php';
+require_once 'models/Hall.php';
 require_once 'models/Play.php';
 require_once 'models/Projection.php';
 require_once 'models/ProjectionManager.php'

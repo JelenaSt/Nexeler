@@ -13,13 +13,17 @@ class Projection
 
     var $eventId;
     var $eventName;
-    var $event_datetime;
-    var $theatreHallId;
+    var $event_time;
+    var $hall_id;
     var $play_id;
 
-    public function __construct()
+    public function __construct($args)
     {
-        
+        $this->eventId = $args['eventID'];
+        $this->eventName = $args['event_name'];
+        $this->event_time = $args['event_time'];
+        $this->hall_id = $args['hall_id'];
+        $this->play_id = $args['play_id'];
     }
 
 
@@ -57,5 +61,36 @@ class Projection
        
             $array = $result->fetch_all(MYSQLI_ASSOC);
         return $array;
+    }
+
+    public static function fetchTopEvents($count)
+    {
+    	$database = Database::getInstance()->getConnection();
+    	$sql = "SELECT * FROM events  LIMIT " . $count . ';';
+        
+        $result = $database->query($sql);
+        if(!$result){
+            return false;
+        }
+
+        
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+        return $array;
+    }
+
+    public static function getEventByID($event_id)
+    {
+    	$database = Database::getInstance()->getConnection();
+    	$sql = "SELECT * FROM events  WHERE eventID = '$event_id'";
+        
+        $result = $database->query($sql);
+        if(!$result){
+            return false;
+        }
+
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+
+        $event = new Projection($array[0]);
+        return $event;
     }
 }
