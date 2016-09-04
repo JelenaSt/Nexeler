@@ -19,6 +19,7 @@
   <ItemGroup>
     <Compile Include="app\controllers\ArtistController.php" />
     <Compile Include="app\controllers\AdminController.php" />
+    <Compile Include="app\controllers\ContactController.php" />
     <Compile Include="app\controllers\EventController.php" />
     <Compile Include="app\controllers\HomeController.php" />
     <Compile Include="app\controllers\LoginController.php" />
@@ -44,9 +45,16 @@
     <Compile Include="app\models\UserManager.php" />
     <Compile Include="app\views\pages\artists.php" />
     <Compile Include="app\views\pages\artists_new.php" />
+    <Compile Include="app\views\pages\artist_details.php" />
+    <Compile Include="app\views\pages\artist_edit.php" />
+    <Compile Include="app\views\pages\artist_new.php" />
     <Compile Include="app\views\pages\contact.php" />
+    <Compile Include="app\views\pages\contact_edit.php" />
     <Compile Include="app\views\pages\events.php" />
     <Compile Include="app\views\pages\index.php" />
+    <Compile Include="app\views\pages\play_details.php" />
+    <Compile Include="app\views\pages\play_edit.php" />
+    <Compile Include="app\views\pages\play_new.php" />
     <Compile Include="app\views\pages\preformances.php" />
     <Compile Include="app\views\templates\footer.php" />
     <Compile Include="app\views\templates\header.php" />
