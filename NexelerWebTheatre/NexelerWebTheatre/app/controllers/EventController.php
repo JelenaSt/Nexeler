@@ -17,7 +17,16 @@ class EventController extends Controller
         exit();
 
     }
-    
+
+    public function addnew()
+    {
+        $halls = Hall::fetchAllHalls();
+        $plays = Play::fetchAllPlays();
+        
+		$this->View->render('pages/event_new',array('halls' => $halls, 'plays' => $plays));
+        exit();
+    }
+
     public function newevent()
     {
     }
@@ -31,6 +40,7 @@ class EventController extends Controller
         $plays = Play::fetchAllPlays();
         
 		$this->View->render('pages/event_edit',array('event' => $event, 'halls' => $halls, 'plays' => $plays));
+        exit();
 
     }
 

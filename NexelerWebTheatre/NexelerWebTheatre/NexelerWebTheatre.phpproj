@@ -53,6 +53,7 @@
     <Compile Include="app\views\pages\contact_edit.php" />
     <Compile Include="app\views\pages\events.php" />
     <Compile Include="app\views\pages\event_edit.php" />
+    <Compile Include="app\views\pages\event_new.php" />
     <Compile Include="app\views\pages\index.php" />
     <Compile Include="app\views\pages\play_details.php" />
     <Compile Include="app\views\pages\play_edit.php" />

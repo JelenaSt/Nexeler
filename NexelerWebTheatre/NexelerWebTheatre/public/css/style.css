@@ -253,7 +253,7 @@ li{
     float:left;
     margin:0 10px 10px 0;
     width:48%;
-    height:290px;
+    height:300px;
 }
 li:nth-child(even){
     margin-right:10px;

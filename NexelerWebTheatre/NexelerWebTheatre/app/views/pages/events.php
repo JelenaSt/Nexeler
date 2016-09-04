@@ -15,7 +15,7 @@
 
     <div style="width:100%; height:80px;">
         <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
-        <form action="<?php echo Config::get('ROOT'); ?>event/edit" method="post"">
+        <form action="<?php echo Config::get('ROOT'); ?>event/addnew" method="post"">
             <button class="button" style="float: right;">Dodaj novi</button>
         </form>
         <?php endif; ?>
@@ -65,9 +65,15 @@
                                                  <input type="hidden" name="playId" value=<?php echo $playId ?> />
                                                  <button class="button" style="float: left;">O predstavi</button>
                                              </form>
-                                             <?php if(Session::get('user_level') == USER_LEVEL):?>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                               <?php if(Session::get('user_level') == USER_LEVEL):?>
                                              <form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
-                                                 <input type="hidden" name="playId" value=<?php echo $playId ?> />
+                                                 <input type="hidden" name="playId" value=<?php echo $playId ?> /><br />
+                                                 
+                                                 <input type="text" name="numofcards" placeholder="Broj karata:"  />
                                                  <button class="button" style="float: left;">REZERVISI</button>
                                              </form>
                                              <?php endif;?>
@@ -76,8 +82,8 @@
                                                  <input type="hidden" name="eventID" value="<?php echo $event['eventID'] ?>" />
                                                  <button class="button" style="float: left;">IZMENI</button>
                                              </form>
-    <?php endif; ?>
-                                             </td>
+                                            <?php endif; ?>
+                                         </td>
                                      </tr>
                                  </table>
                                

@@ -7,7 +7,6 @@ $plays = $data['plays'];
 <div class="page-body" style="height:100%">
     <h1>Informacije o projekciji</h1>
     <br/>
-  
 
     <form  action="<?php echo Config::get('ROOT'); ?>event/update" method="post" enctype="multipart/form-data">
         <input type="hidden" name="eventID" value="<?php echo $event->eventId; ?>"/>
@@ -23,14 +22,25 @@ $plays = $data['plays'];
                 <td><input type="datetime" name="event_time" value="<?php echo $event->event_time; ?>" /></td>
             </tr>
             <tr>
+
+              </tr>
 			<tr>
 				<th><label>Sala:</label></th>
 				<td>
                     <select name="hall_data">
                         <?php
-                        foreach($halls as $hall){?>
-                            <option value="<?php echo $hall['hall_id']?>"><?php echo $hall['hall_name']?></option>
-                        <?php } ?>
+                        foreach($halls as $hall){
+                            $hall_id = $hall['hall_id'];
+                            $selected = ($hall['hall_id'] == $event->hall_id) ? true : false;
+                            if($selected){
+                            ?>
+                                <option value="<?php echo $hall['hall_id']?>" selected><?php echo $hall['hall_name']?></option>
+                            <?php 
+                            }else{
+                            ?>
+                                <option value="<?php echo $hall['hall_id']?>"><?php echo $hall['hall_name']?></option>
+                            <?php }
+                            } ?>
                     </select>
 
 				</td>
@@ -40,18 +50,25 @@ $plays = $data['plays'];
 				<td>
                     <select name="play_data">
                         <?php
-                        foreach($plays as $play){?>
-                            <option value="<?php echo $play['ID']?>"><?php echo $play['Title']?></option>
-                        <?php } ?>
+                        foreach($plays as $play){
+                            $play_id = $play['ID'];
+                            $selected = ($play_id  == $event->play_id) ? true : false;
+                            if($selected){
+                            ?>
+                            <option value="<?php echo $play['ID']?>" selected><?php echo $play['Title']?></option>
+                            <?php
+                            }else{
+                            ?>
+                            <option value="<?php echo $play['ID']?>" selected><?php echo $play['Title']?></option>
+                            <?php }
+                            } ?>
                     </select>
 
-				</td>
+                </td>
 			</tr>
-			
-                <th><button class="cancel-button" formaction="<?php echo Config::get('ROOT') . 'home/events';?>" >Odustani</button></th>
+                <th><button class="cancel-button" formaction="<?php echo Config::get('ROOT') . 'event/eventspage';?>" >Odustani</button></th>
                 <td><button class="button">Promeni podatke</button></td>
             </tr>
-
         </table>
 
     </form>
