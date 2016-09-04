@@ -7,8 +7,19 @@ class ArtistController extends Controller
      */
 	public function artistpage()
 	{
-		$this->View->render('pages/artist_details');
-		exit();
+		$artistId = Request::get('artistId',true);
+		$artist = Artist::getArtistByID($artistId);
+		
+		if ($artist != null)
+		{
+			$this->View->render('pages/artist_details', array('artist' => $artist));
+			exit();
+		}
+		else
+		{
+			Redirect::to('home/artists');
+			exit();
+		}
 	}
     
 	public function create_new()

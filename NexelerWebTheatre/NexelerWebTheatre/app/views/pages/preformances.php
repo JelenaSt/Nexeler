@@ -1,4 +1,4 @@
-<div class="page-body" style="height:auto">
+<div class="page-body">
 
 <h1>Predstave</h1>
 
@@ -27,61 +27,49 @@ if ($plays->num_rows > 0)
         $picture = Play::getPlayPictureById($playId);
     ?>
 
-			<table style="width: 80%">
-				<col width="30%">
-				<col width="70%">
-				
-				<tr>
-					<th>
-						<label>
-							<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $picture ).'" width="200"/>'.'<br>'; ?>
-						</label>
-					</th>
-					
-					<th>
-						<label>
-							<h2><?php echo "$title "; ?></h2>
-							<?php  
-        $descShort = substr("$description",0,400);
-        echo "$descShort"."...".'<br>'.'<br>' ;	
-                            ?>
-						</label>
-					</th>
-				</tr>
-				
-				<tr>
-					<td></td>
-					<td>
-						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
-							<input type="hidden" name="playId" value=<?php echo $playId ?> />
-							<button class="button"style="float: left;">Detaljnije</button>  
-						</form>
-					
-					<?php
-        if (Session::get('user_level') == 2)
-        {
-                    ?>
-						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
-							<input type="hidden" name="playId" value=<?php echo $playId ?> />
-							<button class="button" style="float:left;">Izmeni</button>  
-						</form>
-						
-						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/remove" method="post"">
-							<input type="hidden" name="playId" value=<?php echo $playId ?> />
-							<button class="button" style="float: left;">Obriši</button>  
-						</form>
-						
-					
-					<?php 
-        } 
-                    ?>
-					</td>
-				</tr>
-			</table>
-
+		<table style="width: 80%">
+			<col width="30%">
+			<col width="70%">
+			
+			<tr>
+				<th><label><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $picture ).'" width="200"/>'.'<br>'; ?></label></th>
+				<th><label><h2><?php echo "$title "; ?></h2>
+					<?php  
+					if (strlen($description) < 400)
+					{				
+						echo "$description".'<br>'.'<br>';	
+					}
+					else
+					{
+						$descShort = substr("$description",0,400);
+						echo "$descShort"."...".'<br>'.'<br>' ;	
+					}?>
+				</label></th>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
+						<input type="hidden" name="playId" value=<?php echo $playId ?> />
+						<button class="button"style="float: left;">Detaljnije</button>  
+					</form>
+				<?php
+				if (Session::get('user_level') == 2)
+				{?>
+					<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
+						<input type="hidden" name="playId" value=<?php echo $playId ?> />
+						<button class="button" style="float:left;">Izmeni</button>  
+					</form>
+					<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/remove" method="post"">
+						<input type="hidden" name="playId" value=<?php echo $playId ?> />
+						<button class="button" style="float: left;">Obri&#154;i</button>  
+					</form>
+				<?php 
+				}?>
+				</td>
+			</tr>
+		</table>
 	<?php 
     }
-}
-
-    ?>
+}?>
 </div>
