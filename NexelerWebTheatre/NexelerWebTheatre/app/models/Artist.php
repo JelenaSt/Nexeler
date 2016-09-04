@@ -83,6 +83,36 @@ class Artist
         }
         return NULL;
     }
+	
+	public static function fetchArtistsByPage($uperLimit, $count)
+	{
+		$database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM artists 
+                ORDER BY Name ASC LIMIT $uperLimit, $count";
+		
+		mysqli_query($database, "set names 'utf8'");
+        $result = mysqli_query($database,$sql);
+		
+		if ($result->num_rows > 0)
+        {
+            return $result;
+        }
+        return NULL;
+	}
+	
+	public static function numberOfArtists()
+	{
+		$database = Database::getInstance()->getConnection();
+        $sql = "SELECT COUNT(*) FROM artists";
+		
+        $result = mysqli_query($database,$sql);
+		
+		$row = mysqli_fetch_row($result); 
+		$totalRecords = $row[0]; 
+		
+		return $totalRecords;
+	}
+	
     
     public static function getArtistByID($artistId)
     {

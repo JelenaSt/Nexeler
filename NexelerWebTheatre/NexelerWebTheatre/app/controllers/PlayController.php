@@ -7,8 +7,20 @@ class PlayController extends Controller
      */
 	public function plays_page()
 	{
-		$this->View->render('pages/play_details');
-		exit();
+		$playId = Request::get('playId',true);
+		$play= Play::getPlayByID($playId);
+		
+		if ($play !=null)
+		{
+			$this->View->render('pages/play_details', array('play' => $play));
+			exit();
+		}
+		else
+		{
+			Redirect::to('home/preformances');
+			exit();
+		}
+		
 	}
     
 	public function create_new()
@@ -21,7 +33,7 @@ class PlayController extends Controller
 	{
 		$playId = Request::post('playId');
 		$play= Play::getPlayByID($playId);
-		$this->View->render('pages/play_edit',array('play' => $play));
+		$this->View->render('pages/play_edit', array('play' => $play));
         exit();
 	}
 	

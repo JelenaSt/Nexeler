@@ -116,6 +116,35 @@ class Play
         }
         return NULL;
     }
+	
+	public static function fetchPlaysByPage($uperLimit, $count) 
+    {
+        $database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM plays
+				ORDER BY Title ASC LIMIT $uperLimit, $count";
+		
+        mysqli_query($database, "set names 'utf8'");
+        $result = mysqli_query($database,$sql);
+		
+        if ($result->num_rows > 0)
+        {
+            return $result;
+        }
+        return NULL;
+    }
+	
+	public static function numberOfPlays()
+	{
+		$database = Database::getInstance()->getConnection();
+        $sql = "SELECT COUNT(*) FROM plays";
+		
+        $result = mysqli_query($database,$sql);
+		
+		$row = mysqli_fetch_row($result); 
+		$totalRecords = $row[0]; 
+		
+		return $totalRecords;
+	}
     
     public static function deletePlayByID($play_id)
     {
