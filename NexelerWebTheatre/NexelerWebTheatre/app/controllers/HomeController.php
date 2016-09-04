@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function events()
     {
-        $count_of_events = 5;
+        $count_of_events = 6;
         $result = Projection::fetchTopEvents($count_of_events);
         
         

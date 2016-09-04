@@ -16,8 +16,8 @@ $plays = $data['plays'];
                 <td><input type="text" name="event_name"/></td>
             </tr>
             <tr>
-                <th><label>Vreme predstave:</label></th>
-                <td><input type="datetime" name="event_time"/></td>
+                <th><label>Datum:</label></th>
+                <td> <input name="date" type="date"/><input name="time" type="time"/></td>
             </tr>
             <tr>
 			<tr>
@@ -40,7 +40,6 @@ $plays = $data['plays'];
                     <select name="play_data">
                         <?php
                         foreach($plays as $play){
-                         
                         ?>
                             <option value="<?php echo $play['ID']?>" selected><?php echo $play['Title']?></option>
                             <?php } ?>

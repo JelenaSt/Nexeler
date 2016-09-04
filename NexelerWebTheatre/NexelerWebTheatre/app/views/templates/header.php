@@ -3,7 +3,7 @@
 <html>
     
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>public/css/style.css" type="text/css" />
 	<title>NEXELER Theatre</title>
 </head>

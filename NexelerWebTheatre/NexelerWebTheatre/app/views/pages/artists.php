@@ -1,4 +1,4 @@
-<div class="page-body">
+<div class="page-body container" style="padding:5px; margin:auto;">
 
 	<h1>Umetnička postava</h1>
 

@@ -14,6 +14,8 @@ class Projection
     var $eventId;
     var $eventName;
     var $event_time;
+    var $date;
+    var $time;
     var $hall_id;
     var $play_id;
 
@@ -22,46 +24,50 @@ class Projection
         $this->eventId = $args['eventID'];
         $this->eventName = $args['event_name'];
         $this->event_time = $args['event_time'];
+        $this->date = $args['date'];
+        $this->time = $args['time'];
         $this->hall_id = $args['hall_id'];
         $this->play_id = $args['play_id'];
     }
 
 
 
-    public static function addNewEvent($event_name,$event_date, $play_id,$hall_id, $event_date)
+    public static function addNewEvent($event_name,$date,$time, $play_id,$hall_id)
     {
 
         $database = Database::getInstance()->getConnection();
-        $sql = "INSERT INTO events (event_name,event_time,hall_id,play_id)
-                    VALUES ('$event_name','$event_date','$hall_id', '$play_id')";
+        $sql = "INSERT INTO events (event_name,date,time,hall_id,play_id)
+                    VALUES ('$event_name','$date','$time','$hall_id', '$play_id')";
 
         $query_result = mysqli_query($database, $sql);
         //print_r($query_result);
         //$count =  mysqli_num_rows($query_result);
         if ($query_result === TRUE) {
+            Session::setInfoFeedback("Uspesno kreiran nov zapis!");
             return true;
         }
+
+        Session::setInfoFeedback("Greska prilikom kreiranja novog zapisa.!");
         return false;
     }
 
-    public static function updateEvent($eventID,$event_name,$event_date, $play_id,$hall_id)
+    public static function updateEvent($eventID,$event_name,$date,$time, $play_id,$hall_id)
     {
 
         $database = Database::getInstance()->getConnection();
-        $sql = "UPDATE events SET event_name='$event_name',hall_id='$hall_id',play_id='$play_id'
+        $sql = "UPDATE events SET event_name='$event_name',date='$date',time='$time',hall_id='$hall_id',play_id='$play_id'
 				WHERE eventID='$eventID'";
 
 
         $query_result = mysqli_query($database, $sql);
 
         if ($query_result === TRUE) {
-            Session::setInfoFeedback("Successfully updated event details!");
-            echo "Successfully updated event details!";
+            Session::setInfoFeedback("Uspesno azurirani detalji projekcije!");
             return true;
         }
 
-        Session::setInfoFeedback("ERROR updateding event details!");
-        echo "ERROR updateding event details!";
+        Session::setInfoFeedback("Greska prilikom azuriranja detalja projekcije!");
+        
         return false;
     }
 

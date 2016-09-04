@@ -6,6 +6,7 @@ $plays = $data['plays'];
 ?>
 <div class="page-body" style="height:100%">
     <h1>Informacije o projekciji</h1>
+   
     <br/>
 
     <form  action="<?php echo Config::get('ROOT'); ?>event/update" method="post" enctype="multipart/form-data">
@@ -17,13 +18,14 @@ $plays = $data['plays'];
                 <th><label>Naslov:</label></th>
                 <td><input type="text" name="event_name" value="<?php echo $event->eventName; ?>"/></td>
             </tr>
-            <tr>
+  <!--          <tr>
                 <th><label>Vreme predstave:</label></th>
                 <td><input type="datetime" name="event_time" value="<?php echo $event->event_time; ?>" /></td>
-            </tr>
+            </tr>-->
             <tr>
-
-              </tr>
+                <th><label>Datum:</label></th>
+                <td> <input name="test_date" type="date" value="<?php echo $event->date; ?>"/><input name="test_time" type="time" value="<?php echo $event->time; ?>"/></td>
+            </tr>
 			<tr>
 				<th><label>Sala:</label></th>
 				<td>
@@ -59,7 +61,7 @@ $plays = $data['plays'];
                             <?php
                             }else{
                             ?>
-                            <option value="<?php echo $play['ID']?>" selected><?php echo $play['Title']?></option>
+                            <option value="<?php echo $play['ID']?>" ><?php echo $play['Title']?></option>
                             <?php }
                             } ?>
                     </select>

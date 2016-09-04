@@ -10,7 +10,7 @@ class EventController extends Controller
      */
     public function eventspage()
     {
-        $count_of_events = 5;
+        $count_of_events = 6;
         $result = Projection::fetchTopEvents($count_of_events);
        
         $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events)) ;
@@ -29,6 +29,16 @@ class EventController extends Controller
 
     public function newevent()
     {
+        $event_name = strip_tags(Request::post('event_name'));
+        $hallId = strip_tags(Request::post('hall_data'));
+        $playId = strip_tags(Request::post('play_data'));
+
+        $date = strip_tags(Request::post('date'));
+        $time =  strip_tags(Request::post('time'));
+
+        Projection::addNewEvent($event_name,$date,$time,$playId,$hallId);
+        Redirect::to('event/eventspage');
+        exit();
     }
     
     public function edit()
@@ -48,11 +58,17 @@ class EventController extends Controller
 	{
 		$eventID = strip_tags(Request::post('eventID'));
         $event_name = strip_tags(Request::post('event_name'));
-        $event_time = strip_tags(Request::post('event_time'));
         $hallId = strip_tags(Request::post('hall_data'));
         $playId = strip_tags(Request::post('play_data'));
 
-		$result = Projection::updateEvent($eventID,$event_name,$event_time,$playId,$hallId);
+        $date = strip_tags(Request::post('test_date'));
+        $time =  strip_tags(Request::post('test_time'));
+        //$event_time = new DateTime($date . ' ' . $time);
+        $date_time =  $date . ' ' . $time . ':00';
+
+        //echo $date_time . PHP_EOL;
+        //echo $event_time;
+        $result = Projection::updateEvent($eventID,$event_name,$date,$time,$playId,$hallId);
 		
         if($result){
             Redirect::to('event/eventspage');

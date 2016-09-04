@@ -28,8 +28,8 @@
             for($i = 0; $i < $event_cnt; $i++){
                
                 $event = $events[$i];
-                $event_time = new DateTime($event['event_time']);
-                $event_time = $event_time->format('F j, Y, g:i');
+                $event_date = new DateTime($event['date'] . ' ' . $event['time'] );
+                $event_date = $event_date->format('d.m, Y, H:i');
                 $playId = $event['play_id'];
                 $play = Play::getPlayByID($playId);
                 $hall_name = Hall::getHallNameByID($event['hall_id']);
@@ -54,7 +54,7 @@
                                          </td>
                                      </tr>
                                      <tr>
-                                         <td><?php echo $event_time;?></td>
+                                         <td><?php echo $event_date . 'h';?></td>
                                      </tr>
                                      <tr>
                                        <td><?php echo 'Sala : &nbsp' . $hall_name ?> </td>
