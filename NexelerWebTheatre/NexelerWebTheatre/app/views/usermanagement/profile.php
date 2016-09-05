@@ -51,10 +51,16 @@
             </table>
          </form>
 
-    <div>
+    <div style="margin: 20px auto;">
         <table style="text-align:center">
+            <col width="10%">
+            <col width="30%">
+            <col width="20%">
+            <col width="20%">
+            <col width="20%">
+            
             <tr>
-                <th>Id rezervacije</th>
+                <th>Id</th>
                 <th>Naziv predstave</th>
                 <th>Datum</th>
                 <th>Vreme</th>
@@ -62,9 +68,10 @@
             </tr>
         <?php
         $reservations = $data['reservations'];
+        $no_reservations = false;
         foreach($reservations as $reservation){
             $event = Projection::getEventByID($reservation['event_id']);
-            
+            $no_reservations = true;
         ?>
              <tr>
                  <td><?php echo $reservation['reservationID']?></td>
@@ -75,11 +82,16 @@
                  <td>
                      <form  action="<?php echo Config::get('ROOT'); ?>reservation/delete" method="get">
                            <input type="hidden" name="reservationID" value="<?php echo $reservation['reservationID']?>"/>
-                         <button class="button">Otkazi rezervaciju</button>
+                         <button class="button button-small">Otkazi rezervaciju</button>
                      </form>
                  </td>
              </tr>
-          <?php }?>
+          <?php }   ?>
              </table>
+        <?php
+         if(!$no_reservations){
+             echo 'Trenutno nema aktivnih rezervacija u bazi podataka za ovog korisnika!! ';
+         }
+          ?>
     </div>
 </div>

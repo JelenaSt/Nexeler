@@ -16,7 +16,7 @@ $plays = $data['plays'];
             <col width="70%">
             <tr>
                 <th><label>Naslov:</label></th>
-                <td><input type="text" name="event_name" value="<?php echo $event->eventName; ?>"/></td>
+                <td><input type="text" name="event_name" style="width:232px;" value="<?php echo $event->eventName; ?>"/></td>
             </tr>
   <!--          <tr>
                 <th><label>Vreme predstave:</label></th>
@@ -24,12 +24,16 @@ $plays = $data['plays'];
             </tr>-->
             <tr>
                 <th><label>Datum:</label></th>
-                <td> <input name="test_date" type="date" value="<?php echo $event->date; ?>"/><input name="test_time" type="time" value="<?php echo $event->time; ?>"/></td>
+                <td> 
+                    <input name="test_date" type="date" value="<?php echo $event->date; ?>"/>
+                    <input name="test_time" type="time" value="<?php echo $event->time; ?>" style="margin-left:10px"/>
+
+                </td>
             </tr>
 			<tr>
 				<th><label>Sala:</label></th>
 				<td>
-                    <select name="hall_data">
+                    <select name="hall_data" style="width:232px;">
                         <?php
                         foreach($halls as $hall){
                             $hall_id = $hall['hall_id'];
@@ -42,7 +46,7 @@ $plays = $data['plays'];
                             ?>
                                 <option value="<?php echo $hall['hall_id']?>"><?php echo $hall['hall_name']?></option>
                             <?php }
-                            } ?>
+                        } ?>
                     </select>
 
 				</td>
@@ -50,7 +54,7 @@ $plays = $data['plays'];
                 <tr>
 				<th><label>Predstava:</label></th>
 				<td>
-                    <select name="play_data">
+                    <select name="play_data" style="width:232px;">
                         <?php
                         foreach($plays as $play){
                             $play_id = $play['ID'];
