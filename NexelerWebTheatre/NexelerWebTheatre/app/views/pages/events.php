@@ -27,6 +27,7 @@
 
             for($i = 0; $i < $event_cnt; $i++){
                
+			    if (empty($events[$i])) continue;
                 $event = $events[$i];
                 $event_date = new DateTime($event['date'] . ' ' . $event['time'] );
                 $event_date = $event_date->format('d.m, Y, H:i');
@@ -97,6 +98,20 @@
              
              <?php }; ?>
           </ul>
+		    
  </div>
-
+ <div class="page-body container" style="padding:10px; margin: auto;">
+ <?php 
+	if ($data['totalPages'] > 0)
+	{
+		$urlForPages = Config::get('ROOT')."home/events";
+		
+		echo '<br>'.'<br>';
+		for ($i=1; $i<=$data['totalPages']; $i++) 
+		{ 
+			echo "<a href=".$urlForPages."?page=".$i."'>".$i."</a>  "; 	
+		}; 
+	}
+	?>	
+ </div>
        

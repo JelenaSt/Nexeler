@@ -103,6 +103,36 @@ class Projection
         $array = $result->fetch_all(MYSQLI_ASSOC);
         return $array;
     }
+	
+	public static function fetchEventsByPage($uperLimit, $count) 
+    {
+        $database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM events
+				ORDER BY Date ASC LIMIT $uperLimit, $count";
+		
+        mysqli_query($database, "set names 'utf8'");
+        $result = $database->query($sql);
+        if(!$result){
+            return false;
+        }
+
+        
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+        return $array;
+    }
+	
+	public static function numberOfEvents()
+	{
+		$database = Database::getInstance()->getConnection();
+        $sql = "SELECT COUNT(*) FROM events";
+		
+        $result = mysqli_query($database,$sql);
+		
+		$row = mysqli_fetch_row($result); 
+		$totalRecords = $row[0]; 
+		
+		return $totalRecords;
+	}
 
     public static function getEventByID($event_id)
     {
