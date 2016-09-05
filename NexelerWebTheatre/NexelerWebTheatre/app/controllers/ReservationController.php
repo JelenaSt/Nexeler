@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-class RegistrationController extends Controller{
+class ReservationController extends Controller{
 
   public function getAllUserReservations(){
     $user_id = Session::get('user_id');

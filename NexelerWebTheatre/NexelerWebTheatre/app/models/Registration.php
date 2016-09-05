@@ -25,15 +25,15 @@
     
     public static function addNewReservation($user_id,$event_id,$num_cards){
         $database = Database::getInstance()->getConnection();
-      $sql = "INSERT INTO reservations VALUES('$user_id','$event_id','$num_cards') "; //dodati redosled kolona
+        $sql = "INSERT INTO reservations (user_id,event_id,num_of_cards) VALUES('$user_id','$event_id','$num_cards') "; //dodati redosled kolona
       
       $result = $database->query($sql);
       
       if($result === TRUE){
-        //dodati poruku u Session
+          Session::setInfoFeedback("Uspesno kreiran nov zapis!");
         return true;
       }else{
-        //dodati poruku u Session
+          Session::setInfoFeedback("Greska prilikom upisa rezervacije.Molim vas pokusajte ponovo kasnije!");
         return false;
       }
     }

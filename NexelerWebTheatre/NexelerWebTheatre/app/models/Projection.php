@@ -40,14 +40,14 @@ class Projection
                     VALUES ('$event_name','$date','$time','$hall_id', '$play_id')";
 
         $query_result = mysqli_query($database, $sql);
-        //print_r($query_result);
+        print_r($query_result);
         //$count =  mysqli_num_rows($query_result);
         if ($query_result === TRUE) {
             Session::setInfoFeedback("Uspesno kreiran nov zapis!");
             return true;
         }
 
-        Session::setInfoFeedback("Greska prilikom kreiranja novog zapisa.!");
+        Session::setInfoFeedback("Greska prilikom kreiranja novog zapisa.!" . mysqli_error($database));
         return false;
     }
 

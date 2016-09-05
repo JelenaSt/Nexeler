@@ -34,7 +34,7 @@ class EventController extends Controller
         $playId = strip_tags(Request::post('play_data'));
 
         $date = strip_tags(Request::post('date'));
-        $time =  strip_tags(Request::post('time'));
+        $time =  strip_tags(Request::post('time')) . ':00';
 
         Projection::addNewEvent($event_name,$date,$time,$playId,$hallId);
         Redirect::to('event/eventspage');
