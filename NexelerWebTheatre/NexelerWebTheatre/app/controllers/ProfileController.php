@@ -14,9 +14,12 @@ class ProfileController extends Controller
     public function profilepage()
     {
         $userid = Session::get('user_id');
+
         if($userid){
             $user = User::getUserById($userid);
-            $this->View->render('usermanagement/profile',array('user' => $user));
+            $reservations = Reservation::getReservationsForUser($userid);
+            
+            $this->View->render('usermanagement/profile',array('user' => $user, 'reservations' => $reservations));
             exit();
         }
        

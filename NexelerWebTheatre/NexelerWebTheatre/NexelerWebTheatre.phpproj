@@ -85,7 +85,7 @@
   <ItemGroup>
     <Content Include="app\config\server.config.php" />
     <Content Include="app\controllers\ReservationController.php" />
-    <Content Include="app\models\Registration.php" />
+    <Content Include="app\models\Reservation.php" />
     <Content Include="public\css\style.css" />
     <Content Include="public\images\footer_bckg.gif" />
     <Content Include="public\images\head_bckg.jpg" />

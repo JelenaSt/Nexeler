@@ -2,18 +2,16 @@
 
 class ReservationController extends Controller{
 
-  public function getAllUserReservations(){
-    $user_id = Session::get('user_id');
-    $reservations = Registration::getAllRegistrations($user_id);
-    //$this->View
-  } 
+
   
-  public function deleteReservation(){
+  public function delete(){
   
-    $reservationID = Request::post('reservationId');
-    $user_id = Session::get('user_id');
+    $reservationID = Request::get('reservationID');
+
     
-    Registration::deleteRegistration($reservationID);
+    Reservation::deleteReservation($reservationID);
+    Redirect::to('profile/profilepage');
+     
   }
   
   
@@ -23,7 +21,9 @@ class ReservationController extends Controller{
     $user_id = Session::get('user_id');
     $num_of_cards = Request::post('num_of_cards');
     
-    $result = Registration::addRegistration($user_id,$eventID,$num_of_cards);
+    $result = Reservation::addNewReservation($user_id,$eventID,$num_of_cards);
+
+    Redirect::to('pages/events');
   }
   
 }

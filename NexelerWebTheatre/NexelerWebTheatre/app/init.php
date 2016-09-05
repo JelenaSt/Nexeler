@@ -19,6 +19,6 @@ require_once 'models/Artist.php';
 require_once 'models/Hall.php';
 require_once 'models/Play.php';
 require_once 'models/Projection.php';
-require_once 'models/ProjectionManager.php'
+require_once 'models/Reservation.php'
 
 ?>

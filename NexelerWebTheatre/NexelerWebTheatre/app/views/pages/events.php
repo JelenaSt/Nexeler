@@ -70,10 +70,10 @@
                                      <tr>
                                          <td>
                                                <?php if(Session::get('user_level') == USER_LEVEL):?>
-                                             <form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
-                                                 <input type="hidden" name="playId" value=<?php echo $playId ?> /><br />
+                                             <form id="play-form" action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"">
+                                                 <input type="hidden" name="event_id" value=<?php echo $event['eventID'] ?> /><br />
                                                  
-                                                 <input type="text" name="numofcards" placeholder="Broj karata:"  />
+                                                 <input type="text" name="num_of_cards" placeholder="Broj karata:"  />
                                                  <button class="button" style="float: left;">REZERVISI</button>
                                              </form>
                                              <?php endif;?>

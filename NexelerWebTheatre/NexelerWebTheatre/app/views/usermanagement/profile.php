@@ -1,9 +1,14 @@
 
-  <?php if(Session::infoFeedbackExists()):?>
-            <div class="message" style="text-align:center;">
-            <?php echo  Session::getInfoFeedback();?>
-            </div>
-        <?php endif;?>  
+<?php if(Session::errorFeedbackExists()):?>
+<div class="message">
+    <?php echo  Session::getErrorFeedback();?>
+</div>
+<?php endif;?>
+<?php if(Session::infoFeedbackExists()):?>
+<div class="message" style="text-align: center;">
+    <?php echo  Session::getInfoFeedback();?>
+</div>
+<?php endif;?>
 
 <div class="page-body" style="height:100%">
     <h1>Korisnicki profil</h1><br />
@@ -45,4 +50,36 @@
                
             </table>
          </form>
+
+    <div>
+        <table style="text-align:center">
+            <tr>
+                <th>Id rezervacije</th>
+                <th>Naziv predstave</th>
+                <th>Datum</th>
+                <th>Vreme</th>
+                <th>Broj rez.karata</th>
+            </tr>
+        <?php
+        $reservations = $data['reservations'];
+        foreach($reservations as $reservation){
+            $event = Projection::getEventByID($reservation['event_id']);
+            
+        ?>
+             <tr>
+                 <td><?php echo $reservation['reservationID']?></td>
+                 <td><?php echo $event->eventName?></td>
+                 <td><?php echo $event->date?></td>
+                  <td><?php echo substr($event->time,0,5)?>h</td>
+                  <td><?php echo $reservation['num_of_cards']?></td>
+                 <td>
+                     <form  action="<?php echo Config::get('ROOT'); ?>reservation/delete" method="get">
+                           <input type="hidden" name="reservationID" value="<?php echo $reservation['reservationID']?>"/>
+                         <button class="button">Otkazi rezervaciju</button>
+                     </form>
+                 </td>
+             </tr>
+          <?php }?>
+             </table>
+    </div>
 </div>
