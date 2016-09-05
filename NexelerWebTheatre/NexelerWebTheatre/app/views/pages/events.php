@@ -73,14 +73,15 @@
                                              <form id="play-form" action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"">
                                                  <input type="hidden" name="event_id" value=<?php echo $event['eventID'] ?> /><br />
                                                  
-                                                 <input type="text" name="num_of_cards" placeholder="Broj karata:"  />
+                                                 <input type="text" name="num_of_cards" placeholder="Broj karata:" style="width:148px" />
                                                  <button class="button" style="float: left;">REZERVISI</button>
                                              </form>
                                              <?php endif;?>
                                              <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
                                              <form action="<?php echo Config::get('ROOT'); ?>event/edit" method="get">
                                                  <input type="hidden" name="eventID" value="<?php echo $event['eventID'] ?>" />
-                                                 <button class="button" style="float: left;">IZMENI</button>
+                                                 <button type="submit" class="button button-small" style="float: left;">IZMENI</button>
+                                                 <button type="submit" class="button button-small" style="float: left; margin-left:10px;" formaction="<?php echo Config::get('ROOT'); ?>event/delete">Obrisi</button>
                                              </form>
                                             <?php endif; ?>
                                          </td>

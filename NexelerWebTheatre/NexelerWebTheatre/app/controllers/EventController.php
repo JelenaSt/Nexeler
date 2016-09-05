@@ -54,6 +54,16 @@ class EventController extends Controller
 
     }
 
+    public function delete()
+    {
+        $eventId = Request::get('eventID');
+        
+		Projection::deleteEventByID($eventId);
+     
+        Redirect::to('event/eventspage');
+
+    }
+
     public function update()
 	{
 		$eventID = strip_tags(Request::post('eventID'));
@@ -63,11 +73,8 @@ class EventController extends Controller
 
         $date = strip_tags(Request::post('test_date'));
         $time =  strip_tags(Request::post('test_time'));
-        //$event_time = new DateTime($date . ' ' . $time);
         $date_time =  $date . ' ' . $time . ':00';
 
-        //echo $date_time . PHP_EOL;
-        //echo $event_time;
         $result = Projection::updateEvent($eventID,$event_name,$date,$time,$playId,$hallId);
 		
         if($result){
