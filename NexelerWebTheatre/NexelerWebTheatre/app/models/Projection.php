@@ -96,6 +96,7 @@ class Projection
         
         $result = $database->query($sql);
         if(!$result){
+            Session::setErrorFeedback("Greska u procesiranju vaseg zahteva. Molimo vas pokusajte kasnije ponovo.");
             return false;
         }
 
@@ -103,6 +104,22 @@ class Projection
         $array = $result->fetch_all(MYSQLI_ASSOC);
         return $array;
     }
+
+    public static function fetchEventsByPage($uperLimit, $count)
+	{
+		$database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM events 
+                ORDER BY eventID DSC LIMIT $uperLimit, $count";
+		
+		mysqli_query($database, "set names 'utf8'");
+        $result = mysqli_query($database,$sql);
+		
+		if ($result->num_rows > 0)
+        {
+            return $result;
+        }
+        return NULL;
+	}
 
     public static function getEventByID($event_id)
     {
@@ -120,5 +137,21 @@ class Projection
             return $event;
         }
         return NULL;
+    }
+
+
+    public static function deleteEventByID($event_id)
+    {
+    	$database = Database::getInstance()->getConnection();
+    	$sql = "DELETE FROM events  WHERE eventID = '$event_id'";
+        
+        $result = $database->query($sql);
+        if(!$result){
+            Session::setErrorFeedback("Greska u procesiranju vaseg zahteva. Molimo vas pokusajte kasnije ponovo.");
+            return false;
+        }
+
+        Session::setErrorFeedback("Dogadjaj je uspesno obrisan sa reperoara.");
+        return true;
     }
 }
