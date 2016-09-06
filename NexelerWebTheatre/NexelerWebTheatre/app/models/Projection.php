@@ -74,7 +74,7 @@ class Projection
     {
 
         $database = Database::getInstance()->getConnection();
-        $sql = "UPDATE events SET reserved=reserved +'$new_reservation' WHERE eventID='$eventID'";
+        $sql = "UPDATE events SET reserved='$new_reservation' WHERE eventID='$eventID'";
 
         $query_result = mysqli_query($database, $sql);
 
