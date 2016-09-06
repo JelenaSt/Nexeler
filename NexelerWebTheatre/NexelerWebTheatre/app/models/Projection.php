@@ -18,7 +18,8 @@ class Projection
     var $time;
     var $hall_id;
     var $play_id;
-
+    var $reserved;
+    
     public function __construct($args)
     {
         $this->eventId = $args['eventID'];
@@ -28,9 +29,8 @@ class Projection
         $this->time = $args['time'];
         $this->hall_id = $args['hall_id'];
         $this->play_id = $args['play_id'];
+        $this->reserved = $args['reserved'];
     }
-
-
 
     public static function addNewEvent($event_name,$date,$time, $play_id,$hall_id)
     {
@@ -58,7 +58,6 @@ class Projection
         $sql = "UPDATE events SET event_name='$event_name',date='$date',time='$time',hall_id='$hall_id',play_id='$play_id'
 				WHERE eventID='$eventID'";
 
-
         $query_result = mysqli_query($database, $sql);
 
         if ($query_result === TRUE) {
@@ -68,6 +67,21 @@ class Projection
 
         Session::setInfoFeedback("Greska prilikom azuriranja detalja projekcije!");
         
+        return false;
+    }
+    
+     public static function updateEventReservedCnt($eventID,$new_reservation)
+    {
+
+        $database = Database::getInstance()->getConnection();
+        $sql = "UPDATE events SET reserved=reserved +'$new_reservation' WHERE eventID='$eventID'";
+
+        $query_result = mysqli_query($database, $sql);
+
+        if ($query_result === TRUE) {
+            return true;
+        }
+
         return false;
     }
 
@@ -85,7 +99,7 @@ class Projection
         }
 
        
-            $array = $result->fetch_all(MYSQLI_ASSOC);
+        $array = $result->fetch_all(MYSQLI_ASSOC);
         return $array;
     }
 
@@ -100,34 +114,33 @@ class Projection
             return false;
         }
 
-        
         $array = $result->fetch_all(MYSQLI_ASSOC);
         return $array;
     }
 	
-	public static function fetchEventsByPage($uperLimit, $count) 
-    {
-        $database = Database::getInstance()->getConnection();
-        $sql = "SELECT * FROM events
-				ORDER BY Date ASC LIMIT $uperLimit, $count";
-		
-        mysqli_query($database, "set names 'utf8'");
-        $result = $database->query($sql);
-        if(!$result){
-            return false;
-        }
-
-        
-        $array = $result->fetch_all(MYSQLI_ASSOC);
-        return $array;
-    }
+	 public static function fetchEventsByPage($uperLimit, $count) 
+	 {
+	        $database = Database::getInstance()->getConnection();
+	        $sql = "SELECT * FROM events
+					ORDER BY Date ASC LIMIT $uperLimit, $count";
+			
+	        mysqli_query($database, "set names 'utf8'");
+	        $result = $database->query($sql);
+	        if(!$result){
+	       	    Session::setErrorFeedback("Greska u procesiranju vaseg zahteva. Molimo vas pokusajte kasnije ponovo.");
+	            return false;
+	        }
+	
+	        $array = $result->fetch_all(MYSQLI_ASSOC);
+	        return $array;
+    	}
 	
 	public static function numberOfEvents()
 	{
 		$database = Database::getInstance()->getConnection();
-        $sql = "SELECT COUNT(*) FROM events";
+        	$sql = "SELECT COUNT(*) FROM events";
 		
-        $result = mysqli_query($database,$sql);
+        	$result = mysqli_query($database,$sql);
 		
 		$row = mysqli_fetch_row($result); 
 		$totalRecords = $row[0]; 
