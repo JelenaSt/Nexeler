@@ -27,15 +27,16 @@
       $result = $database->query($sql);
 
       if(!$result){
+          Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
           return false;
       }
 
-      $array=$result->fetch_all(MYSQLI_ASSOC);
-
+      $array = $result->fetch_all(MYSQLI_ASSOC);
       return $array;
     }
     
     public static function addNewReservation($user_id,$event_id,$num_cards){
+      
         $database = Database::getInstance()->getConnection();
         $sql = "INSERT INTO reservations (user_id,event_id,num_of_cards) VALUES('$user_id','$event_id','$num_cards') "; //dodati redosled kolona
       
