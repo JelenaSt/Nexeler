@@ -94,6 +94,7 @@
     <Content Include="public\images\picture.jpg" />
     <Content Include="public\images\sidebar_bckg.gif" />
     <Content Include="public\images\splitter.gif" />
+    <Content Include="public\images\theatre_picture.jpg" />
     <Content Include="public\images\umbrella.gif" />
   </ItemGroup>
 </Project>

@@ -148,22 +148,6 @@ class Projection
 		return $totalRecords;
 	}
 
-    public static function fetchEventsByPage($uperLimit, $count)
-	{
-		$database = Database::getInstance()->getConnection();
-        $sql = "SELECT * FROM events 
-                ORDER BY eventID DSC LIMIT $uperLimit, $count";
-		
-		mysqli_query($database, "set names 'utf8'");
-        $result = mysqli_query($database,$sql);
-		
-		if ($result->num_rows > 0)
-        {
-            return $result;
-        }
-        return NULL;
-	}
-
     public static function getEventByID($event_id)
     {
     	$database = Database::getInstance()->getConnection();
