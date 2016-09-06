@@ -36,19 +36,47 @@
     }
     
     public static function addNewReservation($user_id,$event_id,$num_cards){
+       /**
+        * Not tested yet, pisano napamet
+    */
+    
+      $result = self::isReservationPossible($event_id,$num_cards);
+      if(!result){
+        return false;
+      }
+   
+    $database = Database::getInstance()->getConnection();
+   
+    $sql = "INSERT INTO reservations (user_id,event_id,num_of_cards) VALUES('$user_id','$event_id','$num_cards') "; //dodati redosled kolona  
+    $result = $database->query($sql);
       
-        $database = Database::getInstance()->getConnection();
-        $sql = "INSERT INTO reservations (user_id,event_id,num_of_cards) VALUES('$user_id','$event_id','$num_cards') "; //dodati redosled kolona
-      
-        $result = $database->query($sql);
-      
-          if($result === TRUE){
-              Session::setInfoFeedback("Uspesno kreiran nov zapis!");
+    if($result === TRUE){
+            
+            Session::setInfoFeedback("Uspesno kreiran nov zapis!");
             return true;
           }else{
               Session::setErrorFeedback("Greska prilikom upisa rezervacije.Molim vas pokusajte ponovo kasnije!");
             return false;
           }
+    }
+    public static function isReservationPossible($event_id,$num_cards)
+    {
+
+        $event = Projection::getEventById($event_id);
+        $hall = Hall::getByID($event->hall_id);
+        
+        if($event->reserved + $num_cards <= $hall->capacity){
+          
+          $event->reserved = $event->reserved + $num_cards;
+          $result = updateEventReservedCnt($event->eventID,$event->reserved);
+        
+          if($result === TRUE){
+            return true;
+          }else{
+            Session::setInfoFeedback("Rezervacija zahtevanog broja karata nije moguca.");
+            return false;
+          } 
+        }
     }
 
     public static function deleteReservation($reservationID){
