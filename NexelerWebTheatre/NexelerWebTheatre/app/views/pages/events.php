@@ -73,7 +73,13 @@
                                                <?php if(Session::get('user_level') == USER_LEVEL):?>
                                              <form id="play-form" action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"">
                                                  <input type="hidden" name="event_id" value=<?php echo $event['eventID'] ?> /><br />
-                                                 
+                                                 <select name="num_cards" style="width:50px">
+                                                 	<option value="1" selected>1</option>
+                                                 	<option value="2" >5</option>
+                                                 	<option value="3" >5</option>
+                                                 	<option value="4" >5</option>
+                                                 	<option value="5" >5</option>
+                                                 </select>
                                                  <input type="text" name="num_of_cards" placeholder="Broj karata:" style="width:148px" />
                                                  <button class="button" style="float: left;">REZERVISI</button>
                                              </form>
