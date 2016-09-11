@@ -3,12 +3,15 @@
 <html>
     
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type"     content="text/html;     charset=utf-8">
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>public/css/style.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<title>NEXELER Theatre</title>
 </head>
 <body>
     <div id="header">
+      
+
         <div id="menu">
             <div id="menu_list"> 
                 <a href="<?php echo Config::get('ROOT'); ?>home/index">Pocetna</a>

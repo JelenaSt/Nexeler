@@ -186,10 +186,7 @@ class UserManager
      */
     public static function validateUserName($user_name)
     {
-        if (empty($user_name)) {
-            Session::setErrorFeedback("Polje: korisnicko ime je prazno. Molimo popunite sva zahtevana polja.");
-            return false;
-        }
+       
         // if username is too short (2), too long (64) or does not fit the pattern
         if (!preg_match('/^[a-zA-Z0-9]{2,64}$/', $user_name)) {
             Session::setErrorFeedback("Korisnicko ime je krace od 2 slova ili sadrzi nedozvoljene karaktere.");
@@ -205,10 +202,7 @@ class UserManager
      */
     public static function validateUserEmail($user_email)
     {
-        if (empty($user_email)) {
-            Session::setErrorFeedback("Polje: email je prazno. Molimo popunite sva zahtevana polja.");
-            return false;
-        }
+       
        
         // validate the email with PHP's internal filter
         if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
@@ -226,10 +220,7 @@ class UserManager
      */
     public static function validateUserPassword($password, $password_repeat)
     {
-        if (empty($password) OR empty($password_repeat)) {
-            Session::setErrorFeedback("Polje: sifra ili ponovljena sifra je prazno. Molimo popunite sva zahtevana polja.");
-            return false;
-        }
+       
         if ($password !== $password_repeat) {
             Session::setErrorFeedback("Vrednost polja za sifru se ne poklapaju. Popunite ispravno polja i pokusajte ponovo!");
             return false;
@@ -239,6 +230,15 @@ class UserManager
             return false;
         }
         return true;
+    }
+
+    public static function checkUsernameAvailability($username){
+        
+        $user = User::getUserDataByUsername($username);
+
+        if(!$user)
+            return false;
+        else return true;
     }
     
 

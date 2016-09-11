@@ -23,6 +23,7 @@
     <Compile Include="app\controllers\EventController.php" />
     <Compile Include="app\controllers\HomeController.php" />
     <Compile Include="app\controllers\LoginController.php" />
+    <Compile Include="app\controllers\ModeratorController.php" />
     <Compile Include="app\controllers\PlayController.php" />
     <Compile Include="app\controllers\ProfileController.php" />
     <Compile Include="app\controllers\RegisterController.php" />
@@ -63,6 +64,7 @@
     <Compile Include="app\views\templates\header.php" />
     <Compile Include="app\views\usermanagement\admin_profile.php" />
     <Compile Include="app\views\usermanagement\login.php" />
+    <Compile Include="app\views\usermanagement\moderator_profile.php" />
     <Compile Include="app\views\usermanagement\profile.php" />
     <Compile Include="app\views\usermanagement\profile_edit.php" />
     <Compile Include="app\views\usermanagement\register.php" />
@@ -81,6 +83,7 @@
     <Folder Include="public\" />
     <Folder Include="public\css\" />
     <Folder Include="public\images\" />
+    <Folder Include="public\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\config\server.config.php" />
@@ -96,5 +99,6 @@
     <Content Include="public\images\splitter.gif" />
     <Content Include="public\images\theatre_picture.jpg" />
     <Content Include="public\images\umbrella.gif" />
+    <Content Include="public\js\registration.js" />
   </ItemGroup>
 </Project>

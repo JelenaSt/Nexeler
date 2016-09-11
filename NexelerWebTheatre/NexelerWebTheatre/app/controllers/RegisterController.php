@@ -12,6 +12,7 @@ class RegisterController extends Controller
 {
     public function registerpage()
     {
+      
         $this->View->render('usermanagement/register');
         exit();
     }
@@ -19,6 +20,9 @@ class RegisterController extends Controller
 
     public function register()
     {
+        //$message = "correct answer";
+        //echo "<script type='text/javascript'>alert('$message');</script>";
+
         $name = strip_tags(Request::post('name'));
         $last_name = strip_tags(Request::post('last_name'));
         $user_name = strip_tags(Request::post('user_name'));
@@ -35,7 +39,20 @@ class RegisterController extends Controller
             Redirect::to('register/registerpage');
             exit();
         }
-        
     }
+
+    public function checkUsername(){
+
+        $user_name = strip_tags(Request::post('username'));
+        $result =  UserManager::checkUsernameAvailability($user_name);
+
+        if($result){
+            echo "NOT AVAILABLE";
+        }
+        else{
+            echo "AVAILABLE";
+        }
+    }
+
 
 }
