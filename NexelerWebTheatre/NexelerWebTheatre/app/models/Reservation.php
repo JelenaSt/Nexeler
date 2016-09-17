@@ -13,6 +13,27 @@
       $this->card_num = $args['card_num'];
     }
     
+    public static function fetchAllReservations(){
+        
+        $date_time = new DateTime();
+        $date = $date_time->format('Y-m-d');
+
+        $database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM reservations 
+                INNER JOIN events 
+                ON reservations.event_id=events.eventID 
+                WHERE events.date > '$date';";
+        
+        $result = $database->query($sql);
+
+        if(!$result){
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+            return false;
+        }
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+        return $array;
+    }
+
     public static function getReservationsForUser($user_id){
     
       $date_time = new DateTime();
@@ -33,6 +54,28 @@
 
       $array = $result->fetch_all(MYSQLI_ASSOC);
       return $array;
+    }
+
+    public static function getReservationsForEvent($event_id){
+        
+        $date_time = new DateTime();
+        $date = $date_time->format('Y-m-d');
+
+        $database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM reservations 
+                INNER JOIN events 
+                ON reservations.event_id=events.eventID 
+                WHERE reservations.event_id='$event_id' AND events.date > '$date';";
+        
+        $result = $database->query($sql);
+
+        if(!$result){
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+            return false;
+        }
+
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+        return $array;
     }
     
     public static function getReservationById($reservation_id){

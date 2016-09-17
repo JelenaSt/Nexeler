@@ -36,8 +36,8 @@ class HomeController extends Controller
 
     public function preformances()
     {
-        $page=1; 
-        if (isset($_GET["page"])) $page = Request::get('page');
+       
+        $page = Request::get('page') ? Request::get('page') : 1;
 		
 		$playsByPage = 2;
 		$startFrom = ($page - 1) * $playsByPage;
@@ -47,7 +47,7 @@ class HomeController extends Controller
 		
 		$totalPages = ceil($numberOfPlays/$playsByPage); 
 		
-        $this->View->render('pages/preformances', array('plays' => $plays, 'totalPages' => $totalPages));
+        $this->View->render('pages/preformances', array('plays' => $plays, 'totalPages' => $totalPages, 'curr_page' => $page));
         exit();
     }
 
@@ -64,7 +64,7 @@ class HomeController extends Controller
 		
 		$totalPages = ceil($numberOfArtists/$artistsByPage); 
 		
-        $this->View->render('pages/artists', array('artists' => $artists, 'totalPages' => $totalPages));
+        $this->View->render('pages/artists', array('artists' => $artists, 'totalPages' => $totalPages, 'curr_page' => $page));
         exit();
     }
 

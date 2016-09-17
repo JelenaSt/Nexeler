@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/events.js"></script>
+<script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/reservation.js"></script>
 
 
 <div class="page-body container" style="padding:5px; margin:auto;">
@@ -123,7 +123,7 @@
             if($curr_page == $i){
                 echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><strong>'.$i.'</strong></a>'; 
             }else{
-                echo '<a href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>';  
+                echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>';  
             }
 				
 		}; 

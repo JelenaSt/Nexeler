@@ -1,4 +1,4 @@
-<div class="page-body" style="height:100%">
+<div class="page-body container" style="padding:5px; margin:auto;">
 
     <h1>Kontakt informacije:</h1>
 
@@ -7,11 +7,11 @@
 	if (Session::get('user_level') == 2)
 	{
     ?>
-	<td>
+	<div style="width:100%; height:80px;">
 		<form id="contact-form" action="<?php echo Config::get('ROOT'); ?>contact/edit" method="link">
 			<button class="button" style="float: right;">Izmeni</button>  
 		</form>
-	</td>
+	</div>
 	<?php 
 	} ?>
 	

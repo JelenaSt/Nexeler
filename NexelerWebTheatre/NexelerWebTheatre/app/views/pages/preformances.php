@@ -5,12 +5,12 @@
 	<?php
 	if (Session::get('user_level') == 2)
 	{
-	?>
-		<td>
-			<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/create_new" method="link">
+    ?>
+		<div style="width:100%; height:80px;">
+			<form id="play-new-form" action="<?php echo Config::get('ROOT'); ?>play/create_new" method="link">
 				<button class="button" style="float: right;">Dodaj novo</button>  
 			</form>
-		</td>
+		</div>
 		<?php 
 	} 
 
@@ -49,14 +49,14 @@
 					<td>
 						<form  action="<?php echo Config::get('ROOT'); ?>play/plays_page" method="get"">
 							<input type="hidden" name="playId" value=<?php echo $playId ?> />
-							<button class="button"style="float: left;">Detaljnije</button>  
+							<button class="button"style="float: left;margin-right:5px">Detaljnije</button>  
 						</form>
 					<?php
 					if (Session::get('user_level') == 2)
 					{?>
 						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/edit" method="post"">
 							<input type="hidden" name="playId" value=<?php echo $playId ?> />
-							<button class="button" style="float:left;">Izmeni</button>  
+							<button class="button" style="float:left;margin-right:5px">Izmeni</button>  
 						</form>
 						<form id="play-form" action="<?php echo Config::get('ROOT'); ?>play/remove" method="post"">
 							<input type="hidden" name="playId" value=<?php echo $playId ?> />
@@ -73,11 +73,15 @@
 	if ($data['totalPages'] > 0)
 	{
 		$urlForPages = Config::get('ROOT')."home/preformances";
-		
+		$curr_page = $data['curr_page'];
 		echo '<br>'.'<br>';
 		for ($i=1; $i<=$data['totalPages']; $i++) 
 		{ 
-			echo "<a href=".$urlForPages."?page=".$i."'>".$i."</a> "; 	
+			if($curr_page == $i){
+                echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><strong>'.$i.'</strong></a>'; 
+            }else{
+                echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>';  
+            }
 		}; 
 	}
 	

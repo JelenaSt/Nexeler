@@ -144,6 +144,7 @@
     <Content Include="public\jquery\jquery-ui-1.12.1\package.json" />
     <Content Include="public\js\common.js" />
     <Content Include="public\js\events.js" />
+    <Content Include="public\js\moderator.js" />
     <Content Include="public\js\registration.js" />
     <Content Include="public\js\reservation.js" />
   </ItemGroup>

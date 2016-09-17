@@ -5,12 +5,12 @@
 	<?php
 	if (Session::get('user_level') == 2)
 	{
-	?>
-		<td>
-			<form id="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/create_new" method="link">
+    ?>
+		<div style="width:100%; height:80px;">
+			<form id="artist-new-form" action="<?php echo Config::get('ROOT'); ?>artist/create_new" method="link">
 				<button class="button" style="float: right;">Dodaj novo</button>  
 			</form>
-		</td>
+		</div>
 		<?php 
 	} 
 
@@ -47,20 +47,20 @@
 				<tr>
 					<td></td>
 					<td>
-						<form id="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/artistpage" method="get"">
-							<input type="hidden" name="artistId" value=<?php echo $artistId ;?> />
-							<button class="button" style="float: left;">Detaljnije</button>  
+						<form class="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/artistpage" method="get"">
+							<input type="hidden" name="artistId" value="<?php echo $artistId ;?>" />
+							<button class="button" style="float: left; margin-right:5px">Detaljnije</button>  
 						</form>
 					<?php
 					if (Session::get('user_level') == 2)
 					{?>
-						<form id="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/edit" method="post"">
-							<input type="hidden" name="artistId" value=<?php echo $artistId ;?> />
-							<button class="button" style="float:left;">Izmeni</button>  
+						<form class="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/edit" method="post"">
+							<input type="hidden" name="artistId" value="<?php echo $artistId ;?>" />
+							<button class="button" style="float:left;margin-right:5px">Izmeni</button>  
 						</form>
 							
-						<form id="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/remove" method="post"">
-							<input type="hidden" name="artistId" value=<?php echo $artistId ;?> />
+						<form class="artist-form" action="<?php echo Config::get('ROOT'); ?>artist/remove" method="post"">
+							<input type="hidden" name="artistId" value="<?php echo $artistId ;?>" />
 							<button class="button" style="float: left;">Obri&#154;i</button>  
 						</form>
 					<?php 
@@ -75,11 +75,15 @@
 	if ($data['totalPages'] > 0)
 	{
 		$urlForPages = Config::get('ROOT')."home/artists";
-		
+		$curr_page = $data['curr_page'];
 		echo '<br>'.'<br>';
 		for ($i=1; $i<=$data['totalPages']; $i++) 
 		{ 
-			echo "<a href=".$urlForPages."?page=".$i."'>".$i."</a> "; 	
+            if($curr_page == $i){
+                echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><strong>'.$i.'</strong></a>'; 
+            }else{
+                echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>';  
+            }
 		}; 
 	}
 
