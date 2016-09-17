@@ -29,7 +29,7 @@ class Projection
         $this->time = $args['time'];
         $this->hall_id = $args['hall_id'];
         $this->play_id = $args['play_id'];
-        $this->reserved = $args['reserved'];
+        //$this->reserved = $args['reserved'];
     }
 
     public static function addNewEvent($event_name,$date,$time, $play_id,$hall_id)

@@ -19,8 +19,8 @@ class HomeController extends Controller
 
     public function events()
     {
-		$page=1; 
-        if (isset($_GET["page"])) $page = Request::get('page');
+		//$page=1; 
+        $page = Request::get('page') ? Request::get('page') : 1;
 		
         $count_of_events = 4;
 		$startFrom = ($page - 1) * $count_of_events;
@@ -30,7 +30,7 @@ class HomeController extends Controller
 		
         $totalPages = ceil($numberOfEvents/$count_of_events);
         
-        $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events, 'totalPages' => $totalPages)) ;
+        $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events, 'totalPages' => $totalPages, 'curr_page' => $page)) ;
         exit();
     }
 

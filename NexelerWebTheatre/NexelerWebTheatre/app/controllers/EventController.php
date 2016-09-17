@@ -10,10 +10,18 @@ class EventController extends Controller
      */
     public function eventspage()
     {
-        $count_of_events = 6;
-        $result = Projection::fetchTopEvents($count_of_events);
-       
-        $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events)) ;
+        //$page=1; 
+        $page = Request::get('page') ? Request::get('page') : 1;
+		
+        $count_of_events = 4;
+		$startFrom = ($page - 1) * $count_of_events;
+		
+		$result = Projection::fetchEventsByPage($startFrom, $count_of_events);
+        $numberOfEvents = Projection::numberOfEvents();
+		
+        $totalPages = ceil($numberOfEvents/$count_of_events);
+        
+        $this->View->render('pages/events',array('events' => $result, 'events_cnt' => $count_of_events, 'totalPages' => $totalPages, 'curr_page' => $page)) ;
         exit();
 
     }

@@ -35,15 +35,36 @@
       return $array;
     }
     
+    public static function getReservationById($reservation_id){
+        
+        $date_time = new DateTime();
+        $date = $date_time->format('Y-m-d');
+
+        $database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM reservations 
+                WHERE reservationID='$reservation_id'";
+        
+        $result = $database->query($sql);
+
+        if(!$result){
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+            return false;
+        }
+
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+        return $array;
+    }
+    
+
     public static function addNewReservation($user_id,$event_id,$num_cards){
        /**
         * Not tested yet, pisano napamet
-    */
+        */
     
-      $result = self::isReservationPossible($event_id,$num_cards);
-      if(!result){
-        return false;
-      }
+      //$result = self::isReservationPossible($event_id,$num_cards);
+      //if(!result){ 
+      //  return false;
+      //}
    
     $database = Database::getInstance()->getConnection();
    
@@ -51,19 +72,20 @@
     $result = $database->query($sql);
       
     if($result === TRUE){
-            
-            Session::setInfoFeedback("Uspesno kreiran nov zapis!");
-            return true;
+
+            return $database->insert_id;
           }else{
               Session::setErrorFeedback("Greska prilikom upisa rezervacije.Molim vas pokusajte ponovo kasnije!");
             return false;
           }
     }
+
+
     public static function isReservationPossible($event_id,$num_cards)
     {
 
         $event = Projection::getEventById($event_id);
-        $hall = Hall::getByID($event->hall_id);
+        $hall = Hall::getHallById($event->hall_id);
         
         if($event->reserved + $num_cards <= $hall->capacity){
           
@@ -85,7 +107,7 @@
     	
         $query_result = $database->query($sql);
         if ($query_result === TRUE) {
-            Session::setInfoFeedback("Uspesno otkazana rezervacija!");
+            Session::setInfoFeedback("Uspesno otkazana rezervacija broj '$reservationID'!" );
             return true;
         }
 

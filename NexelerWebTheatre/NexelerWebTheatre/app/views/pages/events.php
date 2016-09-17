@@ -1,7 +1,9 @@
+<script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/events.js"></script>
+
 
 <div class="page-body container" style="padding:5px; margin:auto;">
     <h1>Repertoar</h1>
-    
+   
         <?php if(Session::errorFeedbackExists()):?>
         <div class="message">
             <?php echo  Session::getErrorFeedback();?>
@@ -15,12 +17,14 @@
 
     <div style="width:100%; height:80px;">
         <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
-        <form action="<?php echo Config::get('ROOT'); ?>event/addnew" method="post"">
+        <form action="<?php echo Config::get('ROOT'); ?>event/addnew" method="post">
             <button class="button" style="float: right;">Dodaj novi</button>
         </form>
         <?php endif; ?>
         </div>
-     <ul>
+   	   
+  
+     <ul id="events_list">
             <?php 
             $events = $data['events'];
             $event_cnt = $data['events_cnt'];
@@ -71,9 +75,9 @@
                                      <tr>
                                          <td>
                                                <?php if(Session::get('user_level') == USER_LEVEL):?>
-                                             <form id="play-form" action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"">
+                                             <!--<form id="reservation-form">
                                                  <input type="hidden" name="event_id" value=<?php echo $event['eventID'] ?> /><br />
-                                                 <select name="num_cards" style="width:50px">
+                                                <select name="num_cards" style="width:50px">
                                                  	<option value="1" selected>1</option>
                                                  	<option value="2" >5</option>
                                                  	<option value="3" >5</option>
@@ -81,15 +85,17 @@
                                                  	<option value="5" >5</option>
                                                  </select>
                                                  <input type="text" name="num_of_cards" placeholder="Broj karata:" style="width:148px" />
-                                                 <button class="button" style="float: left;">REZERVISI</button>
-                                             </form>
+                                                 <button id="reserveButton" class="button" style="float: left;" onclick="OnReserveButton()">REZERVISI</button>
+                                             </form>-->
+                                              <button id="reserveButton" class="button" style="float: left;" onclick="OnReserveButton(<?php echo $event['eventID'] ?>)">REZERVISI</button>
                                              <?php endif;?>
                                              <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
                                              <form action="<?php echo Config::get('ROOT'); ?>event/edit" method="get">
                                                  <input type="hidden" name="eventID" value="<?php echo $event['eventID'] ?>" />
                                                  <button type="submit" class="button button-small" style="float: left;">IZMENI</button>
-                                                 <button type="submit" class="button button-small" style="float: left; margin-left:10px;" formaction="<?php echo Config::get('ROOT'); ?>event/delete">Obrisi</button>
                                              </form>
+                                              <button class="button button-small" style="float: left; margin-left:10px;"   onclick="OpenConfirmationDialog(<?php echo $event['eventID'] . ',\'' . $event['event_name'] . '\'' ?>)">Obrisi</button>
+
                                             <?php endif; ?>
                                          </td>
                                      </tr>
@@ -99,8 +105,6 @@
                          </tr>
                         
                      </table>
-      
-                     
                  </li>
              
              <?php }; ?>
@@ -112,13 +116,46 @@
 	if ($data['totalPages'] > 0)
 	{
 		$urlForPages = Config::get('ROOT')."home/events";
-		
+		$curr_page = $data['curr_page'];
 		echo '<br>'.'<br>';
 		for ($i=1; $i<=$data['totalPages']; $i++) 
 		{ 
-			echo "<a href=".$urlForPages."?page=".$i."'>".$i."</a>  "; 	
+            if($curr_page == $i){
+                echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><strong>'.$i.'</strong></a>'; 
+            }else{
+                echo '<a href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>'; 
+               // echo "<div style='margin:2px;'><a href=".$urlForPages."?page=".$i."'>".$i."</a><div>  ";  
+            }
+				
 		}; 
 	}
-	?>	
+ ?>	
  </div>
+
+<div id="reserveDialog" style="display:none;">
+    Rezervišite karte za vašu predstavu:
+    <form id="reservation-form" action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"><!--  action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"-->
+        <input id="event_id" type="hidden" name="event_id" value=""/><br />
+        <select id="num_of_cards" name="num_of_cards" style="width:100%">
+            <option value="1" selected>1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>
+        </select>
+        <label id="result-status"></label>
+        <button id="reserve_tickets_btn" style="float: left;"  class="button" >REZERVISI</button> 
+    </form>
+</div>
+
+<div id="event-delete-confirm" style="display:none;">
+  <div><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+      Molimo Vas  potvrdite brisanje projekcije <label id="del_event_name"></label>
+      sa repertoara!
+      
+      <form id="del_event" action="<?php echo Config::get('ROOT'); ?>event/delete" method="get">
+          <input id="eventID" type="hidden" name="eventID" value="" />
+      </form>
+  </div>
+</div>
        

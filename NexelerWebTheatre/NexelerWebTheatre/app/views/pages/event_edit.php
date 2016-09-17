@@ -1,4 +1,7 @@
 
+<script type="text/javascript" src="<?php echo Config::get('URL'); ?>public/jquery/jquery-timepicker/jquery.timepicker.min.js"></script>
+<link type="text/css" href="<?php echo Config::get('URL'); ?>public/jquery/jquery-timepicker/jquery.timepicker.css" rel="stylesheet" />
+
 <?php
 $event = $data['event'];
 $halls = $data['halls'];
@@ -25,9 +28,14 @@ $plays = $data['plays'];
             <tr>
                 <th><label>Datum:</label></th>
                 <td> 
-                    <input name="test_date" type="date" value="<?php echo $event->date; ?>"/>
-                    <input name="test_time" type="time" value="<?php echo $event->time; ?>" style="margin-left:10px"/>
-
+                    <input id="date" name="test_date" value="<?php echo $event->date; ?>"/>
+                   <!-- <input id="time" name="test_time"  value="<?php echo $event->time; ?>"/>-->
+                </td>
+            </tr>
+            <tr>
+                <th><label>Vreme:</label></th>
+                <td> 
+                    <input id="time" name="test_time"  value="<?php echo $event->time; ?>"/>
                 </td>
             </tr>
 			<tr>
@@ -79,3 +87,10 @@ $plays = $data['plays'];
 
     </form>
 </div>
+
+<script>
+    $("#date").datepicker({ 'dateFormat': 'yy-mm-dd' });
+
+    $('#time').timepicker({ 'timeFormat': 'H:i' });
+
+</script>

@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/reservation.js"></script>
 
 <?php if(Session::errorFeedbackExists()):?>
 <div class="message">
@@ -5,7 +6,7 @@
 </div>
 <?php endif;?>
 <?php if(Session::infoFeedbackExists()):?>
-<div class="message" style="text-align: center;">
+<div id="info-message" class="message" style="text-align: center;">
     <?php echo  Session::getInfoFeedback();?>
 </div>
 <?php endif;?>
@@ -52,6 +53,7 @@
          </form>
 
     <div style="margin: 20px auto;">
+        <label id="result-status"></label>
         <table style="text-align:center">
             <col width="10%">
             <col width="30%">
@@ -77,13 +79,11 @@
                  <td><?php echo $reservation['reservationID']?></td>
                  <td><?php echo $event->eventName?></td>
                  <td><?php echo $event->date?></td>
-                  <td><?php echo substr($event->time,0,5)?>h</td>
-                  <td><?php echo $reservation['num_of_cards']?></td>
+                 <td><?php echo substr($event->time,0,5)?>h</td>
+                 <td><?php echo $reservation['num_of_cards']?></td>
                  <td>
-                     <form  action="<?php echo Config::get('ROOT'); ?>reservation/delete" method="get">
-                           <input type="hidden" name="reservationID" value="<?php echo $reservation['reservationID']?>"/>
-                         <button class="button button-small">Otkazi rezervaciju</button>
-                     </form>
+                     <button id="deleteButton" class="button-small" style="float: left;" onclick="OnDeleteButton(<?php echo $reservation['reservationID']?>)">Otkazi</button>
+                     
                  </td>
              </tr>
           <?php }   ?>
@@ -92,6 +92,19 @@
          if(!$no_reservations){
              echo 'Trenutno nema aktivnih rezervacija u bazi podataka za ovog korisnika!! ';
          }
-          ?>
+        ?>
     </div>
 </div>
+
+<div id="reserve-delete-confirm" style="display:none;">
+  <div><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+      Molimo Vas  potvrdite otkazivanje rezervacije!
+      <form  id="del_reservation" action="<?php echo Config::get('ROOT'); ?>reservation/delete">
+          <input id="reservationID" type="hidden" name="reservationID" value=""/>
+          <!--<button class="button button-small">Otkazi rezervaciju</button>-->
+      </form>
+      
+  </div>
+</div>
+
+

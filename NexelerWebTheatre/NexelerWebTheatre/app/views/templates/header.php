@@ -3,12 +3,20 @@
 <html>
     
 <head>
-    <meta http-equiv="Content-Type"     content="text/html;     charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/external/jquery/jquery.js"></script>s
+    <script src="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/jquery-ui.css" />
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>public/css/style.css" type="text/css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<title>NEXELER Theatre</title>
 </head>
 <body>
+
+<?php
+/*Just for your server-side code*/
+header('Content-Type: text/html; charset=utf-8');
+
+?>
     <div id="header">
       
 
@@ -34,7 +42,7 @@
       <div id="logo_text">
             <a href="#">Nexeler</a>
             <br/><br/>
-            Dobrodosli na web prezentaciju Nexeler pozorista.
+            Dobrodošli na web prezentaciju Nexeler pozorišta.
 	    </div>
         <div id="guest">
             <?php if(Session::userIsLoggedIn()):?>

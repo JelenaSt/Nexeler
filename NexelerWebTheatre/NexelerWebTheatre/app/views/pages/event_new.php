@@ -1,3 +1,6 @@
+<script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/reservation.js"></script> 
+<script type="text/javascript" src="<?php echo Config::get('URL'); ?>public/jquery/jquery-timepicker/jquery.timepicker.min.js"></script>
+<link type="text/css" href="<?php echo Config::get('URL'); ?>public/jquery/jquery-timepicker/jquery.timepicker.css" rel="stylesheet" />
 
 <?php
 $halls = $data['halls'];
@@ -17,7 +20,12 @@ $plays = $data['plays'];
             </tr>
             <tr>
                 <th><label>Datum:</label></th>
-                <td> <input name="date" type="date"/><input name="time" type="time"/></td>
+                  <td> <input id="date" name="date"/></td>
+            </tr>
+            <tr>
+                <th><label>Vreme:</label></th>
+                <td><input id="time" name="time"/></td>
+                
             </tr>
             <tr>
 			<tr>
@@ -54,3 +62,12 @@ $plays = $data['plays'];
 
     </form>
 </div>
+
+<script>
+    $("#date").datepicker({ 'dateFormat': 'yy-mm-dd' });
+
+    $('#time').timepicker({ 'timeFormat': 'H:i' });
+    //$(function () {
+    //    $('#time').dtpicker();
+    //});
+</script>

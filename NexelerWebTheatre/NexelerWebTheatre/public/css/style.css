@@ -34,6 +34,57 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 #right_footer { float:right;  padding:20px 30px 0 0; color:#fff;  font-size:12px; text-align:right;}
 #right_footer a { color:#fff;}
 
+.button  {
+  font-family: "Myriad Pro", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #B9121C;
+  width: 150px;
+  border: 0;
+  margin: 10px 0 0 0;
+  padding: 15px;
+  color: #9c9c9c;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+
+.button-small  {
+  font-family: "Myriad Pro", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #B9121C;
+  width: 70px;
+  border: 0;
+  margin: 2px 0 0 0;
+  padding: 5px;
+  color: #9c9c9c;
+  font-size: 8px;
+  cursor: pointer;
+}
+.cancel-button  {
+  font-family: "Myriad Pro", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #d0d0d0;
+  width: 150px;
+  border: 0;
+  margin: 10px 0 0 0;
+  padding: 15px;
+  color: #9c9c9c;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.button:hover,.button:active,.button:focus {
+  background: #43A047;
+}
+
+.button:disabled {
+    background: #9c9c9c;
+    color: #000;
+    cursor: not-allowed;
+}
 
 #guest {float:right;}
 #guest label{text-align:center; font-size:18px; color:white;}
@@ -116,6 +167,7 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
 }
 
 
+
 .page {
     margin: 0 auto;
     width: 100%;
@@ -186,57 +238,14 @@ p.additional { margin:0 10px; color:#9c9c9c; font-size:11px; line-height:12px; b
     text-align:left;
 }
 
-.button  {
-  font-family: "Myriad Pro", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #B9121C;
-  width: 150px;
-  border: 0;
-  margin: 10px 0 0 0;
-  padding: 15px;
-  color: #9c9c9c;
-  font-size: 10px;
-  cursor: pointer;
-}
 
-.button-small  {
-  font-family: "Myriad Pro", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #B9121C;
-  width: 70px;
-  border: 0;
-  margin: 2px 0 0 0;
-  padding: 5px;
-  color: #9c9c9c;
-  font-size: 8px;
-  cursor: pointer;
-}
-.cancel-button  {
-  font-family: "Myriad Pro", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #d0d0d0;
-  width: 150px;
-  border: 0;
-  margin: 10px 0 0 0;
-  padding: 15px;
-  color: #9c9c9c;
-  font-size: 10px;
-  cursor: pointer;
-}
-
-button:hover,button:active,button:focus {
-  background: #43A047;
-}
 
 #contact { margin:0; padding:0; font-size:0.9em; line-height:20px; font-family: "Myriad Pro", "Trebuchet MS", Arial; border:1px solid #000; background:#d0d0d0;  }
 
-ul{
+#events_list{
     list-style:none;
 }
-li{
+#events_list li{
 
     overflow: hidden;
     border: none;
@@ -259,7 +268,7 @@ li{
     width:48%;
     height:300px;
 }
-li:nth-child(even){
+#events_list li:nth-child(even){
     margin-right:10px;
     float:right;
 }
@@ -279,6 +288,7 @@ background-image: url('info.png');
 color: #4F8A10;
 background-color: #DFF2BF;
 background-image:url('success.png');
+margin-top:5px;
 }
 .warning {
 color: #9F6000;
@@ -289,4 +299,8 @@ background-image: url('warning.png');
 color: #D8000C;
 background-color: #FFBABA;
 background-image: url('error.png');
+}
+
+.page_num {
+    margin: 0 5px 0 5px;
 }
