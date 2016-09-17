@@ -20,10 +20,22 @@
         <form action="<?php echo Config::get('ROOT'); ?>event/addnew" method="post">
             <button class="button" style="float: right;">Dodaj novi</button>
         </form>
+        <?php elseif(Session::userIsLoggedIn()):?>
+        <p>
+             Aktuelni repertoar NexelerWeb pozorišta. 
+             Ukoliko želite rezervisati karte za neku od predstava na repertoaru potrebno je da izaberete opciju
+             "Rezervisi" koja se nalazi pored prikaza svake od predstava na repertoaru.
+             Nakon što Vam se prikaze dialog, izaberite broj karata koji želite da rezervišite i potvrdite Vaš izbor
+            pritiskom na dugme "Potvrdi". Ukoliko imate poteško?a sa rezervacijom, možete nas kontaktirati putem emaila
+            ili kontak telefona.
+   	   </p>
+         <?php else:?>
+       <p> Dobrodošli na repertoar Nexeler WebPozorišta. Da biste bili u mogu?nosti da iskoristite
+        nas online servis za rezervaciju karata molimo vas da se registrujete. 
+           </p>
         <?php endif; ?>
         </div>
-   	   
-  
+     
      <ul id="events_list">
             <?php 
             $events = $data['events'];
@@ -75,18 +87,6 @@
                                      <tr>
                                          <td>
                                                <?php if(Session::get('user_level') == USER_LEVEL):?>
-                                             <!--<form id="reservation-form">
-                                                 <input type="hidden" name="event_id" value=<?php echo $event['eventID'] ?> /><br />
-                                                <select name="num_cards" style="width:50px">
-                                                 	<option value="1" selected>1</option>
-                                                 	<option value="2" >5</option>
-                                                 	<option value="3" >5</option>
-                                                 	<option value="4" >5</option>
-                                                 	<option value="5" >5</option>
-                                                 </select>
-                                                 <input type="text" name="num_of_cards" placeholder="Broj karata:" style="width:148px" />
-                                                 <button id="reserveButton" class="button" style="float: left;" onclick="OnReserveButton()">REZERVISI</button>
-                                             </form>-->
                                               <button id="reserveButton" class="button" style="float: left;" onclick="OnReserveButton(<?php echo $event['eventID'] ?>)">REZERVISI</button>
                                              <?php endif;?>
                                              <?php if(Session::get('user_level') == MODERATOR_LEVEL):?>
@@ -123,8 +123,7 @@
             if($curr_page == $i){
                 echo '<a class="page_num" href='.$urlForPages.'?page='.$i.'><strong>'.$i.'</strong></a>'; 
             }else{
-                echo '<a href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>'; 
-               // echo "<div style='margin:2px;'><a href=".$urlForPages."?page=".$i."'>".$i."</a><div>  ";  
+                echo '<a href='.$urlForPages.'?page='.$i.'><sup>'.$i.'</sup></a>';  
             }
 				
 		}; 

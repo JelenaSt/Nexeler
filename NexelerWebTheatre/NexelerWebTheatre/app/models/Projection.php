@@ -120,8 +120,12 @@ class Projection
 	
 	 public static function fetchEventsByPage($uperLimit, $count) 
 	 {
+         $date_time = new DateTime();
+         $date = $date_time->format('Y-m-d');
+
 	        $database = Database::getInstance()->getConnection();
 	        $sql = "SELECT * FROM events
+                    WHERE date > '$date'
 					ORDER BY Date ASC LIMIT $uperLimit, $count";
 			
 	        mysqli_query($database, "set names 'utf8'");

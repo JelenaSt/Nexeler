@@ -4,7 +4,7 @@
     
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script src="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/external/jquery/jquery.js"></script>s
+    <script src="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
     <script src="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>public/jquery/jquery-ui-1.12.1/jquery-ui.css" />
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>public/css/style.css" type="text/css" />
@@ -12,17 +12,12 @@
 </head>
 <body>
 
-<?php
-/*Just for your server-side code*/
-header('Content-Type: text/html; charset=utf-8');
-
-?>
     <div id="header">
       
 
         <div id="menu">
             <div id="menu_list"> 
-                <a href="<?php echo Config::get('ROOT'); ?>home/index">Pocetna</a>
+                <a href="<?php echo Config::get('ROOT'); ?>home/index">Početna</a>
                 <img src="../../public/images/splitter.gif" class="splitter" alt="" />
                 <a href="<?php echo Config::get('ROOT'); ?>home/events">Repertoar</a>
                 <img src="../../public/images/splitter.gif" class="splitter" alt="" />
@@ -38,7 +33,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 
     <div id="logo">
-      <div id="slogan"><strong>Web</strong>Pozoriste</div>
+      <div id="slogan"><strong>Web</strong>Pozorište</div>
       <div id="logo_text">
             <a href="#">Nexeler</a>
             <br/><br/>
@@ -48,7 +43,7 @@ header('Content-Type: text/html; charset=utf-8');
             <?php if(Session::userIsLoggedIn()):?>
                       
             <div>
-                <label>WELCOME <strong><?php echo  '  ' . Session::get('name') ?></strong></label>
+                <label>Dobrodošli <strong><?php echo  '  ' . Session::get('name') ?></strong></label>
                 <div><a href="<?php echo Config::get('ROOT'); ?>login/logout">Odjavi se</a></div>
             </div>
              <div>
@@ -57,7 +52,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <?php elseif(Session::get('user_level') == MODERATOR_LEVEL):?>
                 <a href="<?php echo Config::get('ROOT'); ?>moderator/moderatorpage">Moderator Panel</a>
                 <?php elseif(Session::get('user_level') == USER_LEVEL):?>
-                <a href="<?php echo Config::get('ROOT'); ?>profile/profilepage">Korisnicki Profil</a>
+                <a href="<?php echo Config::get('ROOT'); ?>profile/profilepage">Korisnički Profil</a>
                 <?php endif;?>
              </div>
             <?php else :?>

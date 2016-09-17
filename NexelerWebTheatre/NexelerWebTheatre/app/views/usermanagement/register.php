@@ -1,5 +1,6 @@
 
 <script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/registration.js"></script>
+<?php  header("Content-Type: text/html;charset=utf-8"); ?>
 <div>
 <div class="page">
       
@@ -9,7 +10,7 @@
             </div>
         <?php endif;?>  
 
-
+      
         <form id="register_form" class="page-form" action="<?php echo Config::get('ROOT'); ?>register/register" method="post">
             <h1>Registracija korisnika</h1>
             <br/>
