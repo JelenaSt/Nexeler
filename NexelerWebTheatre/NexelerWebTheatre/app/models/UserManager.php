@@ -14,7 +14,8 @@ class UserManager
     public static function login($user_name, $user_password, $set_remember_me_cookie = null)
     {
         if (empty($user_name) OR empty($user_password)) {
-            Session::set('error_feedback','You must fill all input fields');
+            
+            Session::setErrorFeedback('Morate popuniti sva zahtevana polja!');
             return false;
         }
 
@@ -34,12 +35,12 @@ class UserManager
         $result = User::getUserDataByUsername($user_name);
 
         if (!$result) {
-            Session::set('error_feedback','User with this user name does not exist!');
+            Session::setErrorFeedback('Korisnik sa zadatim korisni?kim imenom ne postoji!!');
             return false;
         }
         
         if (!password_verify($user_password, $result->password_hash)) {
-            Session::set('error_feedback','Wrong password. Please try again!');
+           Session::setErrorFeedback('Pogrešno uneta šifra. Molimo Vas pokušajte ponovo!');
             return false;
         }
 
@@ -94,12 +95,12 @@ class UserManager
         $return = true;
         // check if username already exists
         if (User::userDataByUsernameExist($user_name)) {
-            Session::setErrorFeedback('Korisnicko ime je vec iskorisceno. Molimo odaberiti novo i pokusajte ponovo.');
+            Session::setErrorFeedback('Korisni?ko ime je ve? iskorisceno. Molimo odaberiti novo i pokušajte ponovo.');
             $return = false;
         }
         // check if email already exists
         if (User::userDataByEmailExist($email)) { 
-            Session::setErrorFeedback("Email adresa je vec u upotrebi. Molimo pokusajte ponovo.");
+            Session::setErrorFeedback("Email adresa je ve? u upotrebi. Molimo pokušajte ponovo.");
             $return = false;
         }
         // if Username or Email were false, return false
@@ -107,11 +108,11 @@ class UserManager
 
         $return = User::writeNewUserToDatabase($name, $last_name, $user_name, $email, $password_hash);
         if (!$return){
-            Session::setErrorFeedback("Slanje zahteva za registraciju je neuspesno. Molimo pokusajte kasnije.");
+            Session::setErrorFeedback("Slanje zahteva za registraciju je neuspešno. Molimo pokušajte kasnije.");
             return false;
         }
         
-        Session::setInfoFeedback("Vas profil je uspesno kreiran. Unesite vase korisnicko ime i sifru da se ulogujete na stranu!");
+        Session::setInfoFeedback("Vaš profil je uspešno kreiran. Unesite vaše korisni?ko ime i šifru da se ulogujete na stranu!");
         return true; 
     }
 
@@ -133,7 +134,7 @@ class UserManager
         if($user->username !== $user_name){
             // check if new username already exists
             if (User::userDataByUsernameExist($user_name)) {
-                Session::setErrorFeedback('Korisnicko ime je vec iskorisceno. Molimo odaberiti novo i pokusajte ponovo.');
+                Session::setErrorFeedback('Korisni?ko ime je ve? iskoriš?eno. Molimo odaberiti novo i pokušajte ponovo.');
                 $return = false;
             }
         }
@@ -141,7 +142,7 @@ class UserManager
         if($user->email !== $email){
             // check if new email already exists
             if (User::userDataByEmailExist($email)) { 
-                Session::setErrorFeedback("Email adresa je vec u upotrebi. Molimo pokusajte ponovo.");
+                Session::setErrorFeedback("Email adresa je ve? u upotrebi. Molimo pokušajte ponovo.");
                 $return = false;
             }
         }

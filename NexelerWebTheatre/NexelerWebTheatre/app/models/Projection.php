@@ -47,7 +47,7 @@ class Projection
             return true;
         }
 
-        Session::setInfoFeedback("Greska prilikom kreiranja novog zapisa.!" . mysqli_error($database));
+        Session::setInfoFeedback("Greška prilikom kreiranja novog zapisa.!" . mysqli_error($database));
         return false;
     }
 
@@ -61,11 +61,11 @@ class Projection
         $query_result = mysqli_query($database, $sql);
 
         if ($query_result === TRUE) {
-            Session::setInfoFeedback("Uspesno azurirani detalji projekcije!");
+            Session::setInfoFeedback("Uspešno ažurirani detalji projekcije!");
             return true;
         }
 
-        Session::setInfoFeedback("Greska prilikom azuriranja detalja projekcije!");
+        Session::setInfoFeedback("Greška prilikom ažuriranja detalja projekcije!");
         
         return false;
     }
@@ -110,7 +110,7 @@ class Projection
         
         $result = $database->query($sql);
         if(!$result){
-            Session::setErrorFeedback("Greska u procesiranju vaseg zahteva. Molimo vas pokusajte kasnije ponovo.");
+            Session::setErrorFeedback("Greška u procesiranju vašeg zahteva. Molimo vas pokušajte kasnije ponovo.");
             return false;
         }
 
@@ -131,7 +131,7 @@ class Projection
 	        mysqli_query($database, "set names 'utf8'");
 	        $result = $database->query($sql);
 	        if(!$result){
-	       	    Session::setErrorFeedback("Greska u procesiranju vaseg zahteva. Molimo vas pokusajte kasnije ponovo.");
+	       	    Session::setErrorFeedback("Greška u procesiranju vašeg zahteva. Molimo vas pokušajte kasnije ponovo.");
 	            return false;
 	        }
 	
@@ -178,11 +178,11 @@ class Projection
         
         $result = $database->query($sql);
         if(!$result){
-            Session::setErrorFeedback("Greska u procesiranju vaseg zahteva. Molimo vas pokusajte kasnije ponovo.");
+            Session::setErrorFeedback("Greška u procesiranju vašeg zahteva. Molimo vas pokušajte kasnije ponovo.");
             return false;
         }
 
-        Session::setErrorFeedback("Dogadjaj je uspesno obrisan sa reperoara.");
+        Session::setErrorFeedback("Dogadjaj je uspešno obrisan sa reperoara.");
         return true;
     }
 }

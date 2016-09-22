@@ -27,7 +27,7 @@
         $result = $database->query($sql);
 
         if(!$result){
-            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokušajte kasnije!");
             return false;
         }
         $array = $result->fetch_all(MYSQLI_ASSOC);
@@ -48,7 +48,7 @@
       $result = $database->query($sql);
 
       if(!$result){
-          Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+          Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokušajte kasnije!");
           return false;
       }
 
@@ -70,7 +70,7 @@
         $result = $database->query($sql);
 
         if(!$result){
-            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokušajte kasnije!");
             return false;
         }
 
@@ -78,6 +78,75 @@
         return $array;
     }
     
+     public static function filterReservations($playName,$datum,$userId,$name){
+        
+        $date_time = new DateTime();
+        $date = $date_time->format('Y-m-d');
+
+        $database = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM reservations 
+               INNER JOIN events 
+               ON reservations.event_id=events.eventID 
+               INNER JOIN plays
+               ON events.play_id = plays.ID
+               INNER JOIN users
+               ON reservations.user_id = users.userID";
+       $where = false;
+       if($playName){
+         $sql = $sql . " WHERE plays.Title LIKE '%$playName%'";
+                $where = true;
+        }
+        if($name){
+            if(!$where){
+                 $sql = $sql . " WHERE ";
+                  $where = true;
+            }
+            else{
+                $sql = $sql . " AND ";
+            }
+            $sql = $sql . "(users.name LIKE '%$name%' OR  users.last_name LIKE '%$name%')";
+        }
+
+        if($userId){
+         if(!$where){
+                 $sql = $sql . " WHERE ";
+                  $where = true;
+            }
+            else{
+                $sql = $sql . " AND ";
+            }
+         $sql = $sql . "users.userID LIKE '%$userId%'";
+        }
+
+        if($datum){
+         if(!$where){
+                 $sql = $sql . " WHERE ";
+                  $where = true;
+            }
+            else{
+                $sql = $sql . " AND ";
+            }
+          $sql = $sql . "events.date = '$datum'";
+        }
+     //$sql = "SELECT * FROM reservations 
+     //           INNER JOIN events 
+     //           ON reservations.event_id=events.eventID 
+     //           INNER JOIN plays
+     //           ON events.play_id = plays.ID
+     //           WHERE plays.Title LIKE '%$playName%'";
+        
+        $result = $database->query($sql);
+
+        if(!$result){
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokušajte kasnije!");
+            return false;
+        }
+
+        $array = $result->fetch_all(MYSQLI_ASSOC);
+        return $array;
+    }
+    
+
     public static function getReservationById($reservation_id){
         
         $date_time = new DateTime();
@@ -90,7 +159,7 @@
         $result = $database->query($sql);
 
         if(!$result){
-            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokusajte kasnije!");
+            Session::setErrorFeedback("Trenutno postoje problemi sa dohvatanjem rezervacija korsinika. Molimo vas pokušajte kasnije!");
             return false;
         }
 
@@ -118,7 +187,7 @@
 
             return $database->insert_id;
           }else{
-              Session::setErrorFeedback("Greska prilikom upisa rezervacije.Molim vas pokusajte ponovo kasnije!");
+              Session::setErrorFeedback("Greška prilikom upisa rezervacije.Molim vas pokušajte ponovo kasnije!");
             return false;
           }
     }
@@ -138,7 +207,7 @@
           if($result === TRUE){
             return true;
           }else{
-            Session::setInfoFeedback("Rezervacija zahtevanog broja karata nije moguca.");
+            Session::setInfoFeedback("Rezervacija zahtevanog broja karata nije mogu?a.");
             return false;
           } 
         }
@@ -150,11 +219,11 @@
     	
         $query_result = $database->query($sql);
         if ($query_result === TRUE) {
-            Session::setInfoFeedback("Uspesno otkazana rezervacija broj '$reservationID'!" );
+            Session::setInfoFeedback("Uspešno otkazana rezervacija broj '$reservationID'!" );
             return true;
         }
 
-        Session::setErrorFeedback("Trenutno nismo u mogucnosti da otkazemo vasu rezervaciju!");
+        Session::setErrorFeedback("Trenutno nismo u mogu?nosti da otkažemo vašu rezervaciju!");
         return false;
     }
   }

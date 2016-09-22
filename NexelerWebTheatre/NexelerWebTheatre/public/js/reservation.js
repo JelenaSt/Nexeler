@@ -60,8 +60,8 @@ $(document).ready(function () {
                 $("#result-status").html("<div class='error'>Greska prilikom obrade rezervacije karata. Molimo vas pokusajte ponovo.!</div>")
             },
             success: function (data) {
-                window.location.reload();
-               
+               // window.location.reload();
+                $("#all_reservations").load(window.location + " #all_reservations");
 
             },
 

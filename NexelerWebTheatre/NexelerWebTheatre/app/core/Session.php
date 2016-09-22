@@ -27,19 +27,14 @@ class Session
     * startSession - Performs all the actions necessary to 
     * initialize this session object. Tries to determine if the
     * the user has logged in already, and sets the variables 
-    * accordingly. Also takes advantage of this page load to
-    * update the active visitors tables.
+    * accordingly.
     */
    public static function  startSession(){ 
        session_start();   
       /* Determine if user is logged in */
 
       $this->logged_in = $this->checkLogin();
-      /**
 
-       * Set guest value to users not logged in, and update
-       * active guests table accordingly.
-       */
       if(!$this->logged_in){
          $this->username =  GUEST_NAME;
          $this->userlevel = GUEST_LEVEL;
@@ -72,8 +67,6 @@ class Session
    /**
     * gets/returns the value of a specific key of the session
     *
-    * @param mixed $key Usually a string, right ?
-    * @return mixed the key's value or nothing
     */
    public static function get($key)
    {
@@ -84,41 +77,6 @@ class Session
        }
    }
 
-  /*
-    * checkLogin - Checks if the user has already previously
-    * logged in, and a session with the user has already been
-    * established. Also checks to see if user has been remembered.
-    * If so, the database is queried to make sure of the user's 
-    * authenticity. Returns true if the user has logged in.
-    */
-   //function checkLogin(){
-       
-   //    /* Username and userid have been set and not guest */
-
-   //    if(isset($_SESSION['username']) && isset($_SESSION['userid']) &&
-   //       $_SESSION['username'] != GUEST_NAME){
-           
-   //        /* Confirm that username and userid are valid */
-   //        //if($database->confirmUserID($_SESSION['username'], $_SESSION['userid']) != 0){
-   //        //   /* Variables are incorrect, user not logged in */
-   //        //   unset($_SESSION['username']);
-   //        //   unset($_SESSION['userid']);
-   //        //   return false;
-   //        //}
-   //        /* User is logged in, set class variables */
-
-   //        $this->userinfo  = Database::getInstance()->getUserInfo($_SESSION['username']);
-   //        $this->username  = $this->userinfo['username'];
-   //        $this->userid    = $this->userinfo['userid'];
-   //        $this->userlevel = $this->userinfo['userlevel'];
-   //        return true;
-   //    }
-   //    /* User not logged in */
-   //    else{
-   //        return false;
-   //    }
-   //}
-   
    /**
     * deletes the session (= logs the user out)
     */

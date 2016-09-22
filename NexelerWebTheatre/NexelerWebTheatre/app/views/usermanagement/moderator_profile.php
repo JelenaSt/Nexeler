@@ -1,19 +1,46 @@
 <script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/moderator.js"></script>
+<script type="text/javascript" src="<?php echo Config::get('ROOT'); ?>js/reservation.js"></script>
+<script type="text/javascript" src="<?php echo Config::get('URL'); ?>public/jquery/jquery-timepicker/jquery.timepicker.min.js"></script>
+<link type="text/css" href="<?php echo Config::get('URL'); ?>public/jquery/jquery-timepicker/jquery.timepicker.css" rel="stylesheet" />
 
-<div class="page-body">
+<div class="page-body" style="height:auto">
 <h1>Moderator profil</h1>
-    <div style="margin: 20px auto; width:100%">
-      <form  id="filter"  action="<?php echo Config::get('ROOT'); ?>moderator/filter" method="post">
-            <input id="eventID" type="text" name="eventID"/>
+    <div>
+      <form  id="filter" style="margin:20px auto 20px auto; width:90%; max-width: 100%;"  action="<?php echo Config::get('ROOT'); ?>moderator/filter" method="post">
+          <h3>Forma za filtriranje rezervacija</h3>
+          
+           <table>
+              <tr>
+                  <th>Naziv predstave</th>
+                  <td><input id="playName" type="text" name="playName"/></td>
+                  <th>Datum projekcije</th>
+                  <td> <input id="datum" type="text" name="datum"/></td>
+              </tr>
+              <tr>
+                  <th>Ime/Prezime korsinika</th>
+                  <td><input id="nameUser" type="text" name="nameUser"/></td>
+                  <th>Id korisnika</th>
+                  <td><input id="idUser" type="text" name="idUser"/></td>
+              </tr>
+              <tr>
+                  <td colspan="2" align="center">
+                        <input type="submit" class="button" style="float: left;" value="FILTRIRAJ"/>
+                  </td>
+              </tr>
+          </table>
+           <!-- <input id="eventID" type="text" name="eventID"/-->
+            
+           
+           
         </form>
-         <button class="button" style="float: left;" onclick="filterReservations()">FILTRIRAJ</button>
+         <!--<button class="button" style="float: left;" onclick="filterReservations()">FILTRIRAJ</button>-->
      </div>
     <div style="margin: 20px auto; width:100%">
         <label id="result-status"></label>
         
       
-        <label><?php echo $data['type'];?></label>
-        <table id="all_reservations" style="text-align:center">
+        
+        <table id="all_reservations" style="text-align:center; margin: 20px auto; width:100%">
             <col width="10%">
             <col width="30%">
             <col width="20%">
@@ -21,7 +48,7 @@
             <col width="20%">
             
             <tr>
-                <th>Id</th>
+                <th>Id rezervacije</th>
                 <th>Naziv predstave</th>
                 <th>Datum</th>
                 <th>Vreme</th>
@@ -31,11 +58,13 @@
             </tr>
         <?php
         $reservations = $data['reservations'];
-        $no_reservations = false;
-        foreach($reservations as $reservation){
-            $event = Projection::getEventByID($reservation['event_id']);
-            $user=User::getUserById($reservation['user_id']);
-            $no_reservations = true;
+        $no_reservations = (count($reservations) === 0) ? false : true;
+        
+        if($no_reservations){
+            foreach($reservations as $reservation){
+                $event = Projection::getEventByID($reservation['event_id']);
+                $user=User::getUserById($reservation['user_id']);
+                $no_reservations = true;
         ?>
              <tr>
                  <td><?php echo $reservation['reservationID']?></td>
@@ -50,13 +79,33 @@
                      
                  </td>
              </tr>
-          <?php }   ?>
-             </table>
-        <?php
+          <?php } 
+            }  
         if(!$no_reservations){
-            echo 'Trenutno nema aktivnih rezervacija u bazi podataka za ovog korisnika!! ';
-        }
-        ?>
+          ?>
+            <tr>
+                <td colspan="7" align="center">"Trenutno nema aktivnih rezervacija u bazi podataka za ovog korisnika!!"</td>
+            </tr>
+        <?php   
+        }?>
+             </table>
+        <!--echo 'Trenutno nema aktivnih rezervacija u bazi podataka za ovog korisnika!! ';-->
     </div>
 
 </div>
+
+
+<div id="reserve-delete-confirm" style="display:none;">
+  <div><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+      Molimo Vas  potvrdite otkazivanje rezervacije!
+      <form  id="del_reservation" action="<?php echo Config::get('ROOT'); ?>reservation/delete">
+          <input id="reservationID" type="hidden" name="reservationID" value=""/>
+          <!--<button class="button button-small">Otkazi rezervaciju</button>-->
+      </form>
+      
+  </div>
+</div>
+
+<script>
+    $("#datum").datepicker({ 'dateFormat': 'yy-mm-dd' });
+</script>

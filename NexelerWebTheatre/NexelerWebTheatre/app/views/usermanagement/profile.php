@@ -54,7 +54,7 @@
 
     <div style="margin: 20px auto;">
         <label id="result-status"></label>
-        <table style="text-align:center">
+        <table id="all_reservations" style="text-align:center; margin: 20px auto; width:100%">
             <col width="10%">
             <col width="30%">
             <col width="20%">

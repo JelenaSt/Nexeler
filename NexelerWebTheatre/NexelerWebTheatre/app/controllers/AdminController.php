@@ -31,11 +31,11 @@ class AdminController extends Controller
   {
 
       if(User::updateUserLevel($userID,MODERATOR_LEVEL)){
-          Session::put('info_feedback','user successfully promoted to moderator');
+          Session::setInfoFeedback('Korisnik uspešno unapredjen u moderatora!');
       }
       else
-          Session::put('error_feedback','user is not promoted to moderator');
-      Redirect::to('admin/adminpage');
+          Session::setErrorFeedback('Moderator uspešno suspendovan!');
+        Redirect::to('admin/adminpage');
   }
   
   public function downgrade($userID)
