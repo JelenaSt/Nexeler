@@ -27,7 +27,7 @@
                     <td><label><?php echo $data['admin']->last_name;; ?></label></td>
                 </tr>
                 <tr>
-                    <th><label>Korisnicko ime:</label></th>
+                    <th><label>Korisničko ime:</label></th>
                     <td><label><?php echo $data['admin']->username; ?></label></td>
                 </tr>
                 <tr>
@@ -35,11 +35,11 @@
                     <td><label><?php echo $data['admin']->email; ?></label></td>
                 </tr>
                 <tr>
-                    <th><label>Sifra:</label></th>
+                    <th><label>Šifra:</label></th>
                     <td><label>**********</label></td>
                 </tr>
                 <tr>
-                    <th><label>Korisnicki profil:</label></th>
+                    <th><label>Korisnički profil:</label></th>
                     <td><label><?php echo $data['admin']->user_type; ?></label></td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
   
     </div>
     <div style="width:48%; height:246px; float:right; padding:5px;">
-    <h2>Statistika</h2>
+    <h2>Statistika **uskoro**</h2>
         <table>
        
             <tr>
@@ -60,11 +60,11 @@
             </tr>
             <tr>
                 <td>Registrovani korisnici:</td>
-                <td>2</td>
+                <td>3</td>
             </tr>
             <tr>
                 <td>Ulogovani korisnici:</td>
-                <td>2</td>
+                <td>0</td>
             </tr>
         </table>
    </div>
