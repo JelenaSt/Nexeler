@@ -29,7 +29,7 @@
                     <td><label><?php echo $data['user']->last_name;; ?></label></td>
                 </tr>
                 <tr>
-                    <th><label>Korisnicko ime:</label></th>
+                    <th><label>Korisničko ime:</label></th>
                    <td><label><?php echo $data['user']->username; ?></label></td>
                 </tr>
                 <tr>
@@ -37,11 +37,11 @@
                    <td><label><?php echo $data['user']->email; ?></label></td>
                 </tr>
                 <tr>
-                    <th><label>Sifra:</label></th>
+                    <th><label>Šifra:</label></th>
                    <td><label>**********</label></td>
                 </tr>
                 <tr>
-                    <th><label>Korisnicki profil:</label></th>
+                    <th><label>Korisnički profil:</label></th>
                    <td><label><?php echo $data['user']->user_type; ?></label></td>
                 </tr>
                 <tr>
@@ -98,7 +98,7 @@
 
 <div id="reserve-delete-confirm" style="display:none;">
   <div><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
-      Molimo Vas  potvrdite otkazivanje rezervacije!
+      Molimo Vas potvrdite otkazivanje rezervacije!
       <form  id="del_reservation" action="<?php echo Config::get('ROOT'); ?>reservation/delete">
           <input id="reservationID" type="hidden" name="reservationID" value=""/>
           <!--<button class="button button-small">Otkazi rezervaciju</button>-->
