@@ -22,16 +22,16 @@
         </form>
         <?php elseif(Session::userIsLoggedIn()):?>
         <p>
-             Aktuelni repertoar NexelerWeb pozoriöta. 
-             Ukoliko ûelite rezervisati karte za neku od predstava na repertoaru potrebno je da izaberete opciju
-             "Rezervisi" koja se nalazi pored prikaza svake od predstava na repertoaru.
-             Nakon öto Vam se prikaze dialog, izaberite broj karata koji ûelite da rezerviöite i potvrdite Vaö izbor
-            pritiskom na dugme "Potvrdi". Ukoliko imate poteöko?a sa rezervacijom, moûete nas kontaktirati putem emaila
+             Aktuelni repertoar NexelerWeb pozori≈°ta. 
+             Ukoliko ≈æelite rezervisati karte za neku od predstava na repertoaru potrebno je da izaberete opciju
+             "Rezervi≈°i" koja se nalazi pored prikaza svake od predstava na repertoaru.
+             Nakon ≈°to Vam se prikaze dialog, izaberite broj karata koji ≈æelite da rezervi≈°ite i potvrdite Va≈° izbor
+            pritiskom na dugme "Potvrdi". Ukoliko imate pote≈°koƒáa sa rezervacijom, mo≈æete nas kontaktirati putem emaila
             ili kontak telefona.
    	   </p>
          <?php else:?>
-       <p> Dobrodoöli na repertoar Nexeler WebPozoriöta. Da biste bili u mogu?nosti da iskoristite
-        nas online servis za rezervaciju karata molimo vas da se registrujete. 
+       <p> Dobrodo≈°li na repertoar Nexeler WebPozori≈°ta. Da biste bili u moguƒánosti da iskoristite
+        na≈° online servis za rezervaciju karata molimo Vas da se registrujete. 
            </p>
         <?php endif; ?>
         </div>
@@ -132,7 +132,7 @@
  </div>
 
 <div id="reserveDialog" style="display:none;">
-    Rezerviöite karte za vaöu predstavu:
+    Rezervi≈°ite karte za va≈°u predstavu:
     <form id="reservation-form" action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"><!--  action="<?php echo Config::get('ROOT'); ?>reservation/addReservation" method="post"-->
         <input id="event_id" type="hidden" name="event_id" value=""/><br />
         <select id="num_of_cards" name="num_of_cards" style="width:100%">
