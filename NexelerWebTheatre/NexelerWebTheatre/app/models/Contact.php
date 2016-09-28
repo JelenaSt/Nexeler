@@ -29,7 +29,7 @@ class Contact
         $this->phone2 = $args['Phone2'];
         $this->phone3 = $args['Phone3'];
         $this->fax = $args['Fax'];
-        $this->email = $args['E-mail'];
+        $this->email = $args['Email'];
         $this->address = $args['Address'];
     }
 
