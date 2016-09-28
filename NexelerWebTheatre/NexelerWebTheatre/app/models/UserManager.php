@@ -40,7 +40,7 @@ class UserManager
         }
         
         if (!password_verify($user_password, $result->password_hash)) {
-           Session::setErrorFeedback('Pogre�no uneta �ifra. Molimo Vas poku�ajte ponovo!');
+           Session::setErrorFeedback('Pogrešno uneta šifra. Molimo Vas pokušajte ponovo!');
             return false;
         }
 
@@ -95,12 +95,12 @@ class UserManager
         $return = true;
         // check if username already exists
         if (User::userDataByUsernameExist($user_name)) {
-            Session::setErrorFeedback('Korisni?ko ime je ve? iskorisceno. Molimo odaberiti novo i poku�ajte ponovo.');
+            Session::setErrorFeedback('Korisničko ime je već iskorišćeno. Molimo odaberiti novo i pokušajte ponovo.');
             $return = false;
         }
         // check if email already exists
         if (User::userDataByEmailExist($email)) { 
-            Session::setErrorFeedback("Email adresa je ve? u upotrebi. Molimo poku�ajte ponovo.");
+            Session::setErrorFeedback("Email adresa je već u upotrebi. Molimo pokušajte ponovo.");
             $return = false;
         }
         // if Username or Email were false, return false
@@ -108,11 +108,11 @@ class UserManager
 
         $return = User::writeNewUserToDatabase($name, $last_name, $user_name, $email, $password_hash);
         if (!$return){
-            Session::setErrorFeedback("Slanje zahteva za registraciju je neuspe�no. Molimo poku�ajte kasnije.");
+            Session::setErrorFeedback("Slanje zahteva za registraciju je neuspešno. Molimo pokušajte kasnije.");
             return false;
         }
         
-        Session::setInfoFeedback("Va� profil je uspe�no kreiran. Unesite va�e korisni?ko ime i �ifru da se ulogujete na stranu!");
+        Session::setInfoFeedback("Vaš profil je uspešno kreiran. Unesite vaše korisničko ime i šifru da se ulogujete na stranu!");
         return true; 
     }
 
@@ -134,7 +134,7 @@ class UserManager
         if($user->username !== $user_name){
             // check if new username already exists
             if (User::userDataByUsernameExist($user_name)) {
-                Session::setErrorFeedback('Korisni?ko ime je ve? iskori�?eno. Molimo odaberiti novo i poku�ajte ponovo.');
+                Session::setErrorFeedback('Korisničko ime je već iskorišćeno. Molimo odaberiti novo i pokušajte ponovo.');
                 $return = false;
             }
         }
@@ -142,7 +142,7 @@ class UserManager
         if($user->email !== $email){
             // check if new email already exists
             if (User::userDataByEmailExist($email)) { 
-                Session::setErrorFeedback("Email adresa je ve? u upotrebi. Molimo poku�ajte ponovo.");
+                Session::setErrorFeedback("Email adresa je već u upotrebi. Molimo pokušajte ponovo.");
                 $return = false;
             }
         }
@@ -151,11 +151,11 @@ class UserManager
 
         $return = User::updateUserDataInDatabase($user_id,$name, $last_name, $user_name, $email, $password_hash);
         if (!$return){
-            Session::setErrorFeedback("Trenutno nismo u mogucnosti da izvrsimo izmene. Molimo pokusajte kasnije.");
+            Session::setErrorFeedback("Trenutno nismo u mogućnosti da izvršimo izmene. Molimo pokušajte kasnije.");
             return false;
         }
         
-        Session::setInfoFeedback("Vas profil je uspesno izmenjen.");
+        Session::setInfoFeedback("Vaš profil je uspešno izmenjen.");
         return true; 
     }
 
@@ -190,7 +190,7 @@ class UserManager
        
         // if username is too short (2), too long (64) or does not fit the pattern
         if (!preg_match('/^[a-zA-Z0-9]{2,64}$/', $user_name)) {
-            Session::setErrorFeedback("Korisnicko ime je krace od 2 slova ili sadrzi nedozvoljene karaktere.");
+            Session::setErrorFeedback("Korisničko ime je krace od 2 slova ili sadrži nedozvoljene karaktere.");
             return false;
         }
         return true;
@@ -223,11 +223,11 @@ class UserManager
     {
        
         if ($password !== $password_repeat) {
-            Session::setErrorFeedback("Vrednost polja za sifru se ne poklapaju. Popunite ispravno polja i pokusajte ponovo!");
+            Session::setErrorFeedback("Vrednost polja za šifru se ne poklapaju. Popunite ispravno polja i pokušajte ponovo!");
             return false;
         }
         if (strlen($password) < 6) {
-            Session::setErrorFeedback("Uneta duzina sifre je prekratka. Molimo unesite vise od 6 karaktera!");
+            Session::setErrorFeedback("Uneta dužina šifre je prekratka. Molimo unesite više od 6 karaktera!");
             return false;
         }
         return true;
