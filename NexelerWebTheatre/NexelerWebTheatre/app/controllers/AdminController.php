@@ -31,16 +31,20 @@ class AdminController extends Controller
   {
 
       if(User::updateUserLevel($userID,MODERATOR_LEVEL)){
-          Session::setInfoFeedback('Korisnik uspe�no unapredjen u moderatora!');
+          Session::setInfoFeedback('Korisnik uspešno unapredjen u moderatora!');
       }
       else
-          Session::setErrorFeedback('Moderator uspe�no suspendovan!');
+          Session::setErrorFeedback('Korisnik nije uspešno unapredjen!');
         Redirect::to('admin/adminpage');
   }
   
   public function downgrade($userID)
   {
-      User::updateUserLevel($userID,USER_LEVEL);
-      Redirect::to('admin/adminpage');
+    if(User::updateUserLevel($userID,USER_LEVEL)){
+          Session::setInfoFeedback('Moderator uspešno modifikovan u obicnog korisnika!');
+      }
+      else
+          Session::setErrorFeedback('Moderator niije uspešno suspendovan!');
+        Redirect::to('admin/adminpage');
   }
 }
